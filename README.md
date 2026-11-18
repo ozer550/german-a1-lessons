@@ -1,5 +1,7 @@
 # German A1 Lessons
 
+**[Open the lessons →](https://ozer550.github.io/german-a1-lessons/)**
+
 22 lessons built from the teacher's notes on the class's "A1 German Simona LG" Miro board, in the same order as on the board (left to right).
 
 Each lesson has:
@@ -13,4 +15,6 @@ Student introductions and practice notes are not included.
 
 ## Open it
 
-Download `index.html` and open it in any browser. It's a single file with no other dependencies.
+Go to **https://ozer550.github.io/german-a1-lessons/**. It works on phones too.
+
+Offline: download `index.html` and open it in any browser. It's a single file with no other dependencies.
