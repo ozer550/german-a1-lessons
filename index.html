@@ -89,7 +89,10 @@
   b.pr { color: var(--prep); }
   b.ar { color: var(--art); }
   b.ct { color: var(--contr); }
+  b.mv { color: var(--prep); }
+  b.hv { color: var(--art); }
   .colorkey { font-size: .88rem; color: var(--muted); margin: 6px 0 12px; }
+  .added { border: 1.5px dashed var(--muted); border-radius: 12px; padding: 2px 16px 10px; margin: 14px 0; }
   .tag {
     display: inline-block; font-size: .75rem; padding: 1px 7px; border-radius: 999px;
     background: var(--chip); color: var(--muted); margin-left: 6px; vertical-align: 2px; font-style: normal;
@@ -99,7 +102,7 @@
   .qa .q { font-weight: 600; }
   .big { font-size: 1.25rem; font-weight: 600; margin: 6px 0 12px; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
-  .chips span { background: var(--chip); padding: 3px 10px; border-radius: 999px; font-size: .92rem; }
+  .chips > span { background: var(--chip); padding: 3px 10px; border-radius: 999px; font-size: .92rem; }
   .gender { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 10px 0; }
   .gender div { border-radius: 12px; padding: 12px 14px; color: #1c1c1e; }
   .gender .m { background: #e3eefc; } .gender .f { background: #f9dde4; } .gender .n { background: #d8efe0; }
@@ -112,7 +115,7 @@
   .recap h3 { margin: 0 0 8px !important; }
   .recap ul.rules { margin: 6px 0 10px; padding-left: 20px; }
   .recap ul.rules li { margin: 3px 0; }
-  .recap .lbl { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 10px 0 2px; }
+  .lbl { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 10px 0 2px; }
   .quiz { margin-top: 16px; }
   .quiz h3 { margin: 0 0 8px !important; }
   .quiz details { border: 1px solid var(--line); border-radius: 10px; margin: 8px 0; background: var(--surface); }
@@ -176,6 +179,7 @@
         <li><a href="#praeteritum"><span class="n">22</span>Präteritum</a></li>
         <li><a href="#akk-praep"><span class="n">23</span>Akkusativ-Präpositionen</a></li>
         <li><a href="#dat-praep"><span class="n">24</span>Dativ-Präpositionen</a></li>
+        <li><a href="#modalverben"><span class="n">25</span>Modalverben</a></li>
       </ol>
     </details>
     <button class="theme-btn" type="button" id="themeBtn">Toggle dark mode</button>
@@ -184,8 +188,8 @@
   <main>
     <header class="page">
       <h1>German A1 Lessons</h1>
-      <p>The teacher's notes from the A1 class, lesson by lesson. Lessons 1–22 follow the class Miro board (left to right); lessons 23–24 are from the 16 Nov class.</p>
-      <p class="legend">English in <span class="en add">grey italics</span> was added for this page; all other content comes from the class notes. Each lesson ends with a recap and a quick check: tap a question to see the answer.</p>
+      <p>The teacher's notes from the A1 class, lesson by lesson. Lessons 1–22 follow the class Miro board (left to right); lessons 23–24 are from the 16 Nov class and lesson 25 from the 3 Nov class.</p>
+      <p class="legend">English in <span class="en add">grey italics</span> and anything inside a <span class="added" style="padding:0 6px;margin:0">dashed box</span> was added for this page; all other content comes from the class notes. Each lesson ends with a recap and a quick check: tap a question to see the answer.</p>
     </header>
 
     <!-- 1 -->
@@ -1566,7 +1570,175 @@
       </div>
     </section>
 
-    <footer>Lessons 1–22: the "A1 German Simona LG" class board, in board order (left to right). Lessons 23–24: the 16 Nov class notes. Student introductions and practice notes are not included.</footer>
+    <!-- 25 -->
+    <section class="lesson" id="modalverben" style="--note:#3a75b5">
+      <p class="eyebrow">Lesson 25 · 3 Nov class</p>
+      <h2>Modalverben – modal verbs</h2>
+      <div class="chips"><span>können</span><span>dürfen</span><span>müssen</span><span>wollen</span><span>sollen</span><span>möchten</span></div>
+      <div class="rule">
+        <p><b>Subjekt + konjugiertes Modalverb + …… + Hauptverb (Infinitiv)</b></p>
+        <p class="en add">The modal verb is conjugated and stands in 2nd position; the main verb stays in the infinitive and goes to the end.</p>
+        <p>VSO for yes/no questions: <b class="mv">Können</b> Sie Fitness <b class="hv">machen</b>?</p>
+      </div>
+      <p class="colorkey"><b class="mv">Modalverb</b> (conjugated) · <b class="hv">Hauptverb</b> (infinitive)</p>
+
+      <h3>Können – die Möglichkeit / die Begabung (can)</h3>
+      <p class="en">Möglichkeit is possibility<span class="add"> · Begabung = talent, ability</span></p>
+      <div class="table-wrap"><table>
+        <thead><tr><th colspan="2">Singular</th><th colspan="2">Plural</th></tr></thead>
+        <tbody>
+          <tr><td>ich</td><td><b class="mv">kann</b></td><td>wir</td><td><b class="mv">können</b></td></tr>
+          <tr><td>du</td><td><b class="mv">kannst</b></td><td>ihr</td><td><b class="mv">könnt</b></td></tr>
+          <tr><td>er / es / sie</td><td><b class="mv">kann</b></td><td>Sie / sie</td><td><b class="mv">können</b></td></tr>
+        </tbody>
+      </table></div>
+      <ul class="ex">
+        <li><span class="de">Ich <b class="mv">kann</b> Auto <b class="hv">fahren</b>. / Ich <b class="mv">kann</b> nicht Auto <b class="hv">fahren</b>.</span> <span class="tag">Beispiel</span><span class="en add">I can drive a car. / I can't drive a car.</span></li>
+      </ul>
+      <div class="chips"><span>spielen <span class="en add">play</span></span><span>laufen <span class="en add">run</span></span><span>Videospiele spielen <span class="en add">play video games</span></span><span>backen <span class="en add">bake</span></span><span>malen <span class="en add">paint</span></span><span>lesen <span class="en add">read</span></span><span>Fitness machen <span class="en add">work out</span></span></div>
+      <ul class="ex">
+        <li><span class="de">Ich <b class="mv">kann</b> Schach <b class="hv">spielen</b>.</span><span class="en add">I can play chess</span></li>
+        <li><span class="de">Er <b class="mv">kann</b> Marathon <b class="hv">laufen</b>.</span><span class="en add">He can run a marathon</span></li>
+        <li><span class="de">Ich <b class="mv">kann</b> Videospiele <b class="hv">spielen</b>.</span><span class="en add">I can play video games</span></li>
+        <li><span class="de">Ihr <b class="mv">könnt</b> Deutsch sehr gut <b class="hv">lesen</b>.</span><span class="en add">You (all) can read German very well</span></li>
+        <li><span class="de"><b class="mv">Können</b> Sie Fitness <b class="hv">machen</b>?</span> <span class="tag">VSO – yes/no question</span><span class="en add">Can you work out?</span></li>
+        <li><span class="de">Wir <b class="mv">können</b> Kekse <b class="hv">backen</b>.</span><span class="en add">We can bake cookies</span></li>
+        <li><span class="de">Du <b class="mv">kannst</b> nicht <b class="hv">malen</b>.</span><span class="en add">You can't paint</span></li>
+        <li><span class="de">Meine Schwester <b class="mv">kann</b> gut <b class="hv">malen</b>.</span><span class="en add">My sister can paint well</span></li>
+      </ul>
+
+      <h3>Dürfen – die Erlaubnis (permit)</h3>
+      <p class="en">am allowed to · is allowed to · are allowed to · may</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th colspan="2">Singular</th><th colspan="2">Plural</th></tr></thead>
+        <tbody>
+          <tr><td>ich</td><td><b class="mv">darf</b></td><td>wir</td><td><b class="mv">dürfen</b></td></tr>
+          <tr><td>du</td><td><b class="mv">darfst</b></td><td>ihr</td><td><b class="mv">dürft</b></td></tr>
+          <tr><td>er / es / sie</td><td><b class="mv">darf</b></td><td>Sie / sie</td><td><b class="mv">dürfen</b></td></tr>
+        </tbody>
+      </table></div>
+      <ul class="ex">
+        <li><span class="de"><u>Man</u> <b class="mv">darf</b> hier nicht <b class="hv">rauchen</b>.</span> <span class="tag">Beispiel</span><span class="en add">One is not allowed to smoke here. (man = one / people in general; it takes the er/es/sie form)</span></li>
+      </ul>
+      <div class="chips"><span>Essen <span class="en add">food</span></span><span>Handy <span class="en add">mobile phone</span></span><span>fotografieren <span class="en add">take photos</span></span><span>Hund <span class="en add">dog</span></span><span>schwimmen <span class="en add">swim</span></span><span>Fahrrad fahren <span class="en add">ride a bike</span></span><span>rauchen <span class="en add">smoke</span></span></div>
+      <ul class="ex">
+        <li><span class="de">Du <b class="mv">darfst</b> in der Bibliothek nicht <b class="hv">essen</b>.</span><span class="en add">You are not allowed to eat in the library</span></li>
+        <li><span class="de">Er <b class="mv">darf</b> im Theater nicht <b class="hv">fotografieren</b>.</span><span class="en add">He is not allowed to take photos in the theatre</span></li>
+        <li><span class="de">Wir <b class="mv">dürfen</b> im Unterricht kein Handy <b class="hv">benutzen</b>.</span><span class="en add">We are not allowed to use a phone in class</span></li>
+        <li><span class="de">Sie <b class="mv">dürfen</b> im Fluss nicht <b class="hv">schwimmen</b>.</span><span class="en add">You (formal) / They are not allowed to swim in the river</span></li>
+        <li><span class="de">Ich <b class="mv">darf</b> zu Hause keinen Hund <b class="hv">halten</b>.</span><span class="en add">I am not allowed to keep a dog at home</span></li>
+        <li><span class="de">Sie <b class="mv">dürfen</b> im Garten <b class="hv">fotografieren</b>.</span><span class="en add">You (formal) / They are allowed to take photos in the garden</span></li>
+        <li><span class="de">Man <b class="mv">darf</b> in der Kneipe <b class="hv">rauchen</b>.</span><span class="en add">One is allowed to smoke in the pub</span></li>
+      </ul>
+
+      <h3>Müssen – Obligatorisch (must / have to)</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th colspan="2">Singular</th><th colspan="2">Plural</th></tr></thead>
+        <tbody>
+          <tr><td>ich</td><td><b class="mv">muss</b></td><td>wir</td><td><b class="mv">müssen</b></td></tr>
+          <tr><td>du</td><td><b class="mv">musst</b></td><td>ihr</td><td><b class="mv">müsst</b></td></tr>
+          <tr><td>er / es / sie</td><td><b class="mv">muss</b></td><td>Sie / sie</td><td><b class="mv">müssen</b></td></tr>
+        </tbody>
+      </table></div>
+      <ul class="ex">
+        <li><span class="de">Du <b class="mv">musst</b> früh <b class="hv">aufstehen</b>.</span> <span class="tag">Beispiel</span><span class="en add">You have to get up early. (With a modal verb, a separable verb like aufstehen stays in one piece at the end.)</span></li>
+      </ul>
+      <div class="chips"><span>Yoga machen <span class="en add">do yoga</span></span><span>gesundes Essen <span class="en add">healthy food</span></span><span>Maske tragen <span class="en add">wear a mask</span></span><span>lernen <span class="en add">study, learn</span></span><span>Wasser trinken <span class="en add">drink water</span></span><span>arbeiten <span class="en add">work</span></span></div>
+      <ul class="ex">
+        <li><span class="de">Wir <b class="mv">müssen</b> jeden Tag Yoga <b class="hv">machen</b>.</span><span class="en add">We have to do yoga every day</span></li>
+        <li><span class="de">Ich <b class="mv">muss</b> kochen <b class="hv">lernen</b>.</span><span class="en add">I have to learn to cook</span></li>
+        <li><span class="de">Raunak <b class="mv">muss</b> gesund <b class="hv">essen</b>.</span><span class="en add">Raunak has to eat healthily</span></li>
+        <li><span class="de">Ihr <b class="mv">müsst</b> jede Stunde Wasser <b class="hv">trinken</b>.</span><span class="en add">You (all) have to drink water every hour</span></li>
+        <li><span class="de">Die Kinder <b class="mv">müssen</b> Maske <b class="hv">tragen</b>.</span><span class="en add">The children have to wear masks</span></li>
+        <li><span class="de">Meine Schwester <b class="mv">muss</b> Maske <b class="hv">tragen</b>.</span><span class="en add">My sister has to wear a mask</span></li>
+        <li><span class="de">Ich <b class="mv">muss</b> <b class="hv">arbeiten</b>.</span><span class="en add">I have to work</span></li>
+      </ul>
+
+      <h3>Wollen – Wunsch / Bedarf (want)</h3>
+      <p class="en add">Wunsch = wish · Bedarf = need. Careful: ich will = I want, not "I will".</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th colspan="2">Singular</th><th colspan="2">Plural</th></tr></thead>
+        <tbody>
+          <tr><td>ich</td><td><b class="mv">will</b></td><td>wir</td><td><b class="mv">wollen</b></td></tr>
+          <tr><td>du</td><td><b class="mv">willst</b></td><td>ihr</td><td><b class="mv">wollt</b></td></tr>
+          <tr><td>er / es / sie</td><td><b class="mv">will</b></td><td>Sie / sie</td><td><b class="mv">wollen</b></td></tr>
+        </tbody>
+      </table></div>
+      <ul class="ex">
+        <li><span class="de">Ich <b class="mv">will</b> ein Glas Wasser <b class="hv">trinken</b>.</span> <span class="tag">Beispiel</span><span class="en add">I want to drink a glass of water</span></li>
+      </ul>
+      <div class="chips"><span>fernsehen <span class="en add">watch TV</span></span><span>Eis essen <span class="en add">eat ice cream</span></span><span>schlafen <span class="en add">sleep</span></span><span>Kaffee trinken <span class="en add">drink coffee</span></span><span>tanzen <span class="en add">dance</span></span><span>reisen <span class="en add">travel</span></span></div>
+
+      <h3>Sollen – Vorschlag machen (should)</h3>
+      <p class="en add">Vorschlag = suggestion</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th colspan="2">Singular</th><th colspan="2">Plural</th></tr></thead>
+        <tbody>
+          <tr><td>ich</td><td><b class="mv">soll</b></td><td>wir</td><td><b class="mv">sollen</b></td></tr>
+          <tr><td>du</td><td><b class="mv">sollst</b></td><td>ihr</td><td><b class="mv">sollt</b></td></tr>
+          <tr><td>er / es / sie</td><td><b class="mv">soll</b></td><td>Sie / sie</td><td><b class="mv">sollen</b></td></tr>
+        </tbody>
+      </table></div>
+      <div class="added">
+        <p class="lbl">Added for this page · examples</p>
+        <ul class="ex">
+          <li><span class="de">Du <b class="mv">sollst</b> mehr Wasser <b class="hv">trinken</b>.</span><span class="en add">You should drink more water</span></li>
+          <li><span class="de"><b class="mv">Soll</b> ich das Fenster <b class="hv">öffnen</b>?</span><span class="en add">Shall I open the window?</span></li>
+          <li><span class="de">Ich <b class="mv">soll</b> heute meine Mutter <b class="hv">anrufen</b>.</span><span class="en add">I am supposed to call my mother today</span></li>
+        </ul>
+      </div>
+
+      <div class="added">
+        <p class="lbl">Added for this page · möchten is on the class slides but not in the notes</p>
+        <h3>Möchten – would like</h3>
+        <p class="en add">The polite way to say what you want: Ich möchte … sounds softer than Ich will …</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th colspan="2">Singular</th><th colspan="2">Plural</th></tr></thead>
+          <tbody>
+            <tr><td>ich</td><td><b class="mv">möchte</b></td><td>wir</td><td><b class="mv">möchten</b></td></tr>
+            <tr><td>du</td><td><b class="mv">möchtest</b></td><td>ihr</td><td><b class="mv">möchtet</b></td></tr>
+            <tr><td>er / es / sie</td><td><b class="mv">möchte</b></td><td>Sie / sie</td><td><b class="mv">möchten</b></td></tr>
+          </tbody>
+        </table></div>
+        <ul class="ex">
+          <li><span class="de">Ich <b class="mv">möchte</b> einen Kaffee <b class="hv">trinken</b>.</span><span class="en add">I would like to drink a coffee</span></li>
+          <li><span class="de"><b class="mv">Möchtest</b> du ins Kino <b class="hv">gehen</b>?</span><span class="en add">Would you like to go to the cinema?</span></li>
+          <li><span class="de">Wir <b class="mv">möchten</b> nach Deutschland <b class="hv">reisen</b>.</span><span class="en add">We would like to travel to Germany</span></li>
+          <li><span class="de">Ich <b class="mv">möchte</b> einen Kaffee.</span><span class="en add">I would like a coffee (with möchten the Hauptverb can be left out)</span></li>
+        </ul>
+      </div>
+
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li><b>Subjekt + Modalverb (2nd position) + … + Hauptverb (Infinitiv) at the end.</b></li>
+          <li>Yes/no question (VSO): the modal verb comes first – <b class="mv">Können</b> Sie Fitness <b class="hv">machen</b>?</li>
+          <li>ich and er/es/sie have the same form, with no ending: ich kann · er kann, ich muss · er muss, ich will · er will, ich möchte · er möchte.</li>
+          <li>können = can · dürfen = may, be allowed to · müssen = must, have to · wollen = want (ich will = I want, not "I will") · sollen = should · möchten = would like</li>
+          <li>Negation with nicht or kein: Du kannst nicht malen · Wir dürfen im Unterricht kein Handy benutzen.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">Ich <b class="mv">kann</b> Auto <b class="hv">fahren</b>.</span><span class="en add">I can drive a car</span></li>
+          <li><span class="de">Man <b class="mv">darf</b> hier nicht <b class="hv">rauchen</b>.</span><span class="en add">One is not allowed to smoke here</span></li>
+          <li><span class="de">Du <b class="mv">musst</b> früh <b class="hv">aufstehen</b>.</span><span class="en add">You have to get up early</span></li>
+          <li><span class="de">Ich <b class="mv">will</b> ein Glas Wasser <b class="hv">trinken</b>.</span><span class="en add">I want to drink a glass of water</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>Ich ___ Schach spielen. (können)</summary><p class="ans">Ich kann Schach spielen.</p></details>
+        <details><summary>Ihr ___ Deutsch sehr gut lesen. (können)</summary><p class="ans">Ihr könnt Deutsch sehr gut lesen.</p></details>
+        <details><summary>Du ___ in der Bibliothek nicht essen. (dürfen)</summary><p class="ans">Du darfst in der Bibliothek nicht essen.</p></details>
+        <details><summary>Put in order: früh · aufstehen · Du · musst</summary><p class="ans">Du musst früh aufstehen.</p></details>
+        <details><summary>Make a yes/no question: Sie können Fitness machen.</summary><p class="ans">Können Sie Fitness machen?</p></details>
+        <details><summary>"Ich will ein Glas Wasser trinken." Does will mean "will"?</summary><p class="ans">No – wollen = want: I want to drink a glass of water.</p></details>
+        <details><summary>Translate: I want to watch TV.</summary><p class="ans">Ich will fernsehen.</p></details>
+        <details><summary>Say it politely: I would like a coffee.</summary><p class="ans">Ich möchte einen Kaffee.</p></details>
+      </div>
+    </section>
+
+    <footer>Lessons 1–22: the "A1 German Simona LG" class board, in board order (left to right). Lessons 23–24: the 16 Nov class notes. Lesson 25: the 3 Nov class notes (sollen examples and möchten added). Student introductions and practice notes are not included.</footer>
   </main>
 </div>
 
