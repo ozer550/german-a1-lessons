@@ -12,7 +12,7 @@ Each lesson has:
 
 - the rules and examples from the board
 - English for every example (translations added for this page are shown in grey italics)
-- anything added beyond the class notes in a dashed box (e.g. the möchten table in lesson 25)
+- anything added beyond the class notes in a dashed box (e.g. the möchten table and the sentence-formation section in lesson 25)
 - a chapter recap with the key rules and examples
 - a quick self-check quiz (tap a question to see the answer)
 
