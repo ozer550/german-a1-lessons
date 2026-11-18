@@ -1,0 +1,1429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>German A1 Lessons</title>
+<meta name="description" content="German A1 lessons from the class Miro board notes, in board order, with recaps and quick quizzes.">
+<style>
+  :root {
+    --bg: #f6f4ef;
+    --surface: #ffffff;
+    --text: #1c1c1e;
+    --muted: #5d6066;
+    --line: #e3dfd5;
+    --chip: #f1eee6;
+    --accent: #2b59c3;
+    --rule-bg: #f3f6fd;
+    --recap-bg: #fbf7e9;
+    --recap-line: #e8d9a4;
+    --ok: #1f7a4d;
+    --shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #131315; --surface: #1c1c1f; --text: #ececee; --muted: #a2a4aa;
+      --line: #2e2e33; --chip: #26262a; --accent: #8fb0ff; --rule-bg: #1f2533;
+      --recap-bg: #26231a; --recap-line: #5a4d22; --ok: #6fd3a0; --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #131315; --surface: #1c1c1f; --text: #ececee; --muted: #a2a4aa;
+    --line: #2e2e33; --chip: #26262a; --accent: #8fb0ff; --rule-bg: #1f2533;
+    --recap-bg: #26231a; --recap-line: #5a4d22; --ok: #6fd3a0; --shadow: none;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  }
+  .layout { display: grid; grid-template-columns: 270px minmax(0, 1fr); max-width: 1180px; margin: 0 auto; }
+  nav.toc {
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    padding: 28px 18px 28px 24px; border-right: 1px solid var(--line);
+  }
+  .brand { font-weight: 700; font-size: 1.05rem; margin: 0 0 4px; }
+  .brand-sub { color: var(--muted); font-size: .85rem; margin: 0 0 18px; }
+  nav.toc ol { list-style: none; margin: 0; padding: 0; }
+  nav.toc a {
+    display: flex; gap: 10px; align-items: baseline; padding: 5px 8px; border-radius: 8px;
+    color: var(--text); text-decoration: none; font-size: .92rem;
+  }
+  nav.toc a:hover { background: var(--chip); }
+  nav.toc a.active { background: var(--chip); color: var(--accent); font-weight: 600; }
+  nav.toc .n { color: var(--muted); font-variant-numeric: tabular-nums; min-width: 1.6em; font-size: .8rem; }
+  main { padding: 36px 40px 80px; max-width: 820px; }
+  header.page h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 8px; }
+  header.page p { color: var(--muted); margin: 0 0 10px; }
+  .legend { font-size: .9rem; margin-bottom: 32px !important; }
+  section.lesson {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: var(--shadow); padding: 26px 28px; margin: 0 0 26px;
+    border-top: 6px solid var(--note, var(--line));
+  }
+  .eyebrow { font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+  section.lesson h2 { margin: 0 0 14px; font-size: 1.5rem; line-height: 1.25; }
+  section.lesson h3 { margin: 22px 0 8px; font-size: 1.05rem; }
+  .rule {
+    background: var(--rule-bg); border-left: 4px solid var(--accent); border-radius: 8px;
+    padding: 10px 14px; margin: 10px 0;
+  }
+  .rule p { margin: 4px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 4px; font-size: .97rem; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 600; }
+  .table-wrap { overflow-x: auto; }
+  ul.ex { list-style: none; padding: 0; margin: 8px 0; }
+  ul.ex li { padding: 7px 0; border-bottom: 1px dashed var(--line); }
+  ul.ex li:last-child { border-bottom: 0; }
+  .de { font-weight: 500; }
+  .en { color: var(--muted); }
+  ul.ex .en, .qa .en { display: block; font-size: .93rem; }
+  .add { font-style: italic; }
+  .tag {
+    display: inline-block; font-size: .75rem; padding: 1px 7px; border-radius: 999px;
+    background: var(--chip); color: var(--muted); margin-left: 6px; vertical-align: 2px; font-style: normal;
+  }
+  .qa { margin: 10px 0; padding: 10px 14px; border-radius: 10px; background: var(--chip); }
+  .qa p { margin: 3px 0; }
+  .qa .q { font-weight: 600; }
+  .big { font-size: 1.25rem; font-weight: 600; margin: 6px 0 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+  .chips span { background: var(--chip); padding: 3px 10px; border-radius: 999px; font-size: .92rem; }
+  .gender { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 10px 0; }
+  .gender div { border-radius: 12px; padding: 12px 14px; color: #1c1c1e; }
+  .gender .m { background: #e3eefc; } .gender .f { background: #f9dde4; } .gender .n { background: #d8efe0; }
+  .gender b { display: block; letter-spacing: .04em; margin-bottom: 4px; }
+  .gender p { margin: 2px 0; }
+  .recap {
+    margin: 26px 0 0; padding: 16px 18px; border-radius: 12px;
+    background: var(--recap-bg); border: 1px solid var(--recap-line);
+  }
+  .recap h3 { margin: 0 0 8px !important; }
+  .recap ul.rules { margin: 6px 0 10px; padding-left: 20px; }
+  .recap ul.rules li { margin: 3px 0; }
+  .recap .lbl { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 10px 0 2px; }
+  .quiz { margin-top: 16px; }
+  .quiz h3 { margin: 0 0 8px !important; }
+  .quiz details { border: 1px solid var(--line); border-radius: 10px; margin: 8px 0; background: var(--surface); }
+  .quiz summary { cursor: pointer; padding: 10px 14px; list-style: none; }
+  .quiz summary::-webkit-details-marker { display: none; }
+  .quiz summary::before { content: "＋"; color: var(--accent); margin-right: 8px; font-weight: 700; }
+  .quiz details[open] summary::before { content: "－"; }
+  .quiz .ans { padding: 0 14px 12px 38px; margin: 0; color: var(--ok); font-weight: 500; }
+  footer { color: var(--muted); font-size: .85rem; margin-top: 40px; }
+  .theme-btn {
+    margin-top: 18px; font: inherit; font-size: .85rem; color: var(--muted); background: none;
+    border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; cursor: pointer;
+  }
+  @media (max-width: 860px) {
+    .layout { display: block; }
+    nav.toc { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); padding: 16px; }
+    nav.toc details summary { cursor: pointer; font-weight: 600; }
+    main { padding: 24px 16px 60px; }
+    section.lesson { padding: 20px 16px; }
+    header.page h1 { font-size: 1.6rem; }
+    .gender { grid-template-columns: 1fr; }
+  }
+  @media (min-width: 861px) { nav.toc details > summary { display: none; } }
+  @media print {
+    nav.toc, .theme-btn { display: none; }
+    .layout { display: block; }
+    section.lesson { break-inside: avoid; box-shadow: none; }
+    .quiz details { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <nav class="toc" aria-label="Lessons">
+    <p class="brand">German A1</p>
+    <p class="brand-sub">Lessons from the class board</p>
+    <details open>
+      <summary>Lessons</summary>
+      <ol>
+        <li><a href="#umlaut"><span class="n">1</span>Umlaut</a></li>
+        <li><a href="#wortschatz-1"><span class="n">2</span>Wortschatz 1</a></li>
+        <li><a href="#buchstabieren"><span class="n">3</span>Buchstabieren</a></li>
+        <li><a href="#wortschatz-2"><span class="n">4</span>Wortschatz 2</a></li>
+        <li><a href="#zahlen"><span class="n">5</span>Zahlen</a></li>
+        <li><a href="#tage"><span class="n">6</span>Tage &amp; Jahreszeiten</a></li>
+        <li><a href="#verben"><span class="n">7</span>Die Verben</a></li>
+        <li><a href="#datum"><span class="n">8</span>Das Datum</a></li>
+        <li><a href="#wie-gehts"><span class="n">9</span>Wie geht's?</a></li>
+        <li><a href="#ordinals"><span class="n">10</span>Ordinals</a></li>
+        <li><a href="#possessiv"><span class="n">11</span>Possessiv Pronomen</a></li>
+        <li><a href="#artikel"><span class="n">12</span>Die Artikel</a></li>
+        <li><a href="#satz"><span class="n">13</span>Satz formulieren</a></li>
+        <li><a href="#ja-nein"><span class="n">14</span>Ja/Nein Fragen</a></li>
+        <li><a href="#dativ"><span class="n">15</span>Dativ</a></li>
+        <li><a href="#kein"><span class="n">16</span>kein</a></li>
+        <li><a href="#nominativ"><span class="n">17</span>Kasus: Nominativ</a></li>
+        <li><a href="#akkusativ"><span class="n">18</span>Akkusativ</a></li>
+        <li><a href="#w-fragen"><span class="n">19</span>W-Fragen</a></li>
+        <li><a href="#uhrzeit"><span class="n">20</span>Die Uhrzeit</a></li>
+        <li><a href="#trennbare"><span class="n">21</span>Trennbare Verben</a></li>
+        <li><a href="#praeteritum"><span class="n">22</span>Präteritum</a></li>
+      </ol>
+    </details>
+    <button class="theme-btn" type="button" id="themeBtn">Toggle dark mode</button>
+  </nav>
+
+  <main>
+    <header class="page">
+      <h1>German A1 Lessons</h1>
+      <p>The teacher's notes from the A1 class board, lesson by lesson, in the order they appear on the board (left to right).</p>
+      <p class="legend">English in <span class="en add">grey italics</span> was added for this page; all other content comes from the board. Each lesson ends with a recap and a quick check: tap a question to see the answer.</p>
+    </header>
+
+    <!-- 1 -->
+    <section class="lesson" id="umlaut" style="--note:#f2a65a">
+      <p class="eyebrow">Lesson 1</p>
+      <h2>Ö, Ä, Ü – Umlaut</h2>
+      <div class="rule"><p>2 dots on these alphabets are called as Umlaut</p></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Letter</th><th>Sound</th></tr></thead>
+        <tbody>
+          <tr><td>a</td><td>aa</td></tr>
+          <tr><td>ä</td><td>a</td></tr>
+          <tr><td>u</td><td>uu</td></tr>
+          <tr><td>ü</td><td>euuuu</td></tr>
+          <tr><td>o</td><td>o</td></tr>
+          <tr><td>ö</td><td>eeyoo</td></tr>
+        </tbody>
+      </table></div>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules"><li>The 2 dots on Ä, Ö, Ü are called <b>Umlaut</b> and change the sound.</li></ul>
+        <p class="lbl">Key examples</p>
+        <div class="chips"><span>ä – a</span><span>ü – euuuu</span><span>ö – eeyoo</span></div>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>What are the 2 dots on Ä, Ö, Ü called?</summary><p class="ans">Umlaut</p></details>
+        <details><summary>How does ü sound?</summary><p class="ans">euuuu</p></details>
+        <details><summary>Which letter sounds like "eeyoo"?</summary><p class="ans">ö</p></details>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="lesson" id="wortschatz-1" style="--note:#f2a65a">
+      <p class="eyebrow">Lesson 2</p>
+      <h2>Wortschatz 1</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Deutsch</th><th>English</th></tr></thead>
+        <tbody>
+          <tr><td>Auto</td><td>car</td></tr>
+          <tr><td>Wasser</td><td>water</td></tr>
+          <tr><td>Saft</td><td>juice</td></tr>
+          <tr><td>Haus</td><td>house</td></tr>
+          <tr><td>Vater</td><td>father</td></tr>
+          <tr><td>Mutter</td><td>mother</td></tr>
+          <tr><td>Bruder</td><td>brother</td></tr>
+          <tr><td>Schwester</td><td>sister</td></tr>
+          <tr><td>Opa</td><td>grandpa</td></tr>
+          <tr><td>Oma</td><td>grandma</td></tr>
+        </tbody>
+      </table></div>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules"><li>Family: Vater, Mutter, Bruder, Schwester, Opa, Oma</li><li>Things: Auto, Wasser, Saft, Haus</li></ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>What is "Saft"?</summary><p class="ans">juice</p></details>
+        <details><summary>How do you say "sister"?</summary><p class="ans">Schwester</p></details>
+        <details><summary>What is "Opa"?</summary><p class="ans">grandpa</p></details>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="lesson" id="buchstabieren" style="--note:#f2a65a">
+      <p class="eyebrow">Lesson 3</p>
+      <h2>Buchstabieren Sie bitte!</h2>
+      <p class="big">Buchstabieren Sie _________ bitte!</p>
+      <p class="en add">Please spell _________!</p>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>Buchstabieren</td><td>to spell</td></tr>
+          <tr><td>Sie</td><td>you (formal)</td></tr>
+          <tr><td>bitte</td><td>please</td></tr>
+        </tbody>
+      </table></div>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules"><li><b>Buchstabieren Sie ___ bitte!</b> asks someone (formally) to spell something.</li></ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>What does "buchstabieren" mean?</summary><p class="ans">to spell</p></details>
+        <details><summary>Is "Sie" here formal or informal?</summary><p class="ans">formal</p></details>
+        <details><summary>How do you say "please"?</summary><p class="ans">bitte</p></details>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="lesson" id="wortschatz-2" style="--note:#f2a65a">
+      <p class="eyebrow">Lesson 4</p>
+      <h2>Wortschatz 2</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Deutsch</th><th>English</th></tr></thead>
+        <tbody>
+          <tr><td>Land</td><td>country</td></tr>
+          <tr><td>Stadt</td><td>city</td></tr>
+          <tr><td>Handy</td><td>mobile</td></tr>
+          <tr><td>Laptop</td><td class="en add">laptop</td></tr>
+          <tr><td>Computer</td><td class="en add">computer</td></tr>
+          <tr><td>Bus</td><td class="en add">bus</td></tr>
+          <tr><td>Zug</td><td>train</td></tr>
+          <tr><td>Fahrrad</td><td>bicycle</td></tr>
+          <tr><td>Taxi</td><td class="en add">taxi</td></tr>
+        </tbody>
+      </table></div>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules"><li>Places: Land, Stadt</li><li>Getting around: Bus, Zug, Fahrrad, Taxi</li><li>Devices: Handy, Laptop, Computer</li></ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>What is "Zug"?</summary><p class="ans">train</p></details>
+        <details><summary>What is "Fahrrad"?</summary><p class="ans">bicycle</p></details>
+        <details><summary>"Handy" means…?</summary><p class="ans">mobile</p></details>
+        <details><summary>Stadt or Land: which one is "city"?</summary><p class="ans">Stadt (Land = country)</p></details>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section class="lesson" id="zahlen" style="--note:#6fb3f2">
+      <p class="eyebrow">Lesson 5</p>
+      <h2>Zahlen – Numbers</h2>
+      <h3>Hunderter</h3>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>154</td><td>einhundertvierundfünfzig</td></tr>
+          <tr><td>291</td><td>zweihunderteinundneunzig</td></tr>
+          <tr><td>367</td><td>dreihundertsiebenundsechzig</td></tr>
+          <tr><td>410</td><td>vierhundertzehn</td></tr>
+          <tr><td>516</td><td>fünfhundertsechzehn</td></tr>
+          <tr><td>683</td><td>sechshundertdreiundachtzig</td></tr>
+          <tr><td>799</td><td>siebenhundertneunundneunzig</td></tr>
+          <tr><td>825</td><td>achthundertfünfundzwanzig</td></tr>
+          <tr><td>999</td><td>neunhundertneunundneunzig</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Tausender</h3>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>1234</td><td>eintausendzweihundertvierunddreißig</td></tr>
+          <tr><td>3875</td><td>dreitausendachthundertfünfundsiebzig</td></tr>
+          <tr><td>5912</td><td>fünftausendneunhundertzwölf</td></tr>
+          <tr><td>7682</td><td>siebentausendsechshundertzweiundachtzig</td></tr>
+          <tr><td>8901</td><td>achttausendneunhunderteins</td></tr>
+          <tr><td>9999</td><td>neuntausendneunhundertneunundneunzig</td></tr>
+        </tbody>
+      </table></div>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>Numbers are written as one word: tausend → hundert → the rest.</li>
+          <li>The last two digits are said units first, then "und", then tens: 54 = vier<b>und</b>fünfzig.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">154 – einhundertvierundfünfzig</span></li>
+          <li><span class="de">410 – vierhundertzehn</span></li>
+          <li><span class="de">1234 – eintausendzweihundertvierunddreißig</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>Say 291.</summary><p class="ans">zweihunderteinundneunzig</p></details>
+        <details><summary>Which number is "neunhundertneunundneunzig"?</summary><p class="ans">999</p></details>
+        <details><summary>Say 8901.</summary><p class="ans">achttausendneunhunderteins</p></details>
+        <details><summary>Say 516.</summary><p class="ans">fünfhundertsechzehn</p></details>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="lesson" id="tage" style="--note:#f6a8d6">
+      <p class="eyebrow">Lesson 6</p>
+      <h2>Tage &amp; Jahreszeiten</h2>
+      <h3>Die Tage</h3>
+      <ul class="ex">
+        <li><span class="de">Heute ist Freitag</span><span class="en add">Today is Friday</span></li>
+        <li><span class="de">Gestern war Donnerstag</span><span class="en add">Yesterday was Thursday</span></li>
+        <li><span class="de">Vorgestern war Mittwoch</span><span class="en add">The day before yesterday was Wednesday</span></li>
+        <li><span class="de">Morgen ist Samstag</span><span class="en add">Tomorrow is Saturday</span></li>
+        <li><span class="de">Übermorgen ist Sonntag</span><span class="en add">The day after tomorrow is Sunday</span></li>
+        <li><span class="de">Die Woche hat 7 Tage</span><span class="en add">The week has 7 days</span></li>
+      </ul>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>der Tag</td><td>the day</td></tr>
+          <tr><td>die Tage</td><td>the days</td></tr>
+          <tr><td>das Jahr</td><td>the year</td></tr>
+          <tr><td>die Jahre</td><td>the years</td></tr>
+        </tbody>
+      </table></div>
+      <h3>die Jahreszeiten <span class="en add">the seasons</span></h3>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>der Winter <span class="en add">winter</span></td><td>Dezember, Januar, Februar</td></tr>
+          <tr><td>der Frühling <span class="en add">spring</span></td><td>März, April, Mai</td></tr>
+          <tr><td>der Sommer <span class="en add">summer</span></td><td>Juni, Juli, August</td></tr>
+          <tr><td>der Herbst <span class="en add">autumn</span></td><td>September, Oktober, November</td></tr>
+        </tbody>
+      </table></div>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>vorgestern → gestern → <b>heute</b> → morgen → übermorgen</li>
+          <li>Past days take <b>war</b>, today and future days take <b>ist</b>.</li>
+          <li>der Tag → die Tage, das Jahr → die Jahre</li>
+          <li>4 Jahreszeiten: der Winter, der Frühling, der Sommer, der Herbst</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">Gestern war Donnerstag</span><span class="en add">Yesterday was Thursday</span></li>
+          <li><span class="de">Übermorgen ist Sonntag</span><span class="en add">The day after tomorrow is Sunday</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>Heute ist Freitag. Übermorgen ist…?</summary><p class="ans">Sonntag</p></details>
+        <details><summary>Which season is März, April, Mai?</summary><p class="ans">der Frühling</p></details>
+        <details><summary>Plural of "der Tag"?</summary><p class="ans">die Tage</p></details>
+        <details><summary>Complete: Gestern ___ Donnerstag.</summary><p class="ans">war</p></details>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section class="lesson" id="verben" style="--note:#3a3a3a">
+      <p class="eyebrow">Lesson 7</p>
+      <h2>Die Verben</h2>
+      <div class="rule">
+        <p>Verbs in German usually end with <b>n</b> or <b>en</b></p>
+        <p>Verbs have to be conjugated as per the pronoun. He eats, I eat</p>
+        <p>In German, to conjugate the verb you need to know the rootform of the verb. Rootform is <b>Stamm</b></p>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Verb</th><th>Stamm</th></tr></thead>
+        <tbody>
+          <tr><td>kommen <span class="en add">to come</span></td><td>komm</td></tr>
+          <tr><td>wohnen <span class="en add">to live</span></td><td>wohn</td></tr>
+          <tr><td>heißen <span class="en add">to be called</span></td><td>heiß</td></tr>
+          <tr><td>lernen <span class="en add">to learn</span></td><td>lern</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>ten/den rule</h3>
+      <div class="rule"><p>Verbs that end with ten/den</p></div>
+      <p><b>finden</b> – to find &nbsp;·&nbsp; Stamm – find</p>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>ich</td><td>finde</td></tr>
+          <tr><td>du</td><td>findest</td></tr>
+          <tr><td>er/es/sie</td><td>findet</td></tr>
+          <tr><td>wir</td><td>finden</td></tr>
+          <tr><td>ihr</td><td>findet</td></tr>
+          <tr><td>Sie/sie</td><td>finden</td></tr>
+        </tbody>
+      </table></div>
+      <p><b>antworten</b> – to answer &nbsp;·&nbsp; Stamm – antwort</p>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>ich</td><td>antworte</td></tr>
+          <tr><td>du</td><td>antwortest</td></tr>
+          <tr><td>er/es/sie</td><td>antwortet</td></tr>
+          <tr><td>wir</td><td>antworten</td></tr>
+          <tr><td>ihr</td><td>antwortet</td></tr>
+          <tr><td>Sie/sie</td><td>antworten</td></tr>
+        </tbody>
+      </table></div>
+      <p><b>arbeiten</b> – to work</p>
+
+      <h3>Beispiele</h3>
+      <ul class="ex">
+        <li><span class="de">Ich lerne Deutsch.</span> <span class="tag">lernen</span><span class="en add">I learn German.</span></li>
+        <li><span class="de">Du spielst Fußball.</span> <span class="tag">spielen</span><span class="en add">You play football.</span></li>
+        <li><span class="de">Er kauft Wasser.</span> <span class="tag">kaufen</span><span class="en add">He buys water.</span></li>
+        <li><span class="de">Sie (she) hört Musik.</span> <span class="tag">hören</span><span class="en add">She listens to music.</span></li>
+        <li><span class="de">Wir machen Pizza.</span> <span class="tag">machen</span><span class="en add">We make pizza.</span></li>
+        <li><span class="de">Ihr lernt Englisch.</span> <span class="tag">lernen</span><span class="en add">You (all) learn English.</span></li>
+        <li><span class="de">Sie (they) spielen Tennis.</span> <span class="tag">spielen</span><span class="en add">They play tennis.</span></li>
+        <li><span class="de">Anna trinkt Kaffee.</span> <span class="tag">trinken</span><span class="en add">Anna drinks coffee.</span></li>
+        <li><span class="de">Ich esse einen Apfel.</span> <span class="tag">essen</span><span class="en add">I eat an apple.</span></li>
+        <li><span class="de">Du trinkst Wasser.</span> <span class="tag">trinken</span><span class="en add">You drink water.</span></li>
+        <li><span class="de">Er liest ein Buch.</span> <span class="tag">lesen</span><span class="en add">He reads a book.</span></li>
+        <li><span class="de">Sie (she) sieht einen Film.</span> <span class="tag">sehen</span><span class="en add">She watches a film.</span></li>
+        <li><span class="de">Wir sprechen Deutsch.</span> <span class="tag">sprechen</span><span class="en add">We speak German.</span></li>
+        <li><span class="de">Du hast einen Hund.</span> <span class="tag">haben</span><span class="en add">You have a dog.</span></li>
+        <li><span class="de">Paul nimmt eine Tasche.</span> <span class="tag">nehmen</span><span class="en add">Paul takes a bag.</span></li>
+        <li><span class="de">Ihr hört Musik.</span> <span class="tag">hören</span><span class="en add">You (all) listen to music.</span></li>
+      </ul>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>Verbs end in <b>n</b> / <b>en</b>; take off the ending to get the <b>Stamm</b> (lernen → lern).</li>
+          <li>Add the ending for the pronoun: ich ‑e, du ‑st, er/es/sie ‑t, wir ‑en, ihr ‑t, Sie/sie ‑en.</li>
+          <li>ten/den verbs keep an extra e: du find<b>e</b>st, er find<b>e</b>t, ihr antwort<b>e</b>t.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">Du spielst Fußball.</span><span class="en add">You play football.</span></li>
+          <li><span class="de">Er liest ein Buch.</span><span class="en add">He reads a book.</span></li>
+          <li><span class="de">Paul nimmt eine Tasche.</span><span class="en add">Paul takes a bag.</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>What is the Stamm of "wohnen"?</summary><p class="ans">wohn</p></details>
+        <details><summary>du + finden = ?</summary><p class="ans">du findest</p></details>
+        <details><summary>er + antworten = ?</summary><p class="ans">er antwortet</p></details>
+        <details><summary>Complete: Sie (she) ___ einen Film. (sehen)</summary><p class="ans">sieht</p></details>
+        <details><summary>Complete: Ihr ___ Englisch. (lernen)</summary><p class="ans">lernt</p></details>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="lesson" id="datum" style="--note:#a594f9">
+      <p class="eyebrow">Lesson 8</p>
+      <h2>Das Datum – the date</h2>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>01.01.1997</td><td>erste Januar/erste neunzehnhundertsiebenundneunzig<span class="en add" style="display:block">1st January 1997</span></td></tr>
+          <tr><td>09.04.1999</td><td>neunte April/vierte neunzehnhundertneunundneunzig<span class="en add" style="display:block">9th April 1999</span></td></tr>
+          <tr><td>21.10.1843</td><td>einundzwanzigste Oktober/zehnte achtzehnhundertdreiundvierzig<span class="en add" style="display:block">21st October 1843</span></td></tr>
+          <tr><td>02.12.2002</td><td>zweite Dezember/zwölfte zweitausendzwei<span class="en add" style="display:block">2nd December 2002</span></td></tr>
+          <tr><td>30.07.2012</td><td>dreißigste Juli/siebte zweitausendzwölf<span class="en add" style="display:block">30th July 2012</span></td></tr>
+        </tbody>
+      </table></div>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>The day is said as an ordinal (erste, neunte, dreißigste…), then the month by name or as an ordinal.</li>
+          <li>Years before 2000 are said in hundreds (neunzehnhundert…); from 2000 with tausend (zweitausendzwei).</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">09.04.1999 – neunte April/vierte neunzehnhundertneunundneunzig</span></li>
+          <li><span class="de">02.12.2002 – zweite Dezember/zwölfte zweitausendzwei</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>How is the year 1997 said?</summary><p class="ans">neunzehnhundertsiebenundneunzig</p></details>
+        <details><summary>Say 30.07.2012.</summary><p class="ans">dreißigste Juli/siebte zweitausendzwölf</p></details>
+        <details><summary>Which ordinal is used for the 21st?</summary><p class="ans">einundzwanzigste</p></details>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="lesson" id="wie-gehts" style="--note:#f6a8d6">
+      <p class="eyebrow">Lesson 9</p>
+      <h2>How are you?</h2>
+      <p>How is it going with you? <span class="en">tumhara kaise chal raha hai?</span></p>
+      <h3>Formal</h3>
+      <ul class="ex"><li><span class="de">Wie geht es Ihnen?</span><span class="en add">How are you? (formal)</span></li></ul>
+      <h3>Informal</h3>
+      <ul class="ex">
+        <li><span class="de">Wie geht es dir?</span><span class="en add">How are you? (informal)</span></li>
+        <li><span class="de">Wie geht's dir?</span><span class="en add">How are you doing?</span></li>
+        <li><span class="de">Wie geht's?</span><span class="en add">How's it going?</span></li>
+      </ul>
+      <h3>Es geht mir ______ <span class="en add">I am ______</span></h3>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>gut</td><td class="en add">fine / good</td></tr>
+          <tr><td>sehr gut</td><td class="en add">very good</td></tr>
+          <tr><td>nicht so gut</td><td class="en add">not so good</td></tr>
+          <tr><td>So lala</td><td class="en add">so-so</td></tr>
+          <tr><td>Schlecht</td><td class="en add">bad</td></tr>
+        </tbody>
+      </table></div>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>Formal: <b>Ihnen</b>. Informal: <b>dir</b> (or just "Wie geht's?").</li>
+          <li>Answer with <b>Es geht mir</b> + gut / sehr gut / nicht so gut / so lala / schlecht.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">Wie geht es Ihnen?</span><span class="en add">How are you? (formal)</span></li>
+          <li><span class="de">Wie geht's?</span><span class="en add">How's it going?</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>Ask your teacher how they are.</summary><p class="ans">Wie geht es Ihnen?</p></details>
+        <details><summary>Ask a friend how they are.</summary><p class="ans">Wie geht es dir? / Wie geht's dir? / Wie geht's?</p></details>
+        <details><summary>Say "I'm not so good."</summary><p class="ans">Es geht mir nicht so gut.</p></details>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="lesson" id="ordinals" style="--note:#5fd3c8">
+      <p class="eyebrow">Lesson 10</p>
+      <h2>Ordinals</h2>
+      <p>1st, 25th, 100th</p>
+      <div class="rule"><p>1-19 you need to add <b>te</b> to the number to make it an ordinal</p></div>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>1.</td><td>erste</td></tr>
+          <tr><td>2.</td><td>zweite</td></tr>
+          <tr><td>3.</td><td>dritte</td></tr>
+          <tr><td>4.</td><td>vierte</td></tr>
+          <tr><td>5.</td><td>fünfte</td></tr>
+          <tr><td>6.</td><td>sechste</td></tr>
+          <tr><td>7.</td><td>siebte</td></tr>
+          <tr><td>8.</td><td>achte</td></tr>
+          <tr><td>9.</td><td>neunte</td></tr>
+          <tr><td>10.</td><td>zehnte</td></tr>
+          <tr><td>11.</td><td>elfte</td></tr>
+          <tr><td>12.</td><td>zwölfte</td></tr>
+          <tr><td>19.</td><td>neunzehnte</td></tr>
+        </tbody>
+      </table></div>
+      <div class="rule"><p>For the numbers from 20 until infinite you add <b>ste</b></p></div>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>20.</td><td>zwanzigste</td></tr>
+          <tr><td>89.</td><td>neunundachtzigste</td></tr>
+          <tr><td>100.</td><td>hundertste</td></tr>
+          <tr><td>32.</td><td>zweiunddreißigste</td></tr>
+          <tr><td>75.</td><td>fünfundsiebzigste</td></tr>
+          <tr><td>99.</td><td>neunundneunzigste</td></tr>
+          <tr><td>1000.</td><td>tausendste</td></tr>
+        </tbody>
+      </table></div>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>1–19: number + <b>te</b> (zweite, vierte, zehnte). Watch: erste, dritte, siebte, achte.</li>
+          <li>20 and up: number + <b>ste</b> (zwanzigste, hundertste).</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <div class="chips"><span>1. erste</span><span>3. dritte</span><span>7. siebte</span><span>20. zwanzigste</span><span>100. hundertste</span></div>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>3. = ?</summary><p class="ans">dritte</p></details>
+        <details><summary>7. = ?</summary><p class="ans">siebte</p></details>
+        <details><summary>32. = ?</summary><p class="ans">zweiunddreißigste</p></details>
+        <details><summary>Do you add "te" or "ste" to 89?</summary><p class="ans">ste – neunundachtzigste</p></details>
+      </div>
+    </section>
+
+    <!-- 11 -->
+    <section class="lesson" id="possessiv" style="--note:#4cbb7f">
+      <p class="eyebrow">Lesson 11</p>
+      <h2>Possessiv Pronomen</h2>
+      <p>Belongingness, Possession · my, your, his, our, their</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Pronoun</th><th>Possessive</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>ich</td><td>mein/meine</td><td>my</td></tr>
+          <tr><td>du</td><td>dein/deine</td><td>your</td></tr>
+          <tr><td>er</td><td>sein/seine</td><td>his</td></tr>
+          <tr><td>sie</td><td>ihr/ihre</td><td>her</td></tr>
+          <tr><td>wir</td><td>unser/unsere</td><td>our</td></tr>
+          <tr><td>ihr</td><td>euer/eure</td><td>your pl</td></tr>
+          <tr><td>Sie</td><td>Ihr/Ihre</td><td>your</td></tr>
+          <tr><td>sie</td><td>ihr/ihre</td><td>their</td></tr>
+        </tbody>
+      </table></div>
+      <div class="rule">
+        <p>Possessive pronouns always have a noun after them.</p>
+        <p>If the noun is <b>M</b> or <b>N</b> – possessive without "e"</p>
+        <p>If the noun is <b>F</b> or <b>Pl</b> – possessive with "e"</p>
+      </div>
+      <ul class="ex">
+        <li><span class="de">mein Buch</span> <span class="tag">N</span><span class="en">my book</span></li>
+        <li><span class="de">seine Mutter</span> <span class="tag">F</span><span class="en">his mother</span></li>
+        <li><span class="de">unser Auto</span> <span class="tag">N</span><span class="en">our car</span></li>
+        <li><span class="de">ihr Tisch</span> <span class="tag">M</span><span class="en">her table</span></li>
+      </ul>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>mein, dein, sein, ihr, unser, euer, Ihr, ihr – always followed by a noun.</li>
+          <li><b>M / N</b> noun → no e (mein Buch). <b>F / Pl</b> noun → with e (seine Mutter).</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">seine Mutter</span> <span class="tag">F</span><span class="en">his mother</span></li>
+          <li><span class="de">unser Auto</span> <span class="tag">N</span><span class="en">our car</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>"his mother" = ?</summary><p class="ans">seine Mutter</p></details>
+        <details><summary>"our car" = ?</summary><p class="ans">unser Auto</p></details>
+        <details><summary>Why "seine Mutter" but "unser Auto"?</summary><p class="ans">Mutter is F → with e. Auto is N → without e.</p></details>
+        <details><summary>Possessive for "ihr" (you, plural)?</summary><p class="ans">euer / eure</p></details>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section class="lesson" id="artikel" style="--note:#9db8e8">
+      <p class="eyebrow">Lesson 12</p>
+      <h2>Die Artikeln – the articles</h2>
+      <div class="rule">
+        <p>In German articles are divided as per masculine, feminine and neutral gender same as in Hindi and Marathi.</p>
+        <p><b>Definite articles</b> – the (the president of India) – specifying</p>
+        <p><b>Indefinite articles</b> – a/an (a president) – general</p>
+        <p>Also the initial of any noun in German is written in capital.</p>
+      </div>
+      <div class="gender">
+        <div class="m"><b>MASCULINE</b><p>Definite: DER</p><p>Indefinite: EIN</p><p>der Hund → ein Hund</p></div>
+        <div class="f"><b>FEMININE</b><p>Definite: DIE</p><p>Indefinite: EINE</p><p>die Katze → eine Katze</p></div>
+        <div class="n"><b>NEUTER</b><p>Definite: DAS</p><p>Indefinite: EIN</p><p>das Buch → ein Buch</p></div>
+      </div>
+      <p class="en add">Hund = dog, Katze = cat, Buch = book</p>
+
+      <h3>Plural</h3>
+      <div class="rule"><p>Plural in German is always <b>die</b> (definite). Plural never has indefinite article</p></div>
+      <ul class="ex">
+        <li><span class="de">das Buch – die Bücher</span><span class="en add">book – books</span></li>
+        <li><span class="de">das Land – die Länder</span><span class="en add">country – countries</span></li>
+        <li><span class="de">der Zug – die Züge</span><span class="en add">train – trains</span></li>
+        <li><span class="de">die Flasche – die Flaschen</span><span class="en add">bottle – bottles</span></li>
+      </ul>
+
+      <h3>Examples</h3>
+      <div class="gender">
+        <div class="m"><b>MASCULINE</b><p>der Mann</p><p>der Tisch</p><p>der Apfel</p></div>
+        <div class="f"><b>FEMININE</b><p>die Frau</p><p>die Lampe</p><p>die Banane</p></div>
+        <div class="n"><b>NEUTER</b><p>das Kind</p><p>das Buch</p><p>das Auto</p></div>
+      </div>
+      <p class="en add">man, table, apple · woman, lamp, banana · child, book, car</p>
+
+      <h3>DER — masculine patterns</h3>
+      <ul>
+        <li>Male people and family members: der Vater, der Sohn, der Onkel <span class="en add">(father, son, uncle)</span></li>
+        <li>Days: der Montag, der Freitag <span class="en add">(Monday, Friday)</span></li>
+        <li>Months: der Januar, der Oktober</li>
+        <li>Seasons: der Sommer, der Winter</li>
+        <li>Most compass directions: der Norden, der Süden <span class="en add">(north, south)</span></li>
+        <li>Many weather nouns: der Regen, der Schnee, der Wind <span class="en add">(rain, snow, wind)</span></li>
+      </ul>
+      <h3>DIE — feminine patterns</h3>
+      <ul>
+        <li>Female people and family members: die Mutter, die Tochter, die Tante <span class="en add">(mother, daughter, aunt)</span></li>
+        <li>Numbers used as nouns: die Eins, die Zwei, die Drei <span class="en add">(the one, the two, the three)</span></li>
+        <li>Many names of trees and flowers: die Eiche (oak), die Rose (rose)</li>
+      </ul>
+      <h3>DAS — neuter patterns</h3>
+      <ul>
+        <li>Young humans and animals in many common terms: das Baby, das Kind, das Kalb <span class="en add">(baby, child, calf)</span></li>
+        <li>Letters: das A, das B</li>
+        <li>Languages used as nouns: das Deutsch, das Englisch <span class="en add">(German, English)</span></li>
+        <li>Colours used as nouns: das Rot, das Blau <span class="en add">(red, blue)</span></li>
+      </ul>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>3 genders: <b>der</b> (M) · <b>die</b> (F) · <b>das</b> (N). Indefinite: ein · eine · ein.</li>
+          <li>Every noun starts with a capital letter.</li>
+          <li>Plural is always <b>die</b>, and there's no indefinite article in the plural.</li>
+          <li>Patterns: days, months, seasons → der; female people → die; languages and colours → das.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">der Hund → ein Hund · die Katze → eine Katze · das Buch → ein Buch</span></li>
+          <li><span class="de">das Buch – die Bücher</span><span class="en add">book – books</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>Indefinite article for "die Lampe"?</summary><p class="ans">eine Lampe</p></details>
+        <details><summary>Which article does every plural take?</summary><p class="ans">die (and never an indefinite article)</p></details>
+        <details><summary>Why is it "der Montag"?</summary><p class="ans">Days are masculine (der).</p></details>
+        <details><summary>Why is it "das Deutsch"?</summary><p class="ans">Languages used as nouns are neuter (das).</p></details>
+        <details><summary>Plural of "der Zug"?</summary><p class="ans">die Züge</p></details>
+      </div>
+    </section>
+
+    <!-- 13 -->
+    <section class="lesson" id="satz" style="--note:#f07575">
+      <p class="eyebrow">Lesson 13</p>
+      <h2>Satz formulieren</h2>
+      <div class="rule">
+        <p>Verb is always in the <b>2nd position</b></p>
+        <p>Subject + Verb + Object</p>
+      </div>
+      <ul class="ex">
+        <li><span class="de">Ich trinke Wasser</span><span class="en">I drink water</span></li>
+        <li><span class="de">Sie spielen Schach</span><span class="en">They play chess</span></li>
+        <li><span class="de">Er liest ein Buch</span><span class="en">He reads a book</span></li>
+        <li><span class="de">Sie hört Musik</span><span class="en">She listens to music</span></li>
+        <li><span class="de">Sie bezahlt die Rechnung</span><span class="en">She pays the bill</span></li>
+        <li><span class="de">Wir finden unser Hotel</span><span class="en">We find our hotel</span></li>
+        <li><span class="de">Du hast ein Haus</span><span class="en">You have a house</span></li>
+        <li><span class="de">Sie sind meine Kinder</span><span class="en">They are my kids</span></li>
+        <li><span class="de">Meine Eltern sind in Indien</span><span class="en">My parents are in India</span></li>
+      </ul>
+
+      <h3>Only Present tense</h3>
+      <div class="rule">
+        <p>There is no present continuous tense (am/is/are) in German</p>
+        <p>In German you have only Present tense</p>
+      </div>
+      <ul class="ex">
+        <li><span class="de">Wir lernen Englisch</span><span class="en">We are learning English</span></li>
+        <li><span class="de">Ich esse eine Pizza</span> <span class="tag">F</span><span class="en">I am eating a Pizza</span></li>
+        <li><span class="de">Er reist nach Mumbai</span><span class="en">He is travelling to Mumbai</span></li>
+        <li><span class="de">Sie backt Kekse</span><span class="en">She is baking cookies</span></li>
+        <li><span class="de">Meine Eltern buchen ein Hotel</span> <span class="tag">N</span><span class="en">My parents are booking a hotel</span></li>
+        <li><span class="de">Sie spielen Fußball</span><span class="en">They are playing football</span></li>
+      </ul>
+      <div class="rule"><p>When your subject is in Plural, your verb stays in its basic form (infinitive form)</p></div>
+
+      <h3>Time in the sentence</h3>
+      <div class="rule">
+        <p>Subjekt + Verb + Uhrzeit + Objekt</p>
+        <p>Uhrzeit + Verb + Subjekt + Objekt</p>
+      </div>
+      <ul class="ex">
+        <li><span class="de">Ich mache am Wochenende Fitness.</span><span class="en add">I work out at the weekend.</span></li>
+        <li><span class="de">Mario bestellt jeden Tag sein Abendessen</span><span class="en add">Mario orders his dinner every day</span></li>
+        <li><span class="de">Übermorgen fliegen wir nach Deutschland</span><span class="en add">The day after tomorrow we fly to Germany</span></li>
+        <li><span class="de">Um 9 Uhr gehe ich ins Büro</span><span class="en add">At 9 o'clock I go to the office</span></li>
+      </ul>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>The verb is always in the <b>2nd position</b>: Subject + Verb + Object.</li>
+          <li>No "-ing" tense: "We are learning" = Wir lernen.</li>
+          <li>Plural subject → verb in its basic (infinitive) form: Meine Eltern buchen…</li>
+          <li>A time can go after the verb, or first; if the time comes first, the subject moves after the verb.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">Ich trinke Wasser</span><span class="en">I drink water</span></li>
+          <li><span class="de">Wir lernen Englisch</span><span class="en">We are learning English</span></li>
+          <li><span class="de">Übermorgen fliegen wir nach Deutschland</span><span class="en add">The day after tomorrow we fly to Germany</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>Translate: She is baking cookies.</summary><p class="ans">Sie backt Kekse</p></details>
+        <details><summary>Put in order: Wasser / trinke / ich</summary><p class="ans">Ich trinke Wasser</p></details>
+        <details><summary>Start with "Um 9 Uhr": ich gehe ins Büro</summary><p class="ans">Um 9 Uhr gehe ich ins Büro</p></details>
+        <details><summary>Translate: They are playing football.</summary><p class="ans">Sie spielen Fußball</p></details>
+      </div>
+    </section>
+
+    <!-- 14 -->
+    <section class="lesson" id="ja-nein" style="--note:#a594f9">
+      <p class="eyebrow">Lesson 14</p>
+      <h2>Ja/Nein Fragen</h2>
+      <div class="rule">
+        <p>Die Regel = <b>Verb + Subject + Object?</b></p>
+        <p>In the Nein answer, <b>nicht</b> comes after the verb</p>
+      </div>
+      <div class="qa">
+        <p class="q">Kommen Sie nach Paris?</p><p class="en add">Are you coming to Paris?</p>
+        <p>Ja, ich komme nach Paris <span class="tag">S+V+O</span></p>
+        <p>Nein, ich komme <b>nicht</b> nach Paris <span class="tag">after the verb</span></p>
+      </div>
+      <div class="qa">
+        <p class="q">Isst deine Tochter jeden Abend nur Salat?</p><p class="en add">Does your daughter eat only salad every evening?</p>
+        <p>Ja, meine Tochter isst jeden Abend nur Salat <span class="tag">S+V+T+O</span></p>
+        <p>Nein, meine Tochter isst <b>nicht</b> jeden Abend nur Salat</p>
+      </div>
+      <div class="qa">
+        <p class="q">Fotografiert Paul gern?</p><p class="en add">Does Paul like taking photos?</p>
+        <p>Ja, Paul/er fotografiert gern <span class="tag">S+V+O</span></p>
+        <p>Nein, Paul fotografiert <b>nicht</b> gern</p>
+      </div>
+      <div class="qa">
+        <p class="q">Tanzen wir heute auf der Party?</p><p class="en add">Are we dancing at the party today?</p>
+        <p>Ja, wir tanzen heute auf der Party <span class="tag">S+V+T+O</span></p>
+        <p>Nein, wir tanzen <b>nicht</b> heute auf der Party</p>
+      </div>
+      <div class="qa">
+        <p class="q">Kocht deine Frau Pasta?</p><p class="en add">Does your wife cook pasta?</p>
+        <p>Ja, meine Frau kocht Pasta</p>
+        <p>Nein, meine Frau kocht <b>nicht</b> Pasta</p>
+      </div>
+      <div class="qa">
+        <p class="q">Hörst du gern Musik?</p><p class="en add">Do you like listening to music?</p>
+        <p>Ja, ich höre gern Musik</p>
+        <p>Nein, ich höre <b>nicht</b> gern Musik</p>
+      </div>
+      <div class="qa">
+        <p class="q">Sprechen die Leute hier in Spanien nur Spanisch?</p><p class="en add">Do the people here in Spain speak only Spanish?</p>
+        <p>Ja, die Leute sprechen hier in Spanien nur Spanisch</p>
+        <p>Nein, die Leute sprechen <b>nicht</b> hier in Spanien nur Spanisch</p>
+      </div>
+
+      <h3>More examples</h3>
+      <div class="qa">
+        <p class="q">Trinkst du gern Kaffee?</p><p class="en add">Do you like drinking coffee?</p>
+        <p>Ja, ich trinke gern Kaffee.</p>
+        <p>Nein, ich trinke <b>nicht</b> gern Kaffee.</p>
+      </div>
+      <div class="qa">
+        <p class="q">Kommt ihr heute Abend?</p><p class="en add">Are you (all) coming this evening?</p>
+        <p>Ja, wir kommen heute Abend.</p>
+        <p>Nein, wir kommen heute Abend <b>nicht</b>.</p>
+      </div>
+      <div class="qa">
+        <p class="q">Wohnen Sie in Berlin?</p><p class="en add">Do you live in Berlin?</p>
+        <p>Ja, ich wohne in Berlin.</p>
+        <p>Nein, ich wohne <b>nicht</b> in Berlin.</p>
+      </div>
+      <div class="qa">
+        <p class="q">Lernst du Deutsch?</p><p class="en add">Are you learning German?</p>
+        <p>Ja, ich lerne Deutsch.</p>
+        <p>Nein, ich lerne <b>nicht</b> Deutsch.</p>
+      </div>
+      <div class="qa">
+        <p class="q">Haben Sie Geschwister?</p><p class="en add">Do you have siblings?</p>
+        <p>Ja, ich habe Geschwister.</p>
+        <p>Nein, ich habe <b>keine</b> Geschwister.</p>
+      </div>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>A yes/no question starts with the <b>verb</b>: Verb + Subject + Object?</li>
+          <li>Answer: Ja/Nein, then a normal sentence (Subject + Verb + …).</li>
+          <li>Nein answer: <b>nicht</b> goes after the verb; with a noun like Geschwister, use <b>keine</b>.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <div class="qa">
+          <p class="q">Kommen Sie nach Paris?</p>
+          <p>Nein, ich komme <b>nicht</b> nach Paris</p>
+        </div>
+        <div class="qa">
+          <p class="q">Haben Sie Geschwister?</p>
+          <p>Nein, ich habe <b>keine</b> Geschwister.</p>
+        </div>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>Make a question: du / hören / gern Musik</summary><p class="ans">Hörst du gern Musik?</p></details>
+        <details><summary>Answer with Nein: Wohnen Sie in Berlin?</summary><p class="ans">Nein, ich wohne nicht in Berlin.</p></details>
+        <details><summary>Answer with Nein: Haben Sie Geschwister?</summary><p class="ans">Nein, ich habe keine Geschwister.</p></details>
+        <details><summary>Where does "nicht" go in these answers?</summary><p class="ans">After the verb.</p></details>
+      </div>
+    </section>
+
+    <!-- 15 -->
+    <section class="lesson" id="dativ" style="--note:#6fb3f2">
+      <p class="eyebrow">Lesson 15</p>
+      <h2>Dativ</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>M</th><th>F</th><th>N</th><th>Pl</th></tr></thead>
+        <tbody>
+          <tr><td>dem</td><td>der</td><td>dem</td><td>den+n</td></tr>
+          <tr><td>einem</td><td>einer</td><td>einem</td><td>----</td></tr>
+          <tr><td>meinem</td><td>meiner</td><td>meinem</td><td>meinen</td></tr>
+          <tr><td>keinem</td><td>keiner</td><td>keinem</td><td>keinen</td></tr>
+        </tbody>
+      </table></div>
+      <div class="rule"><p>We have Dative verbs in German. If you use those verbs the object in that sentence goes in the Dative case</p></div>
+      <ul class="ex">
+        <li><span class="de">Der Hund folgt <b>den Kindern</b></span> <span class="tag">pl</span> <span class="tag">folgen – to follow</span><span class="en add">The dog follows the children</span></li>
+        <li><span class="de">Raunak antwortet <b>der Lehrerin</b></span> <span class="tag">F</span><span class="en add">Raunak answers the (female) teacher</span></li>
+        <li><span class="de">Ich gratuliere <b>meinem Bruder</b></span> <span class="tag">M</span> <span class="tag">gratulieren – to congratulate</span><span class="en add">I congratulate my brother</span></li>
+        <li><span class="de">Wir helfen <b>den armen Leuten</b></span> <span class="tag">pl</span><span class="en add">We help the poor people</span></li>
+        <li><span class="de">Sie glaubt <b>ihrer Mutter</b></span> <span class="tag">F</span> <span class="tag">glauben – to believe</span><span class="en add">She believes her mother</span></li>
+        <li><span class="de">Der Rock passt <b>dem Mädchen</b></span> <span class="tag">N</span> <span class="tag">passen – to fit, to suit</span><span class="en add">The skirt fits the girl</span></li>
+      </ul>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>Dativ articles: <b>dem</b> (M) · <b>der</b> (F) · <b>dem</b> (N) · <b>den + n</b> (Pl).</li>
+          <li>Dative verbs put their object in the Dativ: folgen, antworten, gratulieren, helfen, glauben, passen.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">Ich gratuliere <b>meinem Bruder</b></span><span class="en add">I congratulate my brother</span></li>
+          <li><span class="de">Der Hund folgt <b>den Kindern</b></span><span class="en add">The dog follows the children</span></li>
+          <li><span class="de">Der Rock passt <b>dem Mädchen</b></span><span class="en add">The skirt fits the girl</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>Ich gratuliere ___ Bruder. (mein)</summary><p class="ans">meinem</p></details>
+        <details><summary>Sie glaubt ___ Mutter. (ihr)</summary><p class="ans">ihrer</p></details>
+        <details><summary>Der Rock passt ___ Mädchen.</summary><p class="ans">dem</p></details>
+        <details><summary>Der Hund folgt ___ Kinder__.</summary><p class="ans">den Kindern (plural: den + n)</p></details>
+        <details><summary>Dativ article for a feminine noun?</summary><p class="ans">der</p></details>
+      </div>
+    </section>
+
+    <!-- 16 -->
+    <section class="lesson" id="kein" style="--note:#4cbb7f">
+      <p class="eyebrow">Lesson 16</p>
+      <h2>kein – negate nouns</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>M</th><th>F</th><th>N</th><th>Pl</th></tr></thead>
+        <tbody><tr><td>kein</td><td>keine</td><td>kein</td><td>keine</td></tr></tbody>
+      </table></div>
+      <ul class="ex">
+        <li><span class="de">Das ist <b>kein</b> Auto, das ist ein Taxi</span> <span class="tag">N</span><span class="en add">That's not a car, that's a taxi</span></li>
+        <li><span class="de">Ich esse <b>keine</b> Pizza</span> <span class="tag">F</span><span class="en add">I don't eat pizza</span></li>
+        <li><span class="de">Wir haben <b>kein</b> Geld</span> <span class="tag">N</span><span class="en add">We have no money</span></li>
+        <li><span class="de">Raunak hat <b>keine</b> Zeit</span> <span class="tag">F</span><span class="en add">Raunak has no time</span></li>
+        <li><span class="de">Das Kind hat <b>kein</b> Handy</span> <span class="tag">N</span><span class="en add">The child has no mobile</span></li>
+        <li><span class="de">Die Familie hat <b>keine</b> Pläne</span> <span class="tag">Pl</span><span class="en add">The family has no plans</span></li>
+      </ul>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li><b>kein</b> negates a noun: kein (M, N) · keine (F, Pl).</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">Das ist <b>kein</b> Auto, das ist ein Taxi</span><span class="en add">That's not a car, that's a taxi</span></li>
+          <li><span class="de">Die Familie hat <b>keine</b> Pläne</span><span class="en add">The family has no plans</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>Wir haben ___ Geld.</summary><p class="ans">kein (Geld is N)</p></details>
+        <details><summary>Raunak hat ___ Zeit.</summary><p class="ans">keine (Zeit is F)</p></details>
+        <details><summary>Die Familie hat ___ Pläne.</summary><p class="ans">keine (plural)</p></details>
+        <details><summary>Ich esse ___ Pizza.</summary><p class="ans">keine (Pizza is F)</p></details>
+      </div>
+    </section>
+
+    <!-- 17 -->
+    <section class="lesson" id="nominativ" style="--note:#6fb3f2">
+      <p class="eyebrow">Lesson 17</p>
+      <h2>Kasus: Nominativ</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>M</th><th>F</th><th>N</th><th>Pl</th></tr></thead>
+        <tbody>
+          <tr><td>der</td><td>die</td><td>das</td><td>die</td></tr>
+          <tr><td>ein</td><td>eine</td><td>ein</td><td>----</td></tr>
+          <tr><td>mein</td><td>meine</td><td>mein</td><td>meine</td></tr>
+          <tr><td>kein</td><td>keine</td><td>kein</td><td>keine</td></tr>
+        </tbody>
+      </table></div>
+      <div class="chips"><span>ich</span><span>du</span><span>er</span><span>es</span><span>sie</span><span>wir</span><span>ihr</span><span>Sie</span><span>sie</span></div>
+      <div class="rule"><p>Subject in your sentence is always Nominativ</p></div>
+      <ul class="ex">
+        <li><span class="de"><b>Die Zeitung</b> ist interessant</span><span class="en add">The newspaper is interesting</span></li>
+        <li><span class="de"><b>Meine Frau</b> backt nur am Wochenende</span><span class="en add">My wife only bakes at the weekend</span></li>
+        <li><span class="de"><b>Das Hotel</b> ist berühmt</span><span class="en add">The hotel is famous</span></li>
+        <li><span class="de"><b>Ich</b> spreche fließend Deutsch</span><span class="en add">I speak German fluently</span></li>
+        <li><span class="de"><b>Wir</b> nehmen diese Kleider</span><span class="en add">We'll take these clothes</span></li>
+      </ul>
+      <div class="rule"><p>Object can be Nominativ only if you use the verb <b>sein</b></p></div>
+      <ul class="ex">
+        <li><span class="de">Das <b>sind</b> <b>meine Eltern</b></span><span class="en add">These are my parents</span></li>
+        <li><span class="de">Er <b>ist</b> <b>ein Lehrer</b></span><span class="en add">He is a teacher</span></li>
+      </ul>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>The <b>subject</b> is always Nominativ: der · die · das · die (ein · eine · ein · –).</li>
+          <li>With the verb <b>sein</b>, the object is Nominativ too.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de"><b>Die Zeitung</b> ist interessant</span><span class="en add">The newspaper is interesting</span></li>
+          <li><span class="de">Er <b>ist</b> <b>ein Lehrer</b></span><span class="en add">He is a teacher</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>What is the subject in "Das Hotel ist berühmt"?</summary><p class="ans">Das Hotel (Nominativ)</p></details>
+        <details><summary>Er ist ___ Lehrer. Why "ein" and not "einen"?</summary><p class="ans">ein – with sein the object stays Nominativ.</p></details>
+        <details><summary>Nominativ of "mein" with a feminine noun?</summary><p class="ans">meine (Meine Frau…)</p></details>
+      </div>
+    </section>
+
+    <!-- 18 -->
+    <section class="lesson" id="akkusativ" style="--note:#6fb3f2">
+      <p class="eyebrow">Lesson 18</p>
+      <h2>Akkusativ (Direct Object – 90% things)</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>M</th><th>F</th><th>N</th><th>Pl</th></tr></thead>
+        <tbody>
+          <tr><td><i>den</i></td><td>die</td><td>das</td><td>die</td></tr>
+          <tr><td><i>einen</i></td><td>eine</td><td>ein</td><td>--</td></tr>
+          <tr><td><i>meinen</i></td><td>meine</td><td>mein</td><td>meine</td></tr>
+          <tr><td><i>keinen</i></td><td>keine</td><td>kein</td><td>keine</td></tr>
+        </tbody>
+      </table></div>
+      <div class="rule">
+        <p><b>How is a sentence Akkusativ?</b></p>
+        <p>Ask the verb the question <b>Was?</b> If the answer is the object, the object is Akkusativ</p>
+      </div>
+      <ul class="ex">
+        <li><span class="de">Ich <i>backe</i> <b>einen</b> Kuchen</span> <span class="tag">M</span><span class="en add">I bake a cake</span></li>
+        <li><span class="de">Prathamesh <i>verkauft</i> <b>seinen</b> Laptop</span> <span class="tag">M</span><span class="en add">Prathamesh sells his laptop</span></li>
+        <li><span class="de">Wir <i>haben</i> <b>einen</b> Bungalow</span> <span class="tag">M</span><span class="en add">We have a bungalow</span></li>
+        <li><span class="de">Tanay <i>isst</i> <b>die</b> Pasta</span> <span class="tag">F</span><span class="en add">Tanay eats the pasta</span></li>
+      </ul>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>Akkusativ = the direct object. Find it by asking the verb <b>Was?</b></li>
+          <li>Only masculine changes: der → <b>den</b>, ein → <b>einen</b>, mein → <b>meinen</b>, kein → <b>keinen</b>. F, N and Pl stay the same as Nominativ.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">Ich backe <b>einen</b> Kuchen</span><span class="en add">I bake a cake</span></li>
+          <li><span class="de">Prathamesh verkauft <b>seinen</b> Laptop</span><span class="en add">Prathamesh sells his laptop</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>Ich backe ___ Kuchen. (ein, M)</summary><p class="ans">einen</p></details>
+        <details><summary>Prathamesh verkauft ___ Laptop. (sein)</summary><p class="ans">seinen</p></details>
+        <details><summary>Tanay isst ___ Pasta.</summary><p class="ans">die (F stays the same)</p></details>
+        <details><summary>Which gender changes in the Akkusativ?</summary><p class="ans">Only masculine (der → den, ein → einen).</p></details>
+      </div>
+    </section>
+
+    <!-- 19 -->
+    <section class="lesson" id="w-fragen" style="--note:#f7e98e">
+      <p class="eyebrow">Lesson 19</p>
+      <h2>W-Fragen</h2>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>wie</td><td>how</td></tr>
+          <tr><td>was</td><td>what</td></tr>
+          <tr><td>wer</td><td>who</td></tr>
+          <tr><td>woher</td><td>from where</td></tr>
+          <tr><td>wo</td><td>where</td></tr>
+          <tr><td>wohin</td><td>where to</td></tr>
+          <tr><td>wann</td><td>when</td></tr>
+          <tr><td>warum</td><td>why</td></tr>
+          <tr><td>Um wie viel Uhr</td><td>At what time</td></tr>
+        </tbody>
+      </table></div>
+      <div class="rule"><p><b>W-Frage + Verb + Subjekt + Objekt?</b></p></div>
+      <ul class="ex">
+        <li><span class="de">Wie gehen die Kinder in die Schule?</span><span class="en add">How do the children go to school?</span></li>
+        <li><span class="de">Was machst du am Wochenende?</span><span class="en add">What are you doing at the weekend?</span></li>
+        <li><span class="de">Wer hat das A1 Netzwerk Kursbuch?</span><span class="en add">Who has the A1 Netzwerk course book?</span></li>
+        <li><span class="de">Wann lernen wir Deutsch?</span><span class="en add">When do we learn German?</span></li>
+        <li><span class="de">Warum fotografiert er im Museum?</span><span class="en add">Why is he taking photos in the museum?</span></li>
+        <li><span class="de">Um wie viel Uhr kochst du am Abend?</span><span class="en add">At what time do you cook in the evening?</span></li>
+      </ul>
+      <h3>Woher, wo, wohin</h3>
+      <div class="qa">
+        <p class="q">Woher kommen Sie?</p><p class="en">where do you come from?</p>
+        <p>Ich komme aus Indien <span class="en add" style="display:inline">· I come from India</span></p>
+      </div>
+      <div class="qa">
+        <p class="q">Wo sind Sie?</p><p class="en">Where are you? (Current location)</p>
+        <p>Ich bin in Deutschland <span class="en add" style="display:inline">· I am in Germany</span></p>
+      </div>
+      <div class="qa">
+        <p class="q">Wohin gehen Sie?</p><p class="en">Where are you going to?</p>
+        <p>Ich gehe nach Paris <span class="en add" style="display:inline">· I'm going to Paris</span></p>
+      </div>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>kaha se arahe ho?</td><td>Woher</td></tr>
+          <tr><td>kaha ho?</td><td>wo</td></tr>
+          <tr><td>kaha ja rahe ho</td><td>wohin</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Welcher / Welche / Welches, Wie viel, Wie viele</h3>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>Welcher/Welche/Welches</td><td>which</td></tr>
+          <tr><td>Wie viel</td><td>how much</td></tr>
+          <tr><td>Wie viele</td><td>how many</td></tr>
+        </tbody>
+      </table></div>
+      <div class="rule"><p><b>W-Frage + Objekt + Verb + Subjekt?</b></p></div>
+      <ul class="ex">
+        <li><span class="de">Welcher Kuli ist das?</span> <span class="tag">Kuli – M</span><span class="en add">Which pen is that?</span></li>
+        <li><span class="de">Welche Tasche kauft deine Frau?</span> <span class="tag">Tasche – F</span><span class="en add">Which bag is your wife buying?</span></li>
+        <li><span class="de">Welches Auto ist schnell?</span> <span class="tag">Auto – N</span><span class="en add">Which car is fast?</span></li>
+        <li><span class="de">Welche Städte besuchen wir?</span> <span class="tag">Städte – Pl</span><span class="en add">Which cities are we visiting?</span></li>
+        <li><span class="de">Wie viel Geld verdienst du?</span><span class="en add">How much money do you earn?</span></li>
+        <li><span class="de">Wie viele Leute kommen für die Party?</span><span class="en add">How many people are coming for the party?</span></li>
+      </ul>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>W-word first, verb second: <b>W-Frage + Verb + Subjekt + Objekt?</b></li>
+          <li><b>woher</b> = from where · <b>wo</b> = where (now) · <b>wohin</b> = where to</li>
+          <li>welch- follows the gender: welch<b>er</b> (M) · welch<b>e</b> (F, Pl) · welch<b>es</b> (N)</li>
+          <li><b>wie viel</b> = how much · <b>wie viele</b> = how many</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">Woher kommen Sie? – Ich komme aus Indien</span></li>
+          <li><span class="de">Welches Auto ist schnell?</span><span class="en add">Which car is fast?</span></li>
+          <li><span class="de">Um wie viel Uhr kochst du am Abend?</span><span class="en add">At what time do you cook in the evening?</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>"where to" = ?</summary><p class="ans">wohin</p></details>
+        <details><summary>Ask formally where someone comes from.</summary><p class="ans">Woher kommen Sie?</p></details>
+        <details><summary>___ Auto ist schnell?</summary><p class="ans">Welches (Auto is N)</p></details>
+        <details><summary>___ Leute kommen für die Party?</summary><p class="ans">Wie viele</p></details>
+        <details><summary>"kaha ho?" in German?</summary><p class="ans">wo</p></details>
+      </div>
+    </section>
+
+    <!-- 20 -->
+    <section class="lesson" id="uhrzeit" style="--note:#f7e98e">
+      <p class="eyebrow">Lesson 20</p>
+      <h2>Die Uhrzeit</h2>
+
+      <h3>Offiziell Zeit</h3>
+      <div class="rule">
+        <p>24 hour clock</p>
+        <p>Hours <b>Uhr</b> Minutes</p>
+        <p>Exact time (Hours &amp; Minutes)</p>
+      </div>
+      <p class="big">Wie viel Uhr ist es? <span class="en" style="font-weight:400;font-size:1rem">(How much o'clock is it?)</span></p>
+      <p>Es ist ______________ <span class="en add">It is ______________</span></p>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>20:35</td><td>Es ist zwanzig Uhr fünfunddreißig</td></tr>
+          <tr><td>09:08</td><td>Es ist neun Uhr acht</td></tr>
+          <tr><td>17:46</td><td>Es ist siebzehn Uhr sechsundvierzig</td></tr>
+          <tr><td>11:22</td><td>Es ist elf Uhr zweiundzwanzig</td></tr>
+          <tr><td>19:55</td><td>Es ist neunzehn Uhr fünfundfünfzig</td></tr>
+          <tr><td>02:13</td><td>Es ist zwei Uhr dreizehn</td></tr>
+          <tr><td>22:10</td><td>Es ist zweiundzwanzig Uhr zehn</td></tr>
+        </tbody>
+      </table></div>
+      <p>We use the 24-hour format, especially in:</p>
+      <ul>
+        <li>Train and flight schedules (Zug- und Flugpläne)</li>
+        <li>Timetables (Fahrpläne)</li>
+        <li>Official appointments</li>
+        <li>Written announcements</li>
+        <li>News and formal situations</li>
+      </ul>
+
+      <h3>Inoffiziell Zeit</h3>
+      <div class="rule">
+        <p>12 hour clock (am Morgen, am Tag, am Abend, in der Nacht)</p>
+        <p>Minutes, then hours</p>
+        <p>Tentative time</p>
+      </div>
+      <p class="big">Wie spät ist es? <span class="en" style="font-weight:400;font-size:1rem">(how late is it?)</span></p>
+      <p>Es ist ________</p>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>nach</td><td>after</td></tr>
+          <tr><td>vor</td><td>before</td></tr>
+          <tr><td>viertel</td><td>15 minutes</td></tr>
+          <tr><td>halb</td><td>30 minutes</td></tr>
+        </tbody>
+      </table></div>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>10:10</td><td>Es ist zehn nach zehn <span class="en">(it is 10 mins after 10 o'clock)</span></td></tr>
+          <tr><td>09:10</td><td>Es ist zehn nach neun</td></tr>
+          <tr><td>04:50</td><td>Es ist zehn vor fünf <span class="en">(it is 10 mins before 5 o'clock)</span></td></tr>
+          <tr><td>02:50</td><td>Es ist zehn vor drei</td></tr>
+          <tr><td>03:15</td><td>Es ist viertel nach drei <span class="en">(It is 15 mins after 3 o'clock)</span></td></tr>
+          <tr><td>07:15</td><td>Es ist viertel nach sieben</td></tr>
+          <tr><td>08:45</td><td>Es ist viertel vor neun <span class="en">(It is 15 mins before 9 o'clock)</span></td></tr>
+          <tr><td>01:45</td><td>Es ist viertel vor zwei</td></tr>
+          <tr><td>07:30</td><td>Es ist halb acht <span class="en">(in 30 mins – hrs always takes the next number)</span></td></tr>
+          <tr><td>09:30</td><td>Es ist halb zehn</td></tr>
+          <tr><td>03:30</td><td>Es ist halb vier</td></tr>
+          <tr><td>09:40</td><td>Es ist zehn nach halb zehn <span class="en">(It is 10 mins after 9:30)</span></td></tr>
+          <tr><td>01:40</td><td>Es ist zehn nach halb zwei</td></tr>
+          <tr><td>04:40</td><td>Es ist zehn nach halb fünf</td></tr>
+          <tr><td>03:20</td><td>Es ist zehn vor halb vier <span class="en">(It is 10 mins before 3:30)</span></td></tr>
+          <tr><td>07:20</td><td>Es ist zehn vor halb acht</td></tr>
+          <tr><td>10:20</td><td>Es ist zehn vor halb elf</td></tr>
+        </tbody>
+      </table></div>
+      <div class="rule"><p><b>Kurz</b> – 0-5 mins range</p></div>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>10:02</td><td>Es ist kurz nach zehn</td></tr>
+          <tr><td>06:59</td><td>Es ist kurz vor sieben</td></tr>
+        </tbody>
+      </table></div>
+      <p>In everyday conversations with friends, family and colleagues.</p>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li><b>Offiziell</b> (24h, formal): Hours + <b>Uhr</b> + Minutes → Es ist zwanzig Uhr fünfunddreißig.</li>
+          <li><b>Inoffiziell</b> (12h, everyday): minutes first with nach / vor, viertel = 15, halb = 30.</li>
+          <li><b>halb</b> always takes the <b>next</b> hour: 07:30 = halb acht.</li>
+          <li>Around half past: zehn nach/vor <b>halb</b>. Within 5 minutes: <b>kurz</b> nach/vor.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <div class="table-wrap"><table>
+          <tbody>
+            <tr><td>20:35</td><td>Es ist zwanzig Uhr fünfunddreißig</td></tr>
+            <tr><td>07:30</td><td>Es ist halb acht</td></tr>
+            <tr><td>09:40</td><td>Es ist zehn nach halb zehn</td></tr>
+            <tr><td>06:59</td><td>Es ist kurz vor sieben</td></tr>
+          </tbody>
+        </table></div>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>17:46, the official way?</summary><p class="ans">Es ist siebzehn Uhr sechsundvierzig</p></details>
+        <details><summary>07:30, the everyday way?</summary><p class="ans">Es ist halb acht</p></details>
+        <details><summary>08:45?</summary><p class="ans">Es ist viertel vor neun</p></details>
+        <details><summary>03:20?</summary><p class="ans">Es ist zehn vor halb vier</p></details>
+        <details><summary>10:02?</summary><p class="ans">Es ist kurz nach zehn</p></details>
+      </div>
+    </section>
+
+    <!-- 21 -->
+    <section class="lesson" id="trennbare" style="--note:#a594f9">
+      <p class="eyebrow">Lesson 21</p>
+      <h2>Trennbare Verben</h2>
+      <div class="rule">
+        <p>Präfix · Suffix – immer ein Verb</p>
+        <p>die Regel – <b>Subjekt + Suffix + Objekt + Präfix</b></p>
+      </div>
+      <h3>vorschlagen – to suggest <span class="tag">vor schlagen</span></h3>
+      <ul class="ex">
+        <li><span class="de">Ich schlage meiner Schwester <b>vor</b></span><span class="en">I suggest to my sister</span></li>
+        <li><span class="de">Ich schlage Raunak</span><span class="en">I beat Raunak</span></li>
+      </ul>
+      <h3>ankommen – to arrive <span class="tag">an kommen</span></h3>
+      <ul class="ex"><li><span class="de">Der Zug kommt um 20 Uhr <b>an</b></span><span class="en add">The train arrives at 20:00</span></li></ul>
+      <h3>stattfinden – to take place <span class="tag">statt finden</span></h3>
+      <ul class="ex"><li><span class="de">Die Party findet am Sonntag um 18 Uhr <b>statt</b></span><span class="en add">The party takes place on Sunday at 18:00</span></li></ul>
+      <h3>abholen – to pick up <span class="tag">ab holen</span></h3>
+      <ul class="ex"><li><span class="de">Ich hole meinen Bruder am Montag <b>ab</b></span><span class="en add">I pick up my brother on Monday</span></li></ul>
+      <h3>zurückgeben – to return <span class="tag">zurück geben</span></h3>
+      <ul class="ex"><li><span class="de">Tanay gibt Pratham sein Buch <b>zurück</b></span><span class="en add">Tanay gives Pratham his book back</span></li></ul>
+      <h3>mitbringen – to bring along <span class="tag">mit bringen</span></h3>
+      <ul class="ex"><li><span class="de">Ich bringe Salat und Sandwich <b>mit</b></span><span class="en add">I bring salad and a sandwich along</span></li></ul>
+      <h3>anrufen – to call <span class="tag">an rufen</span></h3>
+      <ul class="ex"><li><span class="de">Ich rufe immer meine Mutter <b>an</b></span><span class="en add">I always call my mother</span></li></ul>
+      <h3>ausgeben – to spend money <span class="tag">aus geben</span></h3>
+      <ul class="ex"><li><span class="de">Die Kinder geben viel <b>aus</b></span><span class="en add">The children spend a lot</span></li></ul>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>A separable verb = Präfix + verb (an + kommen).</li>
+          <li>In the sentence, the verb part stays in 2nd position and the <b>Präfix goes to the end</b>: Subjekt + Suffix + Objekt + Präfix.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">Der Zug kommt um 20 Uhr <b>an</b></span><span class="en add">The train arrives at 20:00</span></li>
+          <li><span class="de">Ich rufe immer meine Mutter <b>an</b></span><span class="en add">I always call my mother</span></li>
+          <li><span class="de">Die Party findet am Sonntag um 18 Uhr <b>statt</b></span><span class="en add">The party takes place on Sunday at 18:00</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>anrufen: Ich ___ meine Mutter ___.</summary><p class="ans">Ich rufe meine Mutter an.</p></details>
+        <details><summary>abholen: Ich ___ meinen Bruder am Montag ___.</summary><p class="ans">Ich hole meinen Bruder am Montag ab.</p></details>
+        <details><summary>mitbringen: Ich ___ Salat und Sandwich ___.</summary><p class="ans">Ich bringe Salat und Sandwich mit.</p></details>
+        <details><summary>Where does the Präfix go?</summary><p class="ans">To the end of the sentence.</p></details>
+      </div>
+    </section>
+
+    <!-- 22 -->
+    <section class="lesson" id="praeteritum" style="--note:#5fd3c8">
+      <p class="eyebrow">Lesson 22</p>
+      <h2>Präteritum – past</h2>
+      <h3>haben – to have &nbsp;→&nbsp; hatten – had</h3>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>ich</td><td>hatte</td></tr>
+          <tr><td>du</td><td>hattest</td></tr>
+          <tr><td>er, es, sie</td><td>hatte</td></tr>
+          <tr><td>wir</td><td>hatten</td></tr>
+          <tr><td>ihr</td><td>hattet</td></tr>
+          <tr><td>Sie, sie</td><td>hatten</td></tr>
+        </tbody>
+      </table></div>
+      <ul class="ex">
+        <li><span class="de">Ich hatte keine Zeit</span><span class="en add">I had no time</span></li>
+        <li><span class="de">Raunak hatte keine Energie</span><span class="en add">Raunak had no energy</span></li>
+        <li><span class="de">Wir hatten kein Geld</span><span class="en add">We had no money</span></li>
+        <li><span class="de">Ich hatte keine Ahnung</span><span class="en add">I had no idea</span></li>
+        <li><span class="de">Die Menschen hatten keine Fahrkarten</span><span class="en add">The people had no tickets</span></li>
+        <li><span class="de">Tom hatte ein Motorrad</span><span class="en add">Tom had a motorbike</span></li>
+        <li><span class="de">Die Kinder hatten Schulferien</span><span class="en add">The children had school holidays</span></li>
+      </ul>
+      <h3>sein – am, is, are &nbsp;→&nbsp; waren – was, were</h3>
+      <div class="table-wrap"><table>
+        <tbody>
+          <tr><td>ich</td><td>war</td></tr>
+          <tr><td>du</td><td>warst</td></tr>
+          <tr><td>er, es, sie</td><td>war</td></tr>
+          <tr><td>wir</td><td>waren</td></tr>
+          <tr><td>ihr</td><td>wart</td></tr>
+          <tr><td>Sie, sie</td><td>waren</td></tr>
+        </tbody>
+      </table></div>
+      <ul class="ex">
+        <li><span class="de">Ich war in Mumbai</span><span class="en add">I was in Mumbai</span></li>
+        <li><span class="de">Die Familie war arm</span><span class="en add">The family was poor</span></li>
+        <li><span class="de">Das Essen war nicht billig</span><span class="en add">The food was not cheap</span></li>
+        <li><span class="de">Das Wetter war schlecht</span><span class="en add">The weather was bad</span></li>
+      </ul>
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>haben → <b>hatte</b>: ich hatte, du hattest, er hatte, wir hatten, ihr hattet, sie hatten.</li>
+          <li>sein → <b>war</b>: ich war, du warst, er war, wir waren, ihr wart, sie waren.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">Ich hatte keine Zeit</span><span class="en add">I had no time</span></li>
+          <li><span class="de">Das Wetter war schlecht</span><span class="en add">The weather was bad</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>du + haben (past) = ?</summary><p class="ans">du hattest</p></details>
+        <details><summary>wir + sein (past) = ?</summary><p class="ans">wir waren</p></details>
+        <details><summary>ihr + sein (past) = ?</summary><p class="ans">ihr wart</p></details>
+        <details><summary>Translate: I had no idea.</summary><p class="ans">Ich hatte keine Ahnung</p></details>
+      </div>
+    </section>
+
+    <footer>Content from the "A1 German Simona LG" class board, in board order (left to right). Student introductions and practice notes are not included.</footer>
+  </main>
+</div>
+
+<script>
+  // Highlight the lesson currently on screen in the sidebar.
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+    var byId = {};
+    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+    if (!('IntersectionObserver' in window)) return;
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove('active'); });
+          var a = byId[e.target.id];
+          if (a) a.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    document.querySelectorAll('section.lesson').forEach(function (s) { obs.observe(s); });
+  })();
+
+  // Dark mode toggle (remembered per browser when storage is available).
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('themeBtn');
+    try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+    btn.addEventListener('click', function () {
+      var dark = root.getAttribute('data-theme') === 'dark' ||
+        (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      var next = dark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>
