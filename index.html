@@ -18,6 +18,9 @@
     --recap-bg: #fbf7e9;
     --recap-line: #e8d9a4;
     --ok: #1f7a4d;
+    --prep: #c62828;
+    --art: #1f5fbf;
+    --contr: #a8660b;
     --shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.04);
   }
   @media (prefers-color-scheme: dark) {
@@ -25,12 +28,14 @@
       --bg: #131315; --surface: #1c1c1f; --text: #ececee; --muted: #a2a4aa;
       --line: #2e2e33; --chip: #26262a; --accent: #8fb0ff; --rule-bg: #1f2533;
       --recap-bg: #26231a; --recap-line: #5a4d22; --ok: #6fd3a0; --shadow: none;
+      --prep: #ff8a80; --art: #8fb0ff; --contr: #f6c35b;
     }
   }
   :root[data-theme="dark"] {
     --bg: #131315; --surface: #1c1c1f; --text: #ececee; --muted: #a2a4aa;
     --line: #2e2e33; --chip: #26262a; --accent: #8fb0ff; --rule-bg: #1f2533;
     --recap-bg: #26231a; --recap-line: #5a4d22; --ok: #6fd3a0; --shadow: none;
+    --prep: #ff8a80; --art: #8fb0ff; --contr: #f6c35b;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 16px; }
@@ -81,6 +86,10 @@
   .en { color: var(--muted); }
   ul.ex .en, .qa .en { display: block; font-size: .93rem; }
   .add { font-style: italic; }
+  b.pr { color: var(--prep); }
+  b.ar { color: var(--art); }
+  b.ct { color: var(--contr); }
+  .colorkey { font-size: .88rem; color: var(--muted); margin: 6px 0 12px; }
   .tag {
     display: inline-block; font-size: .75rem; padding: 1px 7px; border-radius: 999px;
     background: var(--chip); color: var(--muted); margin-left: 6px; vertical-align: 2px; font-style: normal;
@@ -165,6 +174,8 @@
         <li><a href="#uhrzeit"><span class="n">20</span>Die Uhrzeit</a></li>
         <li><a href="#trennbare"><span class="n">21</span>Trennbare Verben</a></li>
         <li><a href="#praeteritum"><span class="n">22</span>Präteritum</a></li>
+        <li><a href="#akk-praep"><span class="n">23</span>Akkusativ-Präpositionen</a></li>
+        <li><a href="#dat-praep"><span class="n">24</span>Dativ-Präpositionen</a></li>
       </ol>
     </details>
     <button class="theme-btn" type="button" id="themeBtn">Toggle dark mode</button>
@@ -173,8 +184,8 @@
   <main>
     <header class="page">
       <h1>German A1 Lessons</h1>
-      <p>The teacher's notes from the A1 class board, lesson by lesson, in the order they appear on the board (left to right).</p>
-      <p class="legend">English in <span class="en add">grey italics</span> was added for this page; all other content comes from the board. Each lesson ends with a recap and a quick check: tap a question to see the answer.</p>
+      <p>The teacher's notes from the A1 class, lesson by lesson. Lessons 1–22 follow the class Miro board (left to right); lessons 23–24 are from the 16 Nov class.</p>
+      <p class="legend">English in <span class="en add">grey italics</span> was added for this page; all other content comes from the class notes. Each lesson ends with a recap and a quick check: tap a question to see the answer.</p>
     </header>
 
     <!-- 1 -->
@@ -1389,7 +1400,173 @@
       </div>
     </section>
 
-    <footer>Content from the "A1 German Simona LG" class board, in board order (left to right). Student introductions and practice notes are not included.</footer>
+    <!-- 23 -->
+    <section class="lesson" id="akk-praep" style="--note:#e57373">
+      <p class="eyebrow">Lesson 23 · 16 Nov class</p>
+      <h2>Akkusativ-Präpositionen</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th></th><th>M</th><th>F</th><th>N</th><th>Pl</th></tr></thead>
+        <tbody>
+          <tr><td><b>Bestimmter</b></td><td>den</td><td>die</td><td>das</td><td>die</td></tr>
+          <tr><td><b>Unbestimmter</b></td><td>einen</td><td>eine</td><td>ein</td><td>--------</td></tr>
+          <tr><td><b>Negation</b></td><td>keinen</td><td>keine</td><td>kein</td><td>keine</td></tr>
+        </tbody>
+      </table></div>
+      <p class="colorkey"><b class="pr">Preposition</b> · <b class="ar">article</b></p>
+
+      <h3>A) für – for</h3>
+      <ul class="ex">
+        <li><span class="de">Ich kaufe das Buch <b class="pr">für</b> <b class="ar">meinen</b> Vater.</span> <span class="tag">Vater = M</span><span class="en">I buy the book for my father</span></li>
+        <li><span class="de">Die Tasche ist <b class="pr">für</b> <b class="ar">das</b> Mädchen.</span> <span class="tag">Mädchen = N</span><span class="en">The bag is for the girl</span></li>
+      </ul>
+      <h3>B) ohne – without</h3>
+      <ul class="ex">
+        <li><span class="de">Er fährt <b class="pr">ohne</b> <b class="ar">den</b> Führerschein.</span> <span class="tag">Führerschein = M</span><span class="en">He drives without the license</span></li>
+        <li><span class="de">Wir trinken Tee <b class="pr">ohne</b> Zucker.</span> <span class="tag">Zucker = M</span><span class="en">We drink tea without sugar</span></li>
+      </ul>
+      <h3>C) durch – through / by</h3>
+      <ul class="ex">
+        <li><span class="de">Die Kinder laufen <b class="pr">durch</b> <b class="ar">die</b> Tür.</span> <span class="tag">Tür = F</span><span class="en">The children run through the door</span></li>
+        <li><span class="de">Die Sonne scheint <b class="pr">durch</b> <b class="ar">das</b> Fenster.</span> <span class="tag">Fenster = N</span><span class="en">The sun shines through the window</span></li>
+      </ul>
+      <h3>D) um – at / around</h3>
+      <ul class="ex">
+        <li><span class="de">Ich komme täglich <b class="pr">um</b> 17 Uhr nach Hause.</span><span class="en">I come home at 17 o'clock daily</span></li>
+        <li><span class="de">Die Familie sitzt jeden Abend <b class="pr">um</b> <b class="ar">den</b> Tisch.</span> <span class="tag">Tisch = M</span><span class="en">The family sits around the table every evening</span></li>
+      </ul>
+      <h3>E) bis – till</h3>
+      <ul class="ex">
+        <li><span class="de">Ich studiere <b class="pr">bis</b> 20 Uhr.</span><span class="en">I study till 8 o'clock</span></li>
+        <li><span class="de">Wir bleiben in den USA <b class="pr">bis</b> Freitag.</span><span class="en">We are staying in the USA till Friday</span></li>
+      </ul>
+      <h3>F) gegen – against / around</h3>
+      <ul class="ex">
+        <li><span class="de">Thomas fährt <b class="pr">gegen</b> <b class="ar">die</b> Wand.</span> <span class="tag">die Wand = F</span><span class="en">Thomas drives against the wall</span></li>
+        <li><span class="de">Was hast du <b class="pr">gegen</b> <b class="ar">meinen</b> Bruder?</span> <span class="tag">der Bruder = M</span><span class="en">What do you have against him?</span></li>
+        <li><span class="de">Ich kann <b class="pr">gegen</b> 5 Uhr kommen.</span><span class="en">I can come around 5 o'clock</span></li>
+      </ul>
+      <h3>G) entlang – along <span class="tag">geht immer ans Ende</span></h3>
+      <p class="en add">entlang always goes at the end</p>
+      <ul class="ex">
+        <li><span class="de">Sie fährt <b class="ar">den</b> Fluss <b class="pr">entlang</b>.</span> <span class="tag">Fluss = M</span><span class="en">She travels along the river</span></li>
+        <li><span class="de">Ich spaziere jeden Tag <b class="ar">den</b> Park <b class="pr">entlang</b>.</span> <span class="tag">Park = M</span><span class="en">I have a walk along the park daily</span></li>
+      </ul>
+      <div class="rule"><p class="add">If entlang comes first, it takes the Dativ: Sie fährt <b class="pr">entlang</b> <b class="ar">dem</b> Fluss · Ich spaziere jeden Tag <b class="pr">entlang</b> <b class="ar">dem</b> Park.</p></div>
+
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>After <b>für, ohne, durch, um, bis, gegen, entlang</b> the noun is in the <b>Akkusativ</b>: den / einen / keinen (M) · die / eine (F) · das / ein (N) · die (Pl).</li>
+          <li>für = for · ohne = without · durch = through · um = at (time) / around · bis = till · gegen = against / around (time) · entlang = along</li>
+          <li><b>entlang</b> goes after the noun: den Fluss entlang.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">Ich kaufe das Buch <b class="pr">für</b> <b class="ar">meinen</b> Vater.</span><span class="en">I buy the book for my father</span></li>
+          <li><span class="de">Er fährt <b class="pr">ohne</b> <b class="ar">den</b> Führerschein.</span><span class="en">He drives without the license</span></li>
+          <li><span class="de">Die Kinder laufen <b class="pr">durch</b> <b class="ar">die</b> Tür.</span><span class="en">The children run through the door</span></li>
+          <li><span class="de">Sie fährt <b class="ar">den</b> Fluss <b class="pr">entlang</b>.</span><span class="en">She travels along the river</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>Ich kaufe das Buch für ___ Vater. (mein)</summary><p class="ans">meinen</p></details>
+        <details><summary>Er fährt ohne ___ Führerschein.</summary><p class="ans">den (Führerschein is M)</p></details>
+        <details><summary>Die Familie sitzt jeden Abend um ___ Tisch.</summary><p class="ans">den</p></details>
+        <details><summary>Translate: I study till 8 o'clock.</summary><p class="ans">Ich studiere bis 20 Uhr.</p></details>
+        <details><summary>"I can come around 5 o'clock": which preposition?</summary><p class="ans">gegen – Ich kann gegen 5 Uhr kommen.</p></details>
+        <details><summary>Where does "entlang" go?</summary><p class="ans">At the end, after the noun: den Park entlang.</p></details>
+      </div>
+    </section>
+
+    <!-- 24 -->
+    <section class="lesson" id="dat-praep" style="--note:#6fb3f2">
+      <p class="eyebrow">Lesson 24 · 16 Nov class</p>
+      <h2>Dativ-Präpositionen</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th></th><th>M</th><th>F</th><th>N</th><th>Pl</th></tr></thead>
+        <tbody>
+          <tr><td><b>Bestimmter</b></td><td>dem</td><td>der</td><td>dem</td><td>den N</td></tr>
+          <tr><td><b>Unbestimmter</b></td><td>einem</td><td>einer</td><td>einem</td><td>--------</td></tr>
+          <tr><td><b>Negation</b></td><td>keinem</td><td>keiner</td><td>keinem</td><td>keinen</td></tr>
+        </tbody>
+      </table></div>
+      <p class="colorkey"><b class="pr">Preposition</b> · <b class="ar">article</b> · <b class="ct">short form</b></p>
+
+      <h3>A) aus – from (country, city, state) / made up of / taking something out of a closed place</h3>
+      <ul class="ex">
+        <li><span class="de">Er kommt <b class="pr">aus</b> Japan.</span><span class="en">He comes from Japan</span></li>
+        <li><span class="de">Der Ohrring ist <b class="pr">aus</b> Gold.</span><span class="en">The earring is made up of gold</span></li>
+        <li><span class="de">Ich nehme die Flasche <b class="pr">aus</b> <b class="ar">dem</b> Kühlschrank.</span> <span class="tag">Kühlschrank = M</span><span class="en">I take the bottle from the fridge</span></li>
+      </ul>
+      <h3>B) von – from (local places, local people) / of</h3>
+      <ul class="ex">
+        <li><span class="de">Ich arbeite <b class="pr">von</b> 9 Uhr bis 18 Uhr.</span><span class="en">I work from 9 o'clock till 6 o'clock</span></li>
+        <li><span class="de">Er kommt gerade <b class="pr">von</b> <b class="ar">der</b> Uni.</span> <span class="tag">Uni = F</span><span class="en">He is just coming from the university</span></li>
+        <li><span class="de">Ich komme <b class="pr">von</b> <b class="ar">dem</b> / <b class="ct">vom</b> Arzt.</span> <span class="tag">Arzt = M</span><span class="en">I am coming from the doctor</span></li>
+        <li><span class="de">Das Buch ist <b class="pr">von</b> <b class="ar">meiner</b> Schwester.</span> <span class="tag">Schwester = F</span><span class="en">The book is of my sister</span></li>
+      </ul>
+      <h3>C) mit – with (means of writing / means of travelling, companionship)</h3>
+      <ul class="ex">
+        <li><span class="de">Er geht <b class="pr">mit</b> <b class="ar">der</b> Bahn ins Büro.</span> <span class="tag">Bahn = F</span><span class="en">He goes in the office with the train</span></li>
+        <li><span class="de">Das Kind schreibt <b class="pr">mit</b> <b class="ar">dem</b> Kuli.</span> <span class="tag">Kuli = M</span><span class="en">The child writes with the pen</span></li>
+        <li><span class="de">Der Junge spielt <b class="pr">mit</b> <b class="ar">den</b> Kinder<b class="ar">n</b>.</span> <span class="tag">Kinder = Pl</span><span class="en">The boy plays with the children</span></li>
+      </ul>
+      <h3>D) bei – with (work with, near, under the care of somebody, during)</h3>
+      <ul class="ex">
+        <li><span class="de">Ich arbeite <b class="pr">bei</b> BMW.</span><span class="en">I work with BMW</span></li>
+        <li><span class="de">Die Schule ist <b class="pr">bei</b> <b class="ar">dem</b> Park.</span> <span class="tag">Park = M</span><span class="en">The school is near the park</span></li>
+        <li><span class="de">Meine Tochter wohnt <b class="pr">bei</b> <b class="ar">meinen</b> Eltern.</span> <span class="tag">Eltern = Pl</span><span class="en">My daughter lives with my parents</span></li>
+        <li><span class="de">Er schreibt <b class="pr">bei</b> <b class="ar">der</b> Prüfung ab.</span> <span class="tag">Prüfung = F</span><span class="en">He copies during the exam</span></li>
+      </ul>
+      <h3>E) ab – from (starting from)</h3>
+      <ul class="ex">
+        <li><span class="de">Wir machen <b class="pr">ab</b> morgen einen Urlaub.</span><span class="en">We are making a vacation from tomorrow</span></li>
+        <li><span class="de"><b class="pr">Ab</b> <b class="ar">dem</b> nächsten Monat mache ich einen Computerkurs.</span> <span class="tag">Monat = M</span><span class="en">I am doing a computer class from next month</span></li>
+      </ul>
+      <h3>F) nach – to (other state, city, country, direction) / after (time)</h3>
+      <ul class="ex">
+        <li><span class="de">Ich fahre <b class="pr">nach</b> Frankfurt.</span><span class="en">I travel to Frankfurt</span></li>
+        <li><span class="de">Wir fliegen <b class="pr">nach</b> Mumbai.</span><span class="en">We fly to Mumbai</span></li>
+        <li><span class="de">Die Familie reist <b class="pr">nach</b> Deutschland.</span><span class="en">The family travels to Germany</span></li>
+        <li><span class="de">Sie wandern <b class="pr">nach</b> Norden.</span><span class="en">They are hiking to the North</span></li>
+        <li><span class="de">Wir gehen ins Restaurant <b class="pr">nach</b> <b class="ar">unserem</b> Kurs.</span> <span class="tag">Kurs = M</span><span class="en">We are going in the restaurant after our course</span></li>
+      </ul>
+      <h3>G) zu – to (local places, local people)</h3>
+      <ul class="ex">
+        <li><span class="de">Sie geht <b class="pr">zu</b> <b class="ar">dem</b> / <b class="ct">zum</b> Supermarkt.</span> <span class="tag">Supermarkt = M</span><span class="en">She goes to the supermarket</span></li>
+        <li><span class="de">Wir gehen <b class="pr">zu</b> <b class="ar">der</b> / <b class="ct">zur</b> Kirche.</span> <span class="tag">Kirche = F</span><span class="en">We are going to the church</span></li>
+        <li><span class="de">Meine Mutter geht <b class="pr">zu</b> <b class="ar">dem</b> / <b class="ct">zum</b> Anwalt.</span> <span class="tag">Anwalt = M</span><span class="en">My mother goes to the lawyer</span></li>
+      </ul>
+
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>After <b>aus, von, mit, bei, ab, nach, zu</b> the noun is in the <b>Dativ</b>: dem (M) · der (F) · dem (N) · den + n (Pl).</li>
+          <li><b>aus</b> = from a country / city, made of · <b>von</b> = from local places / people, of · <b>mit</b> = with · <b>bei</b> = at / near / with · <b>ab</b> = starting from · <b>nach</b> = to cities / countries / directions, after · <b>zu</b> = to local places / people</li>
+          <li>Short forms: von dem = <b class="ct">vom</b> · zu dem = <b class="ct">zum</b> · zu der = <b class="ct">zur</b></li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">Ich nehme die Flasche <b class="pr">aus</b> <b class="ar">dem</b> Kühlschrank.</span><span class="en">I take the bottle from the fridge</span></li>
+          <li><span class="de">Das Kind schreibt <b class="pr">mit</b> <b class="ar">dem</b> Kuli.</span><span class="en">The child writes with the pen</span></li>
+          <li><span class="de">Ich fahre <b class="pr">nach</b> Frankfurt.</span><span class="en">I travel to Frankfurt</span></li>
+          <li><span class="de">Sie geht <b class="pr">zu</b> <b class="ar">dem</b> / <b class="ct">zum</b> Supermarkt.</span><span class="en">She goes to the supermarket</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>Er kommt ___ Japan. (aus or von?)</summary><p class="ans">aus (a country)</p></details>
+        <details><summary>Ich fahre ___ Frankfurt. (nach or zu?)</summary><p class="ans">nach (a city)</p></details>
+        <details><summary>Sie geht ___ Supermarkt. (short form)</summary><p class="ans">zum (zu dem)</p></details>
+        <details><summary>Der Junge spielt mit den Kinder__.</summary><p class="ans">Kindern (Dativ plural: den + n)</p></details>
+        <details><summary>Das Buch ist von ___ Schwester. (mein)</summary><p class="ans">meiner</p></details>
+        <details><summary>Meine Tochter wohnt bei ___ Eltern. (mein)</summary><p class="ans">meinen</p></details>
+        <details><summary>Translate: I am coming from the doctor.</summary><p class="ans">Ich komme von dem / vom Arzt.</p></details>
+      </div>
+    </section>
+
+    <footer>Lessons 1–22: the "A1 German Simona LG" class board, in board order (left to right). Lessons 23–24: the 16 Nov class notes. Student introductions and practice notes are not included.</footer>
   </main>
 </div>
 

@@ -2,7 +2,10 @@
 
 **[Open the lessons →](https://ozer550.github.io/german-a1-lessons/)**
 
-22 lessons built from the teacher's notes on the class's "A1 German Simona LG" Miro board, in the same order as on the board (left to right).
+24 lessons from the teacher's notes for the A1 German class:
+
+- Lessons 1–22: the class's "A1 German Simona LG" Miro board, in the same order as on the board (left to right)
+- Lessons 23–24: Akkusativ- and Dativ-Präpositionen, from the 16 Nov class
 
 Each lesson has:
 
