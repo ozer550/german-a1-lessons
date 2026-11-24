@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>German A1 Lessons</title>
-<meta name="description" content="German A1 lessons from the class Miro board notes, in board order, with recaps and quick quizzes.">
+<meta name="description" content="German A1 lessons from the class Miro board notes, in board order, with recaps, quick quizzes and 13 levels of case practice.">
 <style>
   :root {
     --bg: #f6f4ef;
@@ -24,6 +24,7 @@
     --nom: #1d7a46; --nom-bg: #e4f3ea;
     --akk: #b85400; --akk-bg: #fdecd9;
     --dat: #7440b8; --dat-bg: #efe6fb;
+    --bad: #c62828;
     --shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.04);
   }
   @media (prefers-color-scheme: dark) {
@@ -31,7 +32,7 @@
       --bg: #131315; --surface: #1c1c1f; --text: #ececee; --muted: #a2a4aa;
       --line: #2e2e33; --chip: #26262a; --accent: #8fb0ff; --rule-bg: #1f2533;
       --recap-bg: #26231a; --recap-line: #5a4d22; --ok: #6fd3a0; --shadow: none;
-      --prep: #ff8a80; --art: #8fb0ff; --contr: #f6c35b;
+      --prep: #ff8a80; --art: #8fb0ff; --contr: #f6c35b; --bad: #ff8a80;
       --nom: #6fd39a; --nom-bg: #17281e; --akk: #ffaa5e; --akk-bg: #302114; --dat: #c7a3ff; --dat-bg: #251c35;
     }
   }
@@ -39,7 +40,7 @@
     --bg: #131315; --surface: #1c1c1f; --text: #ececee; --muted: #a2a4aa;
     --line: #2e2e33; --chip: #26262a; --accent: #8fb0ff; --rule-bg: #1f2533;
     --recap-bg: #26231a; --recap-line: #5a4d22; --ok: #6fd3a0; --shadow: none;
-    --prep: #ff8a80; --art: #8fb0ff; --contr: #f6c35b;
+    --prep: #ff8a80; --art: #8fb0ff; --contr: #f6c35b; --bad: #ff8a80;
     --nom: #6fd39a; --nom-bg: #17281e; --akk: #ffaa5e; --akk-bg: #302114; --dat: #c7a3ff; --dat-bg: #251c35;
   }
   * { box-sizing: border-box; }
@@ -195,10 +196,110 @@
     margin-top: 18px; font: inherit; font-size: .85rem; color: var(--muted); background: none;
     border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; cursor: pointer;
   }
+  [hidden] { display: none !important; }
+  main a { color: var(--accent); }
+  a.btn { text-decoration: none; display: inline-block; }
+  /* Sidebar groups: Lessons / Practice */
+  nav.toc details { margin: 0 0 14px; }
+  nav.toc details > summary {
+    cursor: pointer; list-style: none; padding: 4px 8px; margin: 0 0 4px;
+    font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+  }
+  nav.toc details > summary::-webkit-details-marker { display: none; }
+  nav.toc details > summary::before { content: "▾"; display: inline-block; width: 1.1em; transition: transform .15s; }
+  nav.toc details:not([open]) > summary::before { transform: rotate(-90deg); }
+  nav.toc .lab { flex: 1; min-width: 0; }
+  nav.toc .tr { color: var(--muted); font-size: .84em; font-weight: 400; }
+  nav.toc .st { font-size: .72rem; font-weight: 700; white-space: nowrap; }
+  nav.toc .st.done { color: var(--ok); }
+  nav.toc .st.next { color: var(--surface); background: var(--accent); padding: 0 7px; border-radius: 999px; }
+  /* Part dividers */
+  .part { margin: 0 0 18px; }
+  .part h2 { font-size: 1.7rem; margin: 0 0 6px; line-height: 1.2; }
+  .part.practice { margin: 56px 0 26px; padding-top: 30px; border-top: 2px solid var(--line); }
+  .howto { padding-left: 20px; margin: 8px 0 14px; }
+  .howto li { margin: 4px 0; }
+  .lvmap-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 12px 0 0; }
+  .lvmap { display: flex; flex-wrap: wrap; gap: 6px; }
+  .lvmap a {
+    width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%;
+    border: 1.5px solid var(--line); background: var(--surface); color: var(--text); text-decoration: none; font-size: .85rem; font-weight: 600;
+  }
+  .lvmap a.done { background: var(--ok); border-color: var(--ok); color: var(--surface); }
+  .lvmap a.next { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+  .passcount { font-size: .9rem; color: var(--muted); }
+  .btn.quiet { border-color: var(--line); color: var(--muted); }
+  .btn.quiet.armed { border-color: var(--bad); color: var(--bad); }
+  /* Practice levels */
+  .lv-badge { display: inline-block; font-size: .74rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; vertical-align: 5px; margin-left: 4px; }
+  .lv-badge.done { background: color-mix(in srgb, var(--ok) 16%, transparent); color: var(--ok); }
+  .lv-badge.next { background: var(--accent); color: var(--surface); }
+  .rulecard .rev, .hintbox .rev { font-size: .86rem; color: var(--muted); }
+  .rulecard .star-note, .hintbox .star-note { font-size: .86rem; color: var(--muted); font-style: italic; }
+  .lv-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 0; }
+  .btn.primary { background: var(--accent); color: var(--surface); font-weight: 600; padding: 9px 18px; font-size: .95rem; }
+  .best { font-size: .88rem; color: var(--muted); }
+  .quizbox { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .qhead { display: flex; align-items: center; gap: 14px; font-size: .86rem; color: var(--muted); }
+  .qhead .hint { margin-left: auto; }
+  .qbar { height: 5px; border-radius: 5px; background: var(--chip); margin: 8px 0 14px; overflow: hidden; }
+  .qbar i { display: block; height: 100%; background: var(--accent); }
+  .hintbox { margin: 0 0 12px; }
+  .hintbox .lbl { margin: 0 0 2px; }
+  .qtext { font-size: 1.3rem; line-height: 1.55; margin: 4px 0 14px; font-weight: 500; }
+  .gap { display: inline-block; min-width: 2.6em; text-align: center; border-bottom: 2.5px solid var(--accent); color: var(--accent); font-weight: 700; line-height: 1.2; }
+  .fill { font-weight: 800; padding: 0 3px; border-radius: 4px; background: color-mix(in srgb, currentColor 14%, transparent); }
+  .fill:not(.c-nom):not(.c-akk):not(.c-dat) { color: var(--accent); }
+  .g {
+    display: inline-block; font-size: .68rem; font-weight: 700; padding: 0 6px; border-radius: 999px; line-height: 1.5;
+    background: var(--chip); color: var(--muted); vertical-align: 3px; margin-left: 2px; font-style: normal;
+  }
+  .qtext .g { border: 1px solid var(--line); }
+  .cue { color: var(--muted); font-size: .82em; font-style: italic; font-weight: 400; }
+  .star { color: var(--muted); font-size: .8em; }
+  .qstep { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 6px; font-weight: 600; }
+  .caseline { margin: 0 0 10px; font-size: .95rem; }
+  .caseline .ok { color: var(--ok); font-weight: 700; }
+  .caseline .no { color: var(--bad); font-weight: 700; }
+  .opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .opts.cases { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .opt {
+    font: inherit; font-size: 1.08rem; font-weight: 500; color: var(--text); background: var(--surface);
+    border: 1.5px solid var(--line); border-radius: 10px; padding: 11px 14px; min-height: 52px;
+    display: flex; align-items: center; gap: 10px; text-align: left; cursor: pointer;
+  }
+  .opt:hover:not(:disabled) { border-color: var(--accent); }
+  .opt kbd { font: inherit; font-size: .7rem; color: var(--muted); border: 1px solid var(--line); border-radius: 5px; padding: 0 6px; }
+  .opt.k-nom { border-left: 6px solid var(--nom); }
+  .opt.k-akk { border-left: 6px solid var(--akk); }
+  .opt.k-dat { border-left: 6px solid var(--dat); }
+  .opt:disabled { cursor: default; }
+  .opt:disabled:not(.right):not(.wrong) { opacity: .5; }
+  .opt.right { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 15%, var(--surface)); }
+  .opt.wrong { border-color: var(--bad); background: color-mix(in srgb, var(--bad) 13%, var(--surface)); }
+  .fb { margin: 14px 0 0; padding: 10px 14px; border-radius: 10px; background: var(--chip); }
+  .fb p { margin: 3px 0; }
+  .verdict { font-weight: 700; }
+  .verdict.ok { color: var(--ok); }
+  .verdict.no { color: var(--bad); }
+  .next-row { display: flex; justify-content: flex-end; margin-top: 12px; }
+  .result { padding: 14px 16px; border-radius: 12px; background: var(--chip); }
+  .result.pass { background: color-mix(in srgb, var(--ok) 14%, var(--surface)); }
+  .result .score { font-size: 2rem; font-weight: 800; margin: 0; line-height: 1.2; }
+  .result p { margin: 4px 0; }
+  .quizbox h4 { margin: 16px 0 4px; }
+  ul.mist { list-style: none; padding: 0; margin: 0; }
+  ul.mist li { padding: 8px 0; border-bottom: 1px dashed var(--line); }
+  ul.mist li:last-child { border-bottom: 0; }
+  ul.mist span.de, ul.mist span.you, ul.mist span.why { display: block; }
+  ul.mist .you { font-size: .88rem; color: var(--bad); }
+  ul.mist .why { font-size: .92rem; }
+  .quizbox .toolbar { margin-top: 14px; }
+  @media (hover: none) { .opt kbd { display: none; } }
+  @media (max-width: 520px) { .opts.cases { grid-template-columns: 1fr; } .qtext { font-size: 1.15rem; } }
   @media (max-width: 860px) {
     .layout { display: block; }
     nav.toc { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); padding: 16px; }
-    nav.toc details summary { cursor: pointer; font-weight: 600; }
     main { padding: 24px 16px 60px; }
     section.lesson { padding: 20px 16px; }
     header.page h1 { font-size: 1.6rem; }
@@ -206,17 +307,18 @@
     .grid2, .grid3 { grid-template-columns: 1fr; }
     table.kasus td { font-size: .92rem; }
   }
-  @media (min-width: 861px) { nav.toc details > summary { display: none; } }
   @media print {
     nav.toc, .theme-btn { display: none; }
     .layout { display: block; }
     section.lesson { break-inside: avoid; box-shadow: none; }
     .quiz details { break-inside: avoid; }
     .toolbar { display: none !important; }
+    .lv-bar, .quizbox, .lvmap-row { display: none !important; }
+    .print-sheet .part { display: none !important; }
     body {
       --bg: #fff; --surface: #fff; --text: #1c1c1e; --muted: #5d6066; --line: #e3dfd5; --chip: #f1eee6;
       --accent: #2b59c3; --rule-bg: #f3f6fd; --recap-bg: #fbf7e9; --recap-line: #e8d9a4; --ok: #1f7a4d;
-      --prep: #c62828; --art: #1f5fbf; --contr: #a8660b;
+      --prep: #c62828; --art: #1f5fbf; --contr: #a8660b; --bad: #c62828;
       --nom: #1d7a46; --nom-bg: #e4f3ea; --akk: #b85400; --akk-bg: #fdecd9; --dat: #7440b8; --dat-bg: #efe6fb;
       -webkit-print-color-adjust: exact; print-color-adjust: exact;
     }
@@ -256,40 +358,59 @@
 </head>
 <body>
 <div class="layout">
-  <nav class="toc" aria-label="Lessons">
+  <nav class="toc" aria-label="Contents">
     <p class="brand">German A1</p>
-    <p class="brand-sub">Lessons from the class board</p>
+    <p class="brand-sub">Lessons and practice from class</p>
     <a class="pin" href="#kasus">Case cheat sheet<small>Nom · Akk · Dat in one chart</small></a>
     <details open>
       <summary>Lessons</summary>
       <ol>
-        <li><a href="#umlaut"><span class="n">1</span>Umlaut</a></li>
-        <li><a href="#wortschatz-1"><span class="n">2</span>Wortschatz 1</a></li>
-        <li><a href="#buchstabieren"><span class="n">3</span>Buchstabieren</a></li>
-        <li><a href="#wortschatz-2"><span class="n">4</span>Wortschatz 2</a></li>
-        <li><a href="#zahlen"><span class="n">5</span>Zahlen</a></li>
-        <li><a href="#tage"><span class="n">6</span>Tage &amp; Jahreszeiten</a></li>
-        <li><a href="#verben"><span class="n">7</span>Die Verben</a></li>
-        <li><a href="#datum"><span class="n">8</span>Das Datum</a></li>
-        <li><a href="#wie-gehts"><span class="n">9</span>Wie geht's?</a></li>
-        <li><a href="#ordinals"><span class="n">10</span>Ordinals</a></li>
-        <li><a href="#possessiv"><span class="n">11</span>Possessiv Pronomen</a></li>
-        <li><a href="#artikel"><span class="n">12</span>Die Artikel</a></li>
-        <li><a href="#satz"><span class="n">13</span>Satz formulieren</a></li>
-        <li><a href="#ja-nein"><span class="n">14</span>Ja/Nein Fragen</a></li>
-        <li><a href="#dativ"><span class="n">15</span>Dativ</a></li>
-        <li><a href="#kein"><span class="n">16</span>kein</a></li>
-        <li><a href="#nominativ"><span class="n">17</span>Kasus: Nominativ</a></li>
-        <li><a href="#akkusativ"><span class="n">18</span>Akkusativ</a></li>
-        <li><a href="#w-fragen"><span class="n">19</span>W-Fragen</a></li>
-        <li><a href="#uhrzeit"><span class="n">20</span>Die Uhrzeit</a></li>
-        <li><a href="#trennbare"><span class="n">21</span>Trennbare Verben</a></li>
-        <li><a href="#praeteritum"><span class="n">22</span>Präteritum</a></li>
-        <li><a href="#akk-praep"><span class="n">23</span>Akkusativ-Präpositionen</a></li>
-        <li><a href="#dat-praep"><span class="n">24</span>Dativ-Präpositionen</a></li>
-        <li><a href="#modalverben"><span class="n">25</span>Modalverben</a></li>
-        <li><a href="#wechsel"><span class="n">26</span>Wechselpräpositionen</a></li>
-        <li><a href="#kasus"><span class="n">27</span>Kasus-Spickzettel</a></li>
+        <li><a href="#umlaut"><span class="n">1</span><span class="lab">Umlaut <span class="tr">(ä, ö, ü)</span></span></a></li>
+        <li><a href="#wortschatz-1"><span class="n">2</span><span class="lab">Wortschatz 1 <span class="tr">(vocabulary 1)</span></span></a></li>
+        <li><a href="#buchstabieren"><span class="n">3</span><span class="lab">Buchstabieren <span class="tr">(spelling)</span></span></a></li>
+        <li><a href="#wortschatz-2"><span class="n">4</span><span class="lab">Wortschatz 2 <span class="tr">(vocabulary 2)</span></span></a></li>
+        <li><a href="#zahlen"><span class="n">5</span><span class="lab">Zahlen <span class="tr">(numbers)</span></span></a></li>
+        <li><a href="#tage"><span class="n">6</span><span class="lab">Tage &amp; Jahreszeiten <span class="tr">(days &amp; seasons)</span></span></a></li>
+        <li><a href="#verben"><span class="n">7</span><span class="lab">Die Verben <span class="tr">(the verbs)</span></span></a></li>
+        <li><a href="#datum"><span class="n">8</span><span class="lab">Das Datum <span class="tr">(the date)</span></span></a></li>
+        <li><a href="#wie-gehts"><span class="n">9</span><span class="lab">Wie geht's? <span class="tr">(how are you?)</span></span></a></li>
+        <li><a href="#ordinals"><span class="n">10</span><span class="lab">Ordinals <span class="tr">(first, second, third…)</span></span></a></li>
+        <li><a href="#possessiv"><span class="n">11</span><span class="lab">Possessiv Pronomen <span class="tr">(my, your, his…)</span></span></a></li>
+        <li><a href="#artikel"><span class="n">12</span><span class="lab">Die Artikel <span class="tr">(the articles: der, die, das)</span></span></a></li>
+        <li><a href="#satz"><span class="n">13</span><span class="lab">Satz formulieren <span class="tr">(building sentences)</span></span></a></li>
+        <li><a href="#ja-nein"><span class="n">14</span><span class="lab">Ja/Nein Fragen <span class="tr">(yes/no questions)</span></span></a></li>
+        <li><a href="#dativ"><span class="n">15</span><span class="lab">Dativ <span class="tr">(dative case: to whom?)</span></span></a></li>
+        <li><a href="#kein"><span class="n">16</span><span class="lab">kein <span class="tr">(no / not a)</span></span></a></li>
+        <li><a href="#nominativ"><span class="n">17</span><span class="lab">Kasus: Nominativ <span class="tr">(nominative case: the subject)</span></span></a></li>
+        <li><a href="#akkusativ"><span class="n">18</span><span class="lab">Akkusativ <span class="tr">(accusative case: the direct object)</span></span></a></li>
+        <li><a href="#w-fragen"><span class="n">19</span><span class="lab">W-Fragen <span class="tr">(question words: who, what, where…)</span></span></a></li>
+        <li><a href="#uhrzeit"><span class="n">20</span><span class="lab">Die Uhrzeit <span class="tr">(telling the time)</span></span></a></li>
+        <li><a href="#trennbare"><span class="n">21</span><span class="lab">Trennbare Verben <span class="tr">(separable verbs)</span></span></a></li>
+        <li><a href="#praeteritum"><span class="n">22</span><span class="lab">Präteritum <span class="tr">(simple past)</span></span></a></li>
+        <li><a href="#akk-praep"><span class="n">23</span><span class="lab">Akkusativ-Präpositionen <span class="tr">(prepositions + accusative)</span></span></a></li>
+        <li><a href="#dat-praep"><span class="n">24</span><span class="lab">Dativ-Präpositionen <span class="tr">(prepositions + dative)</span></span></a></li>
+        <li><a href="#modalverben"><span class="n">25</span><span class="lab">Modalverben <span class="tr">(modal verbs: can, must, want…)</span></span></a></li>
+        <li><a href="#wechsel"><span class="n">26</span><span class="lab">Wechselpräpositionen <span class="tr">(two-way prepositions)</span></span></a></li>
+        <li><a href="#kasus"><span class="n">27</span><span class="lab">Kasus-Spickzettel <span class="tr">(case cheat sheet)</span></span></a></li>
+      </ol>
+    </details>
+    <details open>
+      <summary>Practice</summary>
+      <ol>
+        <li><a href="#practice"><span class="n">–</span><span class="lab">How it works <span class="tr">(and your progress)</span></span></a></li>
+        <li><a href="#level-1"><span class="n">1</span><span class="lab">der, die, das <span class="tr">(gender)</span></span><span class="st"></span></a></li>
+        <li><a href="#level-2"><span class="n">2</span><span class="lab">ein, eine, kein <span class="tr">(a / no)</span></span><span class="st"></span></a></li>
+        <li><a href="#level-3"><span class="n">3</span><span class="lab">Akkusativ-Artikel <span class="tr">(accusative articles)</span></span><span class="st"></span></a></li>
+        <li><a href="#level-4"><span class="n">4</span><span class="lab">Dativ-Artikel <span class="tr">(dative articles)</span></span><span class="st"></span></a></li>
+        <li><a href="#level-5"><span class="n">5</span><span class="lab">Mix: Nom · Akk · Dat <span class="tr">(which case?)</span></span><span class="st"></span></a></li>
+        <li><a href="#level-6"><span class="n">6</span><span class="lab">Personalpronomen <span class="tr">(I, you, he…)</span></span><span class="st"></span></a></li>
+        <li><a href="#level-7"><span class="n">7</span><span class="lab">Pronomen Akk + Dat <span class="tr">(me, to me…)</span></span><span class="st"></span></a></li>
+        <li><a href="#level-8"><span class="n">8</span><span class="lab">Possessivartikel <span class="tr">(my, your…)</span></span><span class="st"></span></a></li>
+        <li><a href="#level-9"><span class="n">9</span><span class="lab">Possessiv Akk + Dat <span class="tr">(my, as object)</span></span><span class="st"></span></a></li>
+        <li><a href="#level-10"><span class="n">10</span><span class="lab">Akkusativ-Präpositionen <span class="tr">(für, ohne…)</span></span><span class="st"></span></a></li>
+        <li><a href="#level-11"><span class="n">11</span><span class="lab">Dativ-Präpositionen <span class="tr">(mit, aus…)</span></span><span class="st"></span></a></li>
+        <li><a href="#level-12"><span class="n">12</span><span class="lab">Wechselpräpositionen <span class="tr">(wo or wohin?)</span></span><span class="st"></span></a></li>
+        <li><a href="#level-13"><span class="n">13</span><span class="lab">Boss-Level <span class="tr">(everything mixed)</span></span><span class="st"></span></a></li>
       </ol>
     </details>
     <button class="theme-btn" type="button" id="themeBtn">Toggle dark mode</button>
@@ -298,9 +419,11 @@
   <main>
     <header class="page">
       <h1>German A1 Lessons</h1>
-      <p>The teacher's notes from the A1 class, lesson by lesson. Lessons 1–22 follow the class Miro board (left to right); lessons 23–26 are from later classes (16 Nov, 3 Nov, 20 Nov). Lesson 27 is a cheat sheet that puts all the cases in one chart.</p>
+      <p>The teacher's notes from the A1 class, lesson by lesson. Lessons 1–22 follow the class Miro board (left to right); lessons 23–26 are from later classes (16 Nov, 3 Nov, 20 Nov). Lesson 27 is a cheat sheet that puts all the cases in one chart. After the lessons, <a href="#practice">Practice</a> has 13 levels of multiple-choice questions that build up from der / die / das to all three cases.</p>
       <p class="legend">English in <span class="en add">grey italics</span> and anything inside a <span class="added" style="padding:0 6px;margin:0">dashed box</span> was added for this page; all other content comes from the class notes. Each lesson ends with a recap and a quick check: tap a question to see the answer.</p>
     </header>
+
+    <div class="part" id="lessons"><p class="eyebrow">Part 1</p><h2>Lessons</h2></div>
 
     <!-- 1 -->
     <section class="lesson" id="umlaut" style="--note:#f2a65a">
@@ -366,7 +489,7 @@
     <!-- 3 -->
     <section class="lesson" id="buchstabieren" style="--note:#f2a65a">
       <p class="eyebrow">Lesson 3</p>
-      <h2>Buchstabieren Sie bitte!</h2>
+      <h2>Buchstabieren Sie bitte! <span class="en add">(please spell it!)</span></h2>
       <p class="big">Buchstabieren Sie _________ bitte!</p>
       <p class="en add">Please spell _________!</p>
       <div class="table-wrap"><table>
@@ -473,7 +596,7 @@
     <!-- 6 -->
     <section class="lesson" id="tage" style="--note:#f6a8d6">
       <p class="eyebrow">Lesson 6</p>
-      <h2>Tage &amp; Jahreszeiten</h2>
+      <h2>Tage &amp; Jahreszeiten <span class="en add">(days &amp; seasons)</span></h2>
       <h3>Die Tage</h3>
       <ul class="ex">
         <li><span class="de">Heute ist Freitag</span><span class="en add">Today is Friday</span></li>
@@ -526,7 +649,7 @@
     <!-- 7 -->
     <section class="lesson" id="verben" style="--note:#3a3a3a">
       <p class="eyebrow">Lesson 7</p>
-      <h2>Die Verben</h2>
+      <h2>Die Verben <span class="en add">(the verbs)</span></h2>
       <div class="terms"><p class="lbl">Words used here</p><ul><li><b>verb</b> – an action or state word: kommen (to come), wohnen (to live)</li><li><b>conjugate</b> – change the verb's ending to match who does it: ich komm<b>e</b>, du komm<b>st</b></li><li><b>pronoun</b> – a word for a person or thing: ich, du, er, sie, es, wir, ihr, Sie, sie</li></ul></div>
       <div class="rule">
         <p>Verbs in German usually end with <b>n</b> or <b>en</b></p>
@@ -691,7 +814,7 @@
     <!-- 10 -->
     <section class="lesson" id="ordinals" style="--note:#5fd3c8">
       <p class="eyebrow">Lesson 10</p>
-      <h2>Ordinals</h2>
+      <h2>Ordinals <span class="en add">(first, second, third…)</span></h2>
       <div class="terms"><p class="lbl">Words used here</p><ul><li><b>ordinal</b> – a number that shows the order (1st, 2nd, 3rd), not how many (1, 2, 3)</li></ul></div>
       <p>1st, 25th, 100th</p>
       <div class="rule"><p>1-19 you need to add <b>te</b> to the number to make it an ordinal</p></div>
@@ -745,7 +868,7 @@
     <!-- 11 -->
     <section class="lesson" id="possessiv" style="--note:#4cbb7f">
       <p class="eyebrow">Lesson 11</p>
-      <h2>Possessiv Pronomen</h2>
+      <h2>Possessiv Pronomen <span class="en add">(my, your, his…)</span></h2>
       <div class="terms"><p class="lbl">Words used here</p><ul><li><b>pronoun</b> – a word for a person: ich, du, er …</li><li><b>possessive</b> – shows who something belongs to: my, your, his</li><li><b>noun</b> – a thing, person or place word, always with a capital letter: Buch, Mutter</li><li><b>M / F / N / Pl</b> – masculine, feminine, neuter gender, and plural</li></ul></div>
       <p>Belongingness, Possession · my, your, his, our, their</p>
       <div class="table-wrap"><table>
@@ -877,7 +1000,7 @@
     <!-- 13 -->
     <section class="lesson" id="satz" style="--note:#f07575">
       <p class="eyebrow">Lesson 13</p>
-      <h2>Satz formulieren</h2>
+      <h2>Satz formulieren <span class="en add">(building sentences)</span></h2>
       <div class="terms"><p class="lbl">Words used here</p><ul><li><b>subject</b> – who or what does the action: <b>Ich</b> trinke Wasser</li><li><b>verb</b> – the action word: Ich <b>trinke</b> Wasser</li><li><b>object</b> – who or what the action is done to: Ich trinke <b>Wasser</b></li><li><b>2nd position</b> – the verb is the 2nd building block, not always the 2nd word: Meine Eltern | <b>sind</b> | in Indien</li><li><b>infinitive</b> – the basic form of a verb, ending in -en: spielen, lernen</li></ul></div>
       <div class="rule">
         <p>Verb is always in the <b>2nd position</b></p>
@@ -948,7 +1071,7 @@
     <!-- 14 -->
     <section class="lesson" id="ja-nein" style="--note:#a594f9">
       <p class="eyebrow">Lesson 14</p>
-      <h2>Ja/Nein Fragen</h2>
+      <h2>Ja/Nein Fragen <span class="en add">(yes/no questions)</span></h2>
       <div class="terms"><p class="lbl">Words used here</p><ul><li><b>Ja/Nein-Frage</b> – a question you answer with ja (yes) or nein (no)</li><li><b>Verb + Subject + Object</b> – the verb comes first, then who does it (subject), then the rest</li></ul></div>
       <div class="rule">
         <p>Die Regel = <b>Verb + Subject + Object?</b></p>
@@ -1045,7 +1168,7 @@
     <!-- 15 -->
     <section class="lesson" id="dativ" style="--note:#6fb3f2">
       <p class="eyebrow">Lesson 15</p>
-      <h2>Dativ</h2>
+      <h2>Dativ <span class="en add">(dative case: to whom?)</span></h2>
       <div class="terms"><p class="lbl">Words used here</p><ul><li><b>case (Kasus)</b> – the form of the article that shows the noun's job in the sentence: der / den / dem Hund</li><li><b>Dativ</b> – the case of the person who receives something; ask Wem? (to whom?)</li><li><b>Dative verb</b> – a verb whose object is always Dativ: folgen, antworten, gratulieren, helfen, glauben, passen</li><li><b>object</b> – who or what the action is done to</li></ul></div>
       <div class="table-wrap"><table>
         <thead><tr><th>M</th><th>F</th><th>N</th><th>Pl</th></tr></thead>
@@ -1128,7 +1251,7 @@
     <!-- 17 -->
     <section class="lesson" id="nominativ" style="--note:#6fb3f2">
       <p class="eyebrow">Lesson 17</p>
-      <h2>Kasus: Nominativ</h2>
+      <h2>Kasus: Nominativ <span class="en add">(nominative case: the subject)</span></h2>
       <div class="terms"><p class="lbl">Words used here</p><ul><li><b>Kasus (case)</b> – the form of the article that shows the noun's job in the sentence</li><li><b>Nominativ</b> – the case of the subject</li><li><b>subject</b> – who or what does the action; ask Wer? or Was?: <b>Die Zeitung</b> ist interessant</li><li><b>object</b> – who or what the action is done to</li></ul></div>
       <div class="table-wrap"><table>
         <thead><tr><th>M</th><th>F</th><th>N</th><th>Pl</th></tr></thead>
@@ -1221,7 +1344,7 @@
     <!-- 19 -->
     <section class="lesson" id="w-fragen" style="--note:#f7e98e">
       <p class="eyebrow">Lesson 19</p>
-      <h2>W-Fragen</h2>
+      <h2>W-Fragen <span class="en add">(question words: who, what, where…)</span></h2>
       <div class="terms"><p class="lbl">Words used here</p><ul><li><b>W-Frage</b> – a question that starts with a W-word (wie, was, wer …) and can't be answered with ja / nein</li><li><b>subject</b> – who does the action</li></ul></div>
       <div class="table-wrap"><table>
         <tbody>
@@ -1311,7 +1434,7 @@
     <!-- 20 -->
     <section class="lesson" id="uhrzeit" style="--note:#f7e98e">
       <p class="eyebrow">Lesson 20</p>
-      <h2>Die Uhrzeit</h2>
+      <h2>Die Uhrzeit <span class="en add">(telling the time)</span></h2>
 
       <h3>Offiziell Zeit</h3>
       <div class="rule">
@@ -1417,7 +1540,7 @@
     <!-- 21 -->
     <section class="lesson" id="trennbare" style="--note:#a594f9">
       <p class="eyebrow">Lesson 21</p>
-      <h2>Trennbare Verben</h2>
+      <h2>Trennbare Verben <span class="en add">(separable verbs)</span></h2>
       <div class="terms"><p class="lbl">Words used here</p><ul><li><b>trennbar</b> – separable: the verb splits into two parts</li><li><b>Präfix</b> – the front part that splits off and goes to the end: an, ab, mit, vor …</li><li><b>Suffix</b> – in this rule, the verb part that stays in 2nd position: Der Zug <b>kommt</b> um 20 Uhr an</li><li><b>Subjekt / Objekt</b> – who does it / who or what it is done to</li></ul></div>
       <div class="rule">
         <p>Präfix · Suffix – immer ein Verb</p>
@@ -1530,7 +1653,7 @@
     <!-- 23 -->
     <section class="lesson" id="akk-praep" style="--note:#e57373">
       <p class="eyebrow">Lesson 23 · 16 Nov class</p>
-      <h2>Akkusativ-Präpositionen</h2>
+      <h2>Akkusativ-Präpositionen <span class="en add">(prepositions + accusative)</span></h2>
       <div class="terms"><p class="lbl">Words used here</p><ul><li><b>preposition (Präposition)</b> – a small word in front of a noun that shows where, when, how or with whom: für (for), ohne (without). In German it also decides the case of the noun after it</li><li><b>Akkusativ</b> – the case after these seven prepositions: der → den, ein → einen</li></ul></div>
       <div class="table-wrap"><table>
         <thead><tr><th></th><th>M</th><th>F</th><th>N</th><th>Pl</th></tr></thead>
@@ -1610,7 +1733,7 @@
     <!-- 24 -->
     <section class="lesson" id="dat-praep" style="--note:#6fb3f2">
       <p class="eyebrow">Lesson 24 · 16 Nov class</p>
-      <h2>Dativ-Präpositionen</h2>
+      <h2>Dativ-Präpositionen <span class="en add">(prepositions + dative)</span></h2>
       <div class="terms"><p class="lbl">Words used here</p><ul><li><b>preposition (Präposition)</b> – a small word in front of a noun that shows where, when, how or with whom: mit (with), nach (to). These seven always take Dativ</li><li><b>Dativ</b> – dem / der / dem / den (+n on the plural noun)</li><li><b>short form (Kurzform)</b> – preposition + article melted into one word: von dem = vom, zu dem = zum, zu der = zur</li></ul></div>
       <div class="table-wrap"><table>
         <thead><tr><th></th><th>M</th><th>F</th><th>N</th><th>Pl</th></tr></thead>
@@ -2214,7 +2337,197 @@
       </div>
     </section>
 
-    <footer>Lessons 1–22: the "A1 German Simona LG" class board, in board order (left to right). Lessons 23–24: the 16 Nov class notes. Lesson 25: the 3 Nov class notes (sollen examples, möchten and the sentence-formation section added). Lesson 26: the 20 Nov class notes. Lesson 27: a reference chart built from the case lessons, with standard A1 forms marked ✱. Student introductions and practice notes are not included.</footer>
+
+    <!-- ===== Part 2: Practice ===== -->
+    <div class="part practice" id="practice">
+      <p class="eyebrow">Part 2 · Übungen</p>
+      <h2>Practice</h2>
+      <p class="intro">13 levels that build up one step at a time: der / die / das first, then Akkusativ, Dativ, a mix of all three, personal pronouns, possessives and prepositions. The boss level at the end mixes everything. Every question uses sentences and words from your lessons.</p>
+      <div class="terms"><p class="lbl">Words used here</p><ul>
+        <li><b>gender tag</b> <span class="g">m</span> <span class="g">f</span> <span class="g">n</span> <span class="g">pl</span> – masculine (der), feminine (die), neuter (das), plural (die). From level 2 on, nouns carry one, so the question tests the case and not your memory of the gender</li>
+        <li><b>case</b> – <b class="c-nom">Nominativ</b> / <b class="c-akk">Akkusativ</b> / <b class="c-dat">Dativ</b>: the form that shows a noun's job (der / den / dem Hund)</li>
+        <li><b>cue</b> – the grey hint in brackets, like <span class="cue">(the)</span> <span class="cue">(a)</span> <span class="cue">(no)</span> <span class="cue">(my)</span>: which kind of word goes in the gap</li>
+      </ul></div>
+      <ul class="howto">
+        <li>Tap <b>Start</b> on any level. After each answer read the one-line <i>why</i>: that line is the lesson.</li>
+        <li>Pass with 8 / 10 (16 / 20 for the boss) to get a ✓. All levels are open; <b>Next</b> marks the first one you haven't passed yet.</li>
+        <li>Levels 5 and 13 ask two things per question: first which case, then the form.</li>
+        <li>💡 <b>Hint</b> shows the level's rule and costs nothing. On a laptop, keys 1–4 answer and Enter goes on.</li>
+        <li>Your progress is saved in this browser only.</li>
+      </ul>
+      <div class="lvmap-row">
+        <nav class="lvmap" aria-label="Levels"><a href="#level-1">1</a><a href="#level-2">2</a><a href="#level-3">3</a><a href="#level-4">4</a><a href="#level-5">5</a><a href="#level-6">6</a><a href="#level-7">7</a><a href="#level-8">8</a><a href="#level-9">9</a><a href="#level-10">10</a><a href="#level-11">11</a><a href="#level-12">12</a><a href="#level-13">13</a></nav>
+        <span class="passcount">Passed <b id="passCount">0</b> / 13</span>
+        <button class="btn quiet" type="button" id="resetProgress">Reset progress</button>
+      </div>
+    </div>
+
+    <section class="lesson level" id="level-1" data-level="1" style="--note:var(--nom)">
+      <p class="eyebrow">Practice · Level 1</p>
+      <h2>der, die, das <span class="en add">(gender)</span> <span class="lv-badge" hidden></span></h2>
+      <div class="rule rulecard">
+<p>Every noun has a gender: <b>der</b> (masculine) · <b>die</b> (feminine) · <b>das</b> (neuter). Plural is always <b>die</b>.</p>
+<p>Shortcuts: male people, days, months and seasons → der · female people → die · young humans (das Kind, das Baby, das Mädchen) and languages → das. For everything else, learn the noun <i>with</i> its article, as one word: „der Tisch“, never just „Tisch“.</p>
+<p class="rev">Revise: <a href="#artikel">Lesson 12 · Die Artikel</a></p>
+      </div>
+      <div class="lv-bar"><button class="btn primary start" type="button">Start · 10 questions</button><span class="best"></span></div>
+      <div class="quizbox" hidden></div>
+    </section>
+
+    <section class="lesson level" id="level-2" data-level="2" style="--note:var(--nom)">
+      <p class="eyebrow">Practice · Level 2</p>
+      <h2>ein, eine, kein <span class="en add">(a / no)</span> <span class="lv-badge" hidden></span></h2>
+      <div class="rule rulecard">
+<p><b class="c-nom">Nominativ</b> = the subject, and the object after <b>sein</b> („Das ist …“, „Er ist …“).</p>
+<p><b>ein</b> (m) · <b>eine</b> (f) · <b>ein</b> (n) · <b>–</b> (pl), and kein copies it: <b>kein</b> · <b>keine</b> · <b>kein</b> · <b>keine</b>.</p>
+<p>Hook: feminine and plural get the <b>-e</b>. The plural has no „a“: Das sind Bücher.</p>
+<p class="rev">Revise: <a href="#artikel">Lesson 12 · Die Artikel</a> · <a href="#kein">Lesson 16 · kein</a> · <a href="#nominativ">Lesson 17 · Nominativ</a></p>
+      </div>
+      <div class="lv-bar"><button class="btn primary start" type="button">Start · 10 questions</button><span class="best"></span></div>
+      <div class="quizbox" hidden></div>
+    </section>
+
+    <section class="lesson level" id="level-3" data-level="3" style="--note:var(--akk)">
+      <p class="eyebrow">Practice · Level 3</p>
+      <h2>Akkusativ-Artikel <span class="en add">(accusative articles)</span> <span class="lv-badge" hidden></span></h2>
+      <div class="rule rulecard">
+<p>Ask the verb <b>Was?</b> or <b>Wen?</b> The answer is the direct object → <b class="c-akk">Akkusativ</b>.</p>
+<p>Only masculine changes: der → <b class="c-akk">den</b> · ein → <b class="c-akk">einen</b> · kein → <b class="c-akk">keinen</b>. Feminine, neuter and plural stay exactly as in Nominativ.</p>
+<p class="rev">Revise: <a href="#akkusativ">Lesson 18 · Akkusativ</a></p>
+      </div>
+      <div class="lv-bar"><button class="btn primary start" type="button">Start · 10 questions</button><span class="best"></span></div>
+      <div class="quizbox" hidden></div>
+    </section>
+
+    <section class="lesson level" id="level-4" data-level="4" style="--note:var(--dat)">
+      <p class="eyebrow">Practice · Level 4</p>
+      <h2>Dativ-Artikel <span class="en add">(dative articles)</span> <span class="lv-badge" hidden></span></h2>
+      <div class="rule rulecard">
+<p>Dativ verbs put their object in the <b class="c-dat">Dativ</b>: folgen, antworten, gratulieren, helfen, glauben, passen. The person who <i>receives</i> something is Dativ too (Wem?).</p>
+<p><b class="c-dat">dem · der · dem · den</b> (m · f · n · pl) and einem · einer · einem. Chant the endings: -m · -r · -m · -n. In the plural the noun gets an extra -n: den Kinder<b>n</b>.</p>
+<p class="rev">Revise: <a href="#dativ">Lesson 15 · Dativ</a></p>
+      </div>
+      <div class="lv-bar"><button class="btn primary start" type="button">Start · 10 questions</button><span class="best"></span></div>
+      <div class="quizbox" hidden></div>
+    </section>
+
+    <section class="lesson level" id="level-5" data-level="5" style="--note:var(--accent)">
+      <p class="eyebrow">Practice · Level 5</p>
+      <h2>Mix: Nom · Akk · Dat <span class="en add">(which case?)</span> <span class="lv-badge" hidden></span></h2>
+      <div class="rule rulecard">
+<p>Two taps per question: first <b>which case</b>, then <b>which form</b>. Ask in this order:</p>
+<ol class="flow">
+<li>Is it the subject (Wer? Was? does the action), or after sein? → <span class="case nom">Nominativ</span></li>
+<li>Is the verb a Dativ verb (helfen, folgen …), or is it the person who receives (Wem?)? → <span class="case dat">Dativ</span></li>
+<li>Otherwise ask Was? / Wen? → <span class="case akk">Akkusativ</span></li>
+</ol>
+<p class="rev">Revise: <a href="#kasus">Lesson 27 · cheat sheet, block 0</a></p>
+      </div>
+      <div class="lv-bar"><button class="btn primary start" type="button">Start · 10 questions</button><span class="best"></span></div>
+      <div class="quizbox" hidden></div>
+    </section>
+
+    <section class="lesson level" id="level-6" data-level="6" style="--note:var(--nom)">
+      <p class="eyebrow">Practice · Level 6</p>
+      <h2>Personalpronomen <span class="en add">(I, you, he…)</span> <span class="lv-badge" hidden></span></h2>
+      <div class="rule rulecard">
+<p>ich · du · er · sie · es · wir · ihr · sie (they) · Sie (formal you)</p>
+<p>Two clues. The verb ending: du spiel<b>st</b>, ich lern<b>e</b>, ihr lern<b>t</b>. And the noun you replace: the pronoun copies the article's last letter: de<b>r</b> → e<b>r</b> · di<b>e</b> → si<b>e</b> · da<b>s</b> → e<b>s</b> · plural → sie. Things too: der Kuli → er.</p>
+<p class="rev">Revise: <a href="#verben">Lesson 7 · Die Verben</a> · <a href="#nominativ">Lesson 17 · Nominativ</a></p>
+      </div>
+      <div class="lv-bar"><button class="btn primary start" type="button">Start · 10 questions</button><span class="best"></span></div>
+      <div class="quizbox" hidden></div>
+    </section>
+
+    <section class="lesson level" id="level-7" data-level="7" style="--note:var(--accent)">
+      <p class="eyebrow">Practice · Level 7</p>
+      <h2>Pronomen Akk + Dat <span class="en add">(me, to me…)</span> <span class="lv-badge" hidden></span></h2>
+      <div class="rule rulecard">
+<p class="star-note">✱ These forms weren't in the class notes. They're on the cheat sheet (block 2).</p>
+<p><b class="c-akk">Akkusativ</b>: mich · dich · ihn · es · sie · uns · euch · sie · Sie</p>
+<p><b class="c-dat">Dativ</b>: mir · dir · ihm · ihm · ihr · uns · euch · ihnen · Ihnen</p>
+<p>Copy the article's last letter: de<b>n</b> → ih<b>n</b> · de<b>m</b> → ih<b>m</b> · de<b>r</b> → ih<b>r</b> · den (plural) → ihnen. ich and du: -ch = Akkusativ (mich), -r = Dativ (mir).</p>
+<p class="rev">Revise: <a href="#kasus">Lesson 27 · cheat sheet, block 2</a></p>
+      </div>
+      <div class="lv-bar"><button class="btn primary start" type="button">Start · 10 questions</button><span class="best"></span></div>
+      <div class="quizbox" hidden></div>
+    </section>
+
+    <section class="lesson level" id="level-8" data-level="8" style="--note:var(--nom)">
+      <p class="eyebrow">Practice · Level 8</p>
+      <h2>Possessivartikel <span class="en add">(my, your…)</span> <span class="lv-badge" hidden></span></h2>
+      <div class="rule rulecard">
+<p>Who owns it? ich → mein · du → dein · er → sein · sie → ihr · wir → unser · ihr → euer · sie (they) → ihr · Sie → Ihr</p>
+<p>Then look at the noun: masculine or neuter → no -e (mein Buch) · feminine or plural → <b>-e</b> (seine Mutter, meine Kinder). euer drops its e: eure.</p>
+<p class="rev">Revise: <a href="#possessiv">Lesson 11 · Possessiv Pronomen</a></p>
+      </div>
+      <div class="lv-bar"><button class="btn primary start" type="button">Start · 10 questions</button><span class="best"></span></div>
+      <div class="quizbox" hidden></div>
+    </section>
+
+    <section class="lesson level" id="level-9" data-level="9" style="--note:var(--accent)">
+      <p class="eyebrow">Practice · Level 9</p>
+      <h2>Possessiv Akk + Dat <span class="en add">(my, as object)</span> <span class="lv-badge" hidden></span></h2>
+      <div class="rule rulecard">
+<p>Possessive = owner + the ein-ending. Same questions as always: Was? / Wen? → <b class="c-akk">Akkusativ</b> · Dativ verb or Wem? → <b class="c-dat">Dativ</b>.</p>
+<p><b class="c-akk">Akkusativ</b>: meinen · meine · mein · meine &nbsp;·&nbsp; <b class="c-dat">Dativ</b>: meinem · meiner · meinem · meinen (+n)</p>
+<p class="rev">Revise: <a href="#dativ">Lesson 15</a> · <a href="#akkusativ">Lesson 18</a> · <a href="#kasus">cheat sheet, block 3</a></p>
+      </div>
+      <div class="lv-bar"><button class="btn primary start" type="button">Start · 10 questions</button><span class="best"></span></div>
+      <div class="quizbox" hidden></div>
+    </section>
+
+    <section class="lesson level" id="level-10" data-level="10" style="--note:var(--akk)">
+      <p class="eyebrow">Practice · Level 10</p>
+      <h2>Akkusativ-Präpositionen <span class="en add">(für, ohne…)</span> <span class="lv-badge" hidden></span></h2>
+      <div class="rule rulecard">
+<p><b class="mnem sp">DOGFUBE</b>: durch · ohne · gegen · für · um · bis · entlang → always <b class="c-akk">Akkusativ</b> (den · die · das · die, einen, meinen …).</p>
+<p>für = for · ohne = without · durch = through · um = at (time) / around · bis = till · gegen = against / around (time) · entlang = along, and it goes <i>after</i> the noun: den Fluss entlang.</p>
+<p class="rev">Revise: <a href="#akk-praep">Lesson 23 · Akkusativ-Präpositionen</a></p>
+      </div>
+      <div class="lv-bar"><button class="btn primary start" type="button">Start · 10 questions</button><span class="best"></span></div>
+      <div class="quizbox" hidden></div>
+    </section>
+
+    <section class="lesson level" id="level-11" data-level="11" style="--note:var(--dat)">
+      <p class="eyebrow">Practice · Level 11</p>
+      <h2>Dativ-Präpositionen <span class="en add">(mit, aus…)</span> <span class="lv-badge" hidden></span></h2>
+      <div class="rule rulecard">
+<p>aus · bei · mit · nach · von · zu + ab → always <b class="c-dat">Dativ</b> (dem · der · dem · den + n). ♪ Blue Danube.</p>
+<p>aus = from a country, out of · von = from local places and people · mit = with · bei = near, at, with · ab = from (time) · nach = to cities and countries, after · zu = to local places and people.</p>
+<p>Short forms: von dem = vom · zu dem = zum · zu der = zur.</p>
+<p class="rev">Revise: <a href="#dat-praep">Lesson 24 · Dativ-Präpositionen</a></p>
+      </div>
+      <div class="lv-bar"><button class="btn primary start" type="button">Start · 10 questions</button><span class="best"></span></div>
+      <div class="quizbox" hidden></div>
+    </section>
+
+    <section class="lesson level" id="level-12" data-level="12" style="--note:var(--accent)">
+      <p class="eyebrow">Practice · Level 12</p>
+      <h2>Wechselpräpositionen <span class="en add">(wo or wohin?)</span> <span class="lv-badge" hidden></span></h2>
+      <div class="rule rulecard">
+<p>in · an · auf · über · unter · vor · hinter · neben · zwischen</p>
+<p><b>Wo?</b> Nothing moves (stehen, liegen, hängt, ist) → <b class="c-dat">Dativ</b>. <b>Wohin?</b> Something moves from A to B (stellen, legen, hängen, gehen) → <b class="c-akk">Akkusativ</b>.</p>
+<p>Short forms: in dem = im · in das = ins · an dem = am · an das = ans.</p>
+<p class="rev">Revise: <a href="#wechsel">Lesson 26 · Wechselpräpositionen</a></p>
+      </div>
+      <div class="lv-bar"><button class="btn primary start" type="button">Start · 10 questions</button><span class="best"></span></div>
+      <div class="quizbox" hidden></div>
+    </section>
+
+    <section class="lesson level" id="level-13" data-level="13" style="--note:var(--prep)">
+      <p class="eyebrow">Practice · Level 13</p>
+      <h2>Boss-Level <span class="en add">(everything mixed)</span> <span class="lv-badge" hidden></span></h2>
+      <div class="rule rulecard">
+<p>20 questions from all twelve levels. Where a case applies, each question has two steps: case first, then form. Pass with 16. 💡 Hint shows the rule of the level each question comes from.</p>
+<p>The whole method in one line: a preposition? → it decides · the subject, or after sein? → <b class="c-nom">Nominativ</b> · a Dativ verb or the receiver (Wem?) → <b class="c-dat">Dativ</b> · otherwise (Was? Wen?) → <b class="c-akk">Akkusativ</b>.</p>
+<p class="rev">Revise: <a href="#kasus">Lesson 27 · Kasus-Spickzettel</a></p>
+      </div>
+      <div class="lv-bar"><button class="btn primary start" type="button">Start · 20 questions</button><span class="best"></span></div>
+      <div class="quizbox" hidden></div>
+    </section>
+
+    <footer>Lessons 1–22: the "A1 German Simona LG" class board, in board order (left to right). Lessons 23–24: the 16 Nov class notes. Lesson 25: the 3 Nov class notes (sollen examples, möchten and the sentence-formation section added). Lesson 26: the 20 Nov class notes. Lesson 27: a reference chart built from the case lessons, with standard A1 forms marked ✱. Practice: questions built from the lessons' own sentences and words; ✱ marks forms that weren't in the class notes. Student introductions and practice notes are not included.</footer>
   </main>
 </div>
 
@@ -2260,6 +2573,260 @@
       window.print();
     });
     window.addEventListener('afterprint', function () { document.documentElement.classList.remove('print-sheet'); });
+  })();
+
+  // Practice: 13 levels of multiple-choice questions.
+  // Each question: [sentence with ___, "right|wrong|…", why, English, case]. The first option is the right one.
+  (function () {
+    var BANK = {"1":[["___ Hund","der|die|das","Hund is masculine → **der** Hund. Learn every noun with its article, as one word.","the dog",""],["___ Katze","die|der|das","Katze is feminine → **die** Katze.","the cat",""],["___ Buch","das|der|die","Buch is neuter → **das** Buch.","the book",""],["___ Vater","der|die|das","Male people and family members are masculine → **der** Vater.","the father",""],["___ Mutter","die|der|das","Female people and family members are feminine → **die** Mutter.","the mother",""],["___ Kind","das|der|die","Young humans are often neuter → **das** Kind (das Baby too).","the child",""],["___ Montag","der|die|das","All days are masculine → **der** Montag.","Monday",""],["___ Sommer","der|die|das","All seasons are masculine → **der** Sommer.","summer",""],["___ Tisch","der|die|das","Tisch is masculine → **der** Tisch.","the table",""],["___ Lampe","die|der|das","Lampe is feminine → **die** Lampe.","the lamp",""],["___ Auto","das|der|die","Auto is neuter → **das** Auto.","the car",""],["___ Kinder","die|der|das","Plural is always **die**: das Kind → die Kinder.","the children",""],["___ Bücher","die|das|der","Plural is always **die**, even when the singular is das Buch.","the books",""],["___ Tochter","die|der|das","Female family member → **die** Tochter.","the daughter",""],["___ Deutsch","das|der|die","Languages used as nouns are neuter → **das** Deutsch.","German (the language)",""],["___ Apfel","der|die|das","Apfel is masculine → **der** Apfel.","the apple",""],["___ Banane","die|der|das","Banane is feminine → **die** Banane.","the banana",""],["___ Mädchen","das|die|der","Tricky one: a girl, but **das** Mädchen (a young human → das).","the girl",""],["___ Zug","der|die|das","Zug is masculine → **der** Zug (plural: die Züge).","the train",""]],"2":[["Das ist ___ Katze (f).","eine|ein|einen|einer","After „Das ist“ it is Nominativ. Feminine → **eine**.","That's a cat.","nom"],["Das ist ___ Hund (m).","ein|eine|einen|einem","Nominativ, masculine → **ein** (no ending).","That's a dog.","nom"],["Das ist ___ Buch (n).","ein|eine|einen|einem","Nominativ, neuter → **ein**, just like masculine.","That's a book.","nom"],["Er ist ___ Lehrer (m).","ein|einen|eine|einem","With sein the object stays Nominativ → **ein**, not einen.","He is a teacher.","nom"],["Das ist kein Auto, das ist ___ Taxi (n).","ein|eine|einen|kein","Taxi is neuter, Nominativ → **ein**.","That's not a car, that's a taxi.","nom"],["Das ist ___ Auto (n), das ist ein Taxi. (not a)","kein|keine|keinen|nicht","kein negates a noun and copies ein. Neuter → **kein**.","That's not a car, that's a taxi.","nom"],["___ Hund (m) spielt. (a)","Ein|Eine|Einen|Einem","The subject is Nominativ. Masculine → **Ein**.","A dog plays.","nom"],["___ Frau (f) trinkt Kaffee. (a)","Eine|Ein|Einen|Einer","The subject is Nominativ. Feminine adds -e → **Eine**.","A woman drinks coffee.","nom"],["Das sind ___ Kinder (pl). (no)","keine|kein|keinen|eine","Plural with „no“ → **keine** (feminine and plural get the -e).","These are not children.","nom"],["Das sind ___ Bücher (pl).","— nothing —|eine|ein|einen","Plural has no „a“, so **nothing** goes in the gap: Das sind Bücher.","These are books.","nom"],["Das ist ___ Hotel (n).","ein|eine|einen|einem","Neuter, Nominativ → **ein**.","That's a hotel.","nom"],["Das ist ___ Flasche (f). (not a)","keine|kein|keinen|keiner","Feminine → **keine**, the same ending as eine.","That's not a bottle.","nom"],["Das ist ___ Tisch (m). (not a)","kein|keine|keinen|keinem","Masculine Nominativ → **kein** (no ending). keinen is only for Akkusativ.","That's not a table.","nom"],["Ist das ___ Lampe (f)?","eine|ein|einen|einer","Feminine Nominativ → **eine**.","Is that a lamp?","nom"],["Das ist ___ Mann (m).","ein|einen|eine|einem","„Das ist“ keeps it in Nominativ → **ein**.","That's a man.","nom"]],"3":[["Du hast ___ Hund (m). (a)","einen|ein|eine|einem","haben → Was? → Akkusativ. Masculine changes: ein → **einen**.","You have a dog.","akk"],["Ich backe ___ Kuchen (m). (a)","einen|ein|eine|einem","Was backe ich? → Akkusativ. Masculine → **einen**.","I bake a cake.","akk"],["Ich sehe ___ Hund (m). (the)","den|der|dem|die","Wen sehe ich? → Akkusativ. der → **den**.","I see the dog.","akk"],["Ich sehe ___ Katze (f). (the)","die|den|der|das","Akkusativ, but feminine doesn't change → **die**.","I see the cat.","akk"],["Tanay isst ___ Pasta (f). (the)","die|den|der|dem","Was isst Tanay? → Akkusativ. Feminine stays **die**.","Tanay eats the pasta.","akk"],["Wir haben ___ Bungalow (m). (a)","einen|ein|eine|einem","haben → Akkusativ. Masculine → **einen**.","We have a bungalow.","akk"],["Er liest ___ Buch (n). (a)","ein|einen|eine|einem","Akkusativ, but neuter doesn't change → **ein**.","He reads a book.","akk"],["Paul nimmt ___ Tasche (f). (a)","eine|einen|ein|einer","Akkusativ, feminine stays → **eine**.","Paul takes a bag.","akk"],["Ich esse ___ Apfel (m). (an)","einen|ein|eine|einem","Was esse ich? → Akkusativ. Masculine → **einen**.","I eat an apple.","akk"],["Sie sieht ___ Film (m). (a)","einen|ein|eine|einem","Was sieht sie? → Akkusativ. Masculine → **einen**.","She watches a film.","akk"],["Wir haben ___ Geld (n). (no)","kein|keinen|keine|keinem","Akkusativ, neuter stays → **kein**.","We have no money.","akk"],["Raunak hat ___ Zeit (f). (no)","keine|kein|keinen|keiner","Akkusativ, feminine stays → **keine**.","Raunak has no time.","akk"],["Ich habe ___ Laptop (m). (no)","keinen|kein|keine|keinem","Akkusativ, masculine → kein becomes **keinen**.","I don't have a laptop.","akk"],["Sie bezahlt ___ Rechnung (f). (the)","die|den|der|dem","Was bezahlt sie? → Akkusativ. Feminine stays **die**.","She pays the bill.","akk"],["Meine Eltern buchen ___ Hotel (n). (a)","ein|einen|eine|einem","Akkusativ, neuter stays → **ein**.","My parents are booking a hotel.","akk"],["Er kauft ___ Computer (m). (a)","einen|ein|eine|einem","Was kauft er? → Akkusativ. Masculine → **einen**.","He buys a computer.","akk"],["Ich sehe ___ Kinder (pl). (the)","die|den|dem|der","Akkusativ plural stays **die**.","I see the children.","akk"]],"4":[["Der Hund folgt ___ Kindern (pl). (the)","den|die|dem|der","folgen is a Dativ verb. Plural Dativ → **den** (and Kinder gets -n).","The dog follows the children.","dat"],["Raunak antwortet ___ Lehrerin (f). (the)","der|die|dem|den","antworten → Dativ. Feminine Dativ → **der**.","Raunak answers the (female) teacher.","dat"],["Der Rock passt ___ Mädchen (n). (the)","dem|das|den|der","passen → Dativ. Neuter Dativ → **dem**.","The skirt fits the girl.","dat"],["Wir helfen ___ Leuten (pl). (the)","den|die|dem|der","helfen → Dativ. Plural → **den** Leuten.","We help the people.","dat"],["Ich helfe ___ Mann (m). (the)","dem|den|der|das","helfen → Dativ. Masculine → **dem**.","I help the man.","dat"],["Ich glaube ___ Kind (n). (the)","dem|das|den|der","glauben → Dativ. Neuter → **dem**.","I believe the child.","dat"],["Wir gratulieren ___ Lehrer (m). (the)","dem|den|der|das","gratulieren → Dativ. Masculine → **dem**.","We congratulate the teacher.","dat"],["Ich gebe ___ Hund (m) Wasser. (the)","dem|den|der|das","Wem gebe ich Wasser? The receiver is Dativ → **dem** Hund.","I give the dog water.","dat"],["Ich gebe ___ Katze (f) Milch. (the)","der|die|dem|den","Wem? → Dativ. Feminine → **der**. It looks like Nominativ der, but here it's Dativ.","I give the cat milk.","dat"],["Ich helfe ___ Kind (n). (a)","einem|ein|einen|einer","helfen → Dativ. Neuter → **einem**.","I help a child.","dat"],["Ich antworte ___ Frau (f). (a)","einer|eine|einem|einen","antworten → Dativ. Feminine → **einer**.","I answer a woman.","dat"],["Der Hund folgt den ___. (Kinder)","Kindern|Kinder","Dativ plural: the noun gets an extra **-n** → den Kindern.","The dog follows the children.","dat"],["Der Rock passt ___ Tochter (f). (the)","der|die|dem|den","passen → Dativ. Feminine → **der**.","The skirt fits the daughter.","dat"],["Die Hündin folgt ___ Mann (m). (the)","dem|den|der|das","folgen → Dativ. Masculine → **dem**.","The (female) dog follows the man.","dat"],["Ich gratuliere ___ Vater (m). (the)","dem|den|der|das","gratulieren → Dativ. Masculine → **dem**.","I congratulate the father.","dat"]],"5":[["___ Hund (m) schläft. (the)","Der|Den|Dem|Die","Who sleeps? The dog is the subject → Nominativ → **Der**.","The dog sleeps.","nom"],["Ich sehe ___ Hund (m). (the)","den|der|dem|die","Wen sehe ich? → Akkusativ → **den**.","I see the dog.","akk"],["Ich helfe ___ Hund (m). (the)","dem|den|der|die","helfen is a Dativ verb → **dem**.","I help the dog.","dat"],["Er ist ___ Lehrer (m). (a)","ein|einen|einem|eine","sein keeps the object in Nominativ → **ein**.","He is a teacher.","nom"],["Ich habe ___ Bruder (m). (a)","einen|ein|einem|eine","haben → Was? → Akkusativ → **einen**.","I have a brother.","akk"],["Ich glaube ___ Mann (m). (the)","dem|den|der|das","glauben is a Dativ verb → **dem**.","I believe the man.","dat"],["___ Zeitung (f) ist interessant. (the)","Die|Der|Den|Dem","The newspaper is the subject → Nominativ → **Die**.","The newspaper is interesting.","nom"],["Sie bezahlt ___ Rechnung (f). (the)","die|der|den|dem","Was bezahlt sie? → Akkusativ. Feminine stays **die**.","She pays the bill.","akk"],["Raunak antwortet ___ Lehrerin (f). (the)","der|die|den|dem","antworten → Dativ. Feminine → **der**.","Raunak answers the teacher.","dat"],["___ Kind (n) hat kein Handy. (the)","Das|Dem|Den|Der","The child is the subject → Nominativ → **Das**.","The child has no mobile.","nom"],["Ich gebe ___ Kind (n) einen Ball. (the)","dem|das|den|der","Wem gebe ich den Ball? The receiver → Dativ → **dem**.","I give the child a ball.","dat"],["Ich gebe dem Kind ___ Ball (m). (a)","einen|ein|einem|eine","Was gebe ich? The thing → Akkusativ → **einen**.","I give the child a ball.","akk"],["Der Rock passt ___ Mädchen (n). (the)","dem|das|den|der","passen → Dativ → **dem**.","The skirt fits the girl.","dat"],["Ich esse ___ Apfel (m). (an)","einen|ein|einem|eine","Was esse ich? → Akkusativ → **einen**.","I eat an apple.","akk"],["___ Kinder (pl) spielen Fußball. (the)","Die|Den|Der|Dem","The children are the subject → Nominativ → **Die**.","The children play football.","nom"],["Der Hund folgt ___ Kindern (pl). (the)","den|die|dem|der","folgen → Dativ. Plural → **den** Kindern.","The dog follows the children.","dat"],["Das ist ___ Taxi (n). (a)","ein|einen|einem|eine","„Das ist“ → Nominativ → **ein**.","That's a taxi.","nom"],["Wir haben ___ Bungalow (m). (a)","einen|ein|einem|eine","haben → Akkusativ → **einen**.","We have a bungalow.","akk"]],"6":[["___ spielst Fußball.","Du|Ich|Er|Wir","The ending -st belongs to **du**.","You play football.","nom"],["___ lerne Deutsch.","Ich|Du|Er|Ihr","The ending -e belongs to **ich**.","I learn German.","nom"],["___ machen Pizza. (we)","Wir|Ihr|Er|Du","we = **wir** (the verb keeps -en).","We make pizza.","nom"],["___ lernt Englisch. (you all)","Ihr|Wir|Du|Ich","you all = **ihr** (verb ending -t).","You (all) learn English.","nom"],["Fotografiert Paul gern? – Ja, ___ fotografiert gern.","er|sie|es|ihr","Paul is a man → **er**.","Does Paul like taking photos? – Yes, he does.","nom"],["Kocht deine Frau Pasta? – Ja, ___ kocht Pasta.","sie|er|es|ihr","deine Frau is feminine → **sie**.","Does your wife cook pasta? – Yes, she cooks pasta.","nom"],["Ist das Hotel berühmt? – Ja, ___ ist berühmt.","es|er|sie|das","das Hotel is neuter → **es**. The pronoun copies the article's last letter: da**s** → e**s**.","Is the hotel famous? – Yes, it is famous.","nom"],["Ist die Zeitung interessant? – Ja, ___ ist interessant.","sie|er|es|ihr","die Zeitung is feminine → **sie**. Things get er / sie / es too.","Is the newspaper interesting? – Yes, it is.","nom"],["Wo ist der Kuli? – ___ liegt auf dem Schreibtisch.","Er|Es|Sie|Ihr","der Kuli is masculine → **Er**. In German a pen is „he“: de**r** → e**r**.","Where is the pen? – It's lying on the desk.","nom"],["Wo sind meine Eltern? – ___ sind in Indien.","Sie|Er|Es|Ihr","Plural → **sie** (they); at the start of a sentence it's written Sie.","Where are my parents? – They are in India.","nom"],["Kommen ___ nach Paris? (you, formal)","Sie|sie|du|ihr","Formal you = **Sie**, always with a capital S.","Are you coming to Paris?","nom"],["Hörst ___ gern Musik?","du|ihr|Sie|er","Hörst ends in -st → **du**.","Do you like listening to music?","nom"],["Kommt ___ heute Abend? (you all)","ihr|du|wir|Sie","you all = **ihr** (ihr kommt).","Are you (all) coming this evening?","nom"],["Spielt das Kind? – Ja, ___ spielt.","es|er|sie|ihr","das Kind is neuter → **es**.","Is the child playing? – Yes, it is.","nom"],["Wo ist der Hund? – ___ schläft.","Er|Es|Sie|Wir","der Hund → **er**.","Where is the dog? – He's sleeping.","nom"]],"7":[["Ich sehe den Hund. → Ich sehe ___.","ihn|ihm|er|ihr","den Hund is Akkusativ masculine → **ihn** (copy the n: de**n** → ih**n**).","I see the dog. → I see him.","akk"],["Ich gebe dem Hund Wasser. → Ich gebe ___ Wasser.","ihm|ihn|er|ihr","dem Hund is Dativ → **ihm** (de**m** → ih**m**).","I give him water.","dat"],["Ich helfe der Frau. → Ich helfe ___.","ihr|sie|ihm|ihnen","der Frau is Dativ feminine → **ihr** (de**r** → ih**r**).","I help her.","dat"],["Ich gebe den Kindern Kekse. → Ich gebe ___ Kekse.","ihnen|sie|ihm|euch","den Kindern is Dativ plural → **ihnen**.","I give them cookies.","dat"],["Kannst du ___ helfen? (me)","mir|mich|ich|mein","helfen takes Dativ → **mir**.","Can you help me?","dat"],["Ich liebe ___. (you)","dich|dir|du|dein","lieben → Wen? → Akkusativ → **dich**.","I love you.","akk"],["Wie geht es ___? (you)","dir|dich|du|ihr","This phrase uses Dativ → **dir**.","How are you?","dat"],["Tanay isst die Pasta. → Tanay isst ___.","sie|ihr|ihn|es","die Pasta is Akkusativ feminine → **sie** (die stays die, sie stays sie).","Tanay eats it.","akk"],["Prathamesh verkauft seinen Laptop. → Er verkauft ___.","ihn|ihm|er|es","seinen Laptop is Akkusativ masculine → **ihn**. A thing, but still ihn.","He sells it.","akk"],["Er liest das Buch. → Er liest ___.","es|ihn|ihm|sie","das Buch is Akkusativ neuter → **es** (das and es don't change).","He reads it.","akk"],["Ich gratuliere meinem Bruder. → Ich gratuliere ___.","ihm|ihn|er|ihr","meinem Bruder is Dativ → **ihm**.","I congratulate him.","dat"],["Der Hund folgt den Kindern. → Der Hund folgt ___.","ihnen|sie|ihr|ihm","den Kindern is Dativ plural → **ihnen**.","The dog follows them.","dat"],["Siehst du ___? (us)","uns|wir|unser|euch","Akkusativ of wir → **uns** (the same in Dativ).","Do you see us?","akk"],["Ich helfe ___ gern. (you, formal)","Ihnen|Sie|Ihr|ihnen","helfen → Dativ. Formal you in Dativ → **Ihnen** (capital I).","I'm happy to help you.","dat"],["Raunak antwortet der Lehrerin. → Raunak antwortet ___.","ihr|sie|ihm|ihnen","antworten → Dativ, feminine → **ihr**.","Raunak answers her.","dat"],["Ich sehe ___. (you all)","euch|ihr|uns|dich","Akkusativ of ihr → **euch**.","I see you (all).","akk"]],"8":[["Das ist ___ Buch (n). (my)","mein|meine|meinen|meinem","Buch is neuter → no -e → **mein**.","That is my book.","nom"],["Das ist ___ Mutter (f). (his)","seine|sein|ihre|seinen","his = sein. Mutter is feminine → add -e → **seine**.","That is his mother.","nom"],["Das ist ___ Auto (n). (our)","unser|unsere|unseren|euer","our = unser. Auto is neuter → no -e → **unser**.","That is our car.","nom"],["Das ist ___ Tisch (m). (her)","ihr|ihre|sein|seine","her = ihr. Tisch is masculine → no -e → **ihr**.","That is her table.","nom"],["Sie sind ___ Kinder (pl). (my)","meine|mein|meinen|meinem","Plural → add -e → **meine**.","They are my kids.","nom"],["___ Eltern (pl) sind in Indien. (my)","Meine|Mein|Meinen|Meinem","Plural → **Meine**.","My parents are in India.","nom"],["Ist das ___ Schwester (f)? (your, du)","deine|dein|Ihre|seine","your (du) = dein. Feminine → **deine**.","Is that your sister?","nom"],["Ist das ___ Familie (f)? (your, formal)","Ihre|ihre|deine|Ihr","Formal your = Ihr, with a capital I. Feminine → **Ihre**.","Is that your family?","nom"],["Das sind ___ Bücher (pl). (your, you all)","eure|euer|ihre|deine","your (you all) = euer. Plural adds -e and euer drops its own e → **eure**.","Those are your (all) books.","nom"],["Das ist ___ Haus (n). (their)","ihr|ihre|sein|unser","their = ihr. Haus is neuter → no -e → **ihr**.","That is their house.","nom"],["Paul hat eine Schwester. ___ Schwester heißt Anna.","Seine|Ihre|Sein|Ihr","Paul → his = sein. Schwester is feminine → **Seine**.","Paul has a sister. His sister is called Anna.","nom"],["Anna hat einen Bruder. ___ Bruder heißt Paul.","Ihr|Sein|Ihre|Seine","Anna → her = ihr. Bruder is masculine → no -e → **Ihr**.","Anna has a brother. Her brother is called Paul.","nom"],["___ Frau (f) backt nur am Wochenende. (my)","Meine|Mein|Meinen|Meiner","Frau is feminine → **Meine**.","My wife only bakes at the weekend.","nom"],["Wo ist ___ Hund (m)? (your, du)","dein|deine|deinen|deinem","Hund is masculine, Nominativ → **dein**.","Where is your dog?","nom"]],"9":[["Prathamesh verkauft ___ Laptop (m). (his)","seinen|sein|seinem|seine","verkaufen → Was? → Akkusativ. Masculine → **seinen**.","Prathamesh sells his laptop.","akk"],["Ich gratuliere ___ Bruder (m). (my)","meinem|meinen|mein|meiner","gratulieren → Dativ. Masculine → **meinem**.","I congratulate my brother.","dat"],["Sie glaubt ___ Mutter (f). (her)","ihrer|ihre|ihrem|ihren","glauben → Dativ. Feminine → **ihrer**.","She believes her mother.","dat"],["Ich suche ___ Hund (m). (my)","meinen|mein|meinem|meine","suchen → Wen? → Akkusativ. Masculine → **meinen**.","I'm looking for my dog.","akk"],["Wir finden ___ Hotel (n). (our)","unser|unseren|unserem|unsere","finden → Akkusativ. Neuter doesn't change → **unser**.","We find our hotel.","akk"],["Mario bestellt jeden Tag ___ Abendessen (n). (his)","sein|seinen|seinem|seine","bestellen → Akkusativ. Neuter stays → **sein**.","Mario orders his dinner every day.","akk"],["Ich gebe ___ Hund (m) Wasser. (my)","meinem|meinen|mein|meiner","Wem? The receiver → Dativ. Masculine → **meinem**.","I give my dog water.","dat"],["Ich helfe ___ Schwester (f). (my)","meiner|meine|meinem|meinen","helfen → Dativ. Feminine → **meiner**.","I help my sister.","dat"],["Du suchst ___ Katze (f). (your)","deine|deiner|deinen|dein","suchen → Akkusativ. Feminine stays → **deine**.","You're looking for your cat.","akk"],["Der Hund folgt ___ Kindern (pl). (my)","meinen|meine|meinem|meiner","folgen → Dativ. Plural → **meinen** (and Kinder gets -n).","The dog follows my children.","dat"],["Ich antworte ___ Vater (m). (my)","meinem|meinen|mein|meiner","antworten → Dativ. Masculine → **meinem**.","I answer my father.","dat"],["Er sieht ___ Bruder (m). (his)","seinen|seinem|sein|seine","sehen → Akkusativ. Masculine → **seinen**.","He sees his brother.","akk"],["Sie verkauft ___ Fahrrad (n). (her)","ihr|ihren|ihrem|ihre","verkaufen → Akkusativ. Neuter stays → **ihr**.","She sells her bicycle.","akk"],["Der Rock passt ___ Tochter (f). (my)","meiner|meine|meinem|meinen","passen → Dativ. Feminine → **meiner**.","The skirt fits my daughter.","dat"],["Paul nimmt ___ Tasche (f). (his)","seine|seiner|seinen|sein","nehmen → Akkusativ. Feminine stays → **seine**.","Paul takes his bag.","akk"],["Wir helfen ___ Eltern (pl). (our) ✱","unseren|unsere|unserem|unser","helfen → Dativ. Plural → **unseren** (unser + en).","We help our parents.","dat"]],"10":[["Ich kaufe das Buch für ___ Vater (m). (my)","meinen|meinem|mein|meine","für → always Akkusativ. Masculine → **meinen**.","I buy the book for my father.","akk"],["Die Tasche ist für ___ Mädchen (n). (the)","das|dem|den|der","für → Akkusativ. Neuter stays → **das**.","The bag is for the girl.","akk"],["Er fährt ohne ___ Führerschein (m). (the)","den|dem|der|das","ohne → Akkusativ. Masculine → **den**.","He drives without the licence.","akk"],["Die Kinder laufen durch ___ Tür (f). (the)","die|der|den|dem","durch → Akkusativ. Feminine stays → **die**.","The children run through the door.","akk"],["Die Sonne scheint durch ___ Fenster (n). (the)","das|dem|den|der","durch → Akkusativ. Neuter stays → **das**.","The sun shines through the window.","akk"],["Die Familie sitzt jeden Abend um ___ Tisch (m). (the)","den|dem|der|das","um → Akkusativ. Masculine → **den**.","The family sits around the table every evening.","akk"],["Thomas fährt gegen ___ Wand (f). (the)","die|der|den|dem","gegen → Akkusativ. Feminine stays → **die**.","Thomas drives against the wall.","akk"],["Was hast du gegen ___ Bruder (m)? (my)","meinen|meinem|mein|meiner","gegen → Akkusativ. Masculine → **meinen**.","What do you have against my brother?","akk"],["Sie fährt ___ Fluss (m) entlang. (the)","den|dem|der|das","entlang at the end → Akkusativ. Masculine → **den**.","She travels along the river.","akk"],["Ich spaziere jeden Tag ___ Park (m) entlang. (the)","den|dem|der|das","entlang at the end → Akkusativ → **den** Park.","I walk along the park every day.","akk"],["Ich gehe ohne ___ Hund (m). (the)","den|dem|der|die","ohne → Akkusativ → **den**.","I go without the dog.","akk"],["Ich backe einen Kuchen für ___ Mutter (f). (my)","meine|meiner|meinen|meinem","für → Akkusativ. Feminine stays → **meine**.","I bake a cake for my mother.","akk"],["Ich kaufe einen Kuchen für ___ Kinder (pl). (the)","die|den|dem|der","für → Akkusativ. Plural stays → **die**.","I buy a cake for the children.","akk"],["Wir trinken Tee ___ Zucker. (without)","ohne|mit|für|um","without = **ohne**, one of DOGFUBE, always Akkusativ.","We drink tea without sugar.",""],["Ich komme täglich ___ 17 Uhr nach Hause. (at)","um|bis|gegen|für","at + a clock time = **um**.","I come home at 5 pm every day.",""],["Wir bleiben in den USA ___ Freitag. (till)","bis|um|für|durch","till = **bis**.","We are staying in the USA till Friday.",""]],"11":[["Ich nehme die Flasche aus ___ Kühlschrank (m). (the)","dem|den|der|das","aus → always Dativ. Masculine → **dem**.","I take the bottle out of the fridge.","dat"],["Er kommt gerade von ___ Uni (f). (the)","der|die|dem|den","von → Dativ. Feminine → **der**.","He is just coming from the university.","dat"],["Das Buch ist von ___ Schwester (f). (my)","meiner|meine|meinem|meinen","von → Dativ. Feminine → **meiner**.","The book is from my sister.","dat"],["Er geht mit ___ Bahn (f) ins Büro. (the)","der|die|dem|den","mit → Dativ. Feminine → **der**.","He goes to the office by train.","dat"],["Das Kind schreibt mit ___ Kuli (m). (the)","dem|den|der|das","mit → Dativ. Masculine → **dem**.","The child writes with the pen.","dat"],["Der Junge spielt mit ___ Kindern (pl). (the)","den|die|dem|der","mit → Dativ. Plural → **den** (and Kinder gets -n).","The boy plays with the children.","dat"],["Die Schule ist bei ___ Park (m). (the)","dem|den|der|das","bei → Dativ. Masculine → **dem**.","The school is near the park.","dat"],["Meine Tochter wohnt bei ___ Eltern (pl). (my)","meinen|meine|meinem|meiner","bei → Dativ. Plural → **meinen**.","My daughter lives with my parents.","dat"],["Er schreibt bei ___ Prüfung (f) ab. (the)","der|die|dem|den","bei → Dativ. Feminine → **der**.","He copies during the exam.","dat"],["Ab ___ nächsten Monat (m) mache ich einen Computerkurs. (the)","dem|den|der|das","ab → Dativ. Masculine → **dem**.","From next month I'm doing a computer course.","dat"],["Wir gehen ins Restaurant nach ___ Kurs (m). (our)","unserem|unseren|unser|unsere","nach → Dativ. Masculine → **unserem**.","We go to the restaurant after our course.","dat"],["Sie geht ___ Supermarkt (m). (to the)","zum|zur|zu den|nach","zu + dem → **zum** (Supermarkt is masculine).","She goes to the supermarket.","dat"],["Wir gehen ___ Kirche (f). (to the)","zur|zum|zu die|nach","zu + der → **zur** (Kirche is feminine).","We are going to the church.","dat"],["Ich komme ___ Arzt (m). (from the)","vom|von der|aus dem|zum","From a person → von. von + dem → **vom**.","I'm coming from the doctor.","dat"],["Er kommt ___ Japan.","aus|von|nach|zu","From a country → **aus**.","He comes from Japan.",""],["Ich fahre ___ Frankfurt.","nach|zu|aus|bei","To a city → **nach**.","I travel to Frankfurt.",""]],"12":[["Das Bild hängt an ___ Wand (f). (the)","der|die|dem|den","Wo hängt das Bild? Nothing moves → Dativ. Feminine → **der**.","The picture hangs on the wall.","dat"],["Ich hänge das Bild an ___ Wand (f). (the)","die|der|dem|den","Wohin? I move it to the wall → Akkusativ. Feminine → **die**.","I hang the picture on the wall.","akk"],["Das Buch steht in ___ Schrank (m). (the)","dem|den|der|das","Wo? stehen = position → Dativ → **dem** (in dem = im).","The book is in the cupboard.","dat"],["Er stellt das Buch auf ___ Schrank (m). (the)","den|dem|der|das","Wohin? stellen = movement → Akkusativ → **den**.","He puts the book on the cupboard.","akk"],["Die Hündin ist neben ___ Sofa (n). (the)","dem|das|den|der","Wo? She is there, not moving → Dativ → **dem**.","The (female) dog is next to the sofa.","dat"],["Die Hündin geht neben ___ Sofa (n). (the)","das|dem|den|der","Wohin? She goes there → Akkusativ. Neuter → **das**.","The (female) dog goes next to the sofa.","akk"],["Der Kuli liegt auf ___ Schreibtisch (m). (the)","dem|den|der|das","Wo? liegen = position → Dativ → **dem**.","The pen is lying on the desk.","dat"],["Sie legt den Kuli auf ___ Schreibtisch (m). (the)","den|dem|der|das","Wohin? legen = movement → Akkusativ → **den**.","She puts the pen on the desk.","akk"],["Die Uhr ist über ___ Regal (n). (the)","dem|das|den|der","Wo? → Dativ. Neuter → **dem**.","The clock is above the shelf.","dat"],["Ich hänge die Uhr über ___ Regal (n). (the)","das|dem|den|der","Wohin? → Akkusativ. Neuter stays → **das**.","I hang the clock above the shelf.","akk"],["Der Hund liegt auf ___ Sofa (n). (the)","dem|das|den|der","Wo? Lying still → Dativ → **dem**.","The dog is lying on the sofa.","dat"],["Der Hund springt auf ___ Sofa (n). (the)","das|dem|den|der","Wohin? Jumping onto it is movement → Akkusativ → **das**.","The dog jumps onto the sofa.","akk"],["Wir tanzen heute auf ___ Party (f). (the)","der|die|den|dem","Wo? We dance there, nothing goes from A to B → Dativ. Feminine → **der**.","We are dancing at the party today.","dat"],["Das Buch steht ___ Schrank (m). (in the)","im|ins|in den|in die","Wo? → Dativ: in dem = **im**.","The book is in the cupboard.","dat"],["Um 9 Uhr gehe ich ___ Büro (n). (into the)","ins|im|in dem|in der","Wohin? I go there → Akkusativ: in das = **ins**.","At 9 o'clock I go to the office.","akk"],["Das Buch ___ im Schrank. (stehen or stellen?)","steht|stellt","Position (Wo?) → **stehen**: Das Buch steht im Schrank.","The book is in the cupboard.",""],["Sie ___ den Kuli auf den Schreibtisch. (liegen or legen?)","legt|liegt","Movement (Wohin?) → **legen**: Sie legt den Kuli auf den Schreibtisch.","She puts the pen on the desk.",""]]};
+    var BOSS_PLAN = {"1": 1, "2": 1, "3": 2, "4": 2, "5": 2, "6": 1, "7": 2, "8": 1, "9": 2, "10": 2, "11": 2, "12": 2};
+    var LEVELS = 13, KEY = 'practice-v1';
+    var CASES = { nom: 'Nominativ', akk: 'Akkusativ', dat: 'Dativ' };
+    var CASECLS = { nom: 'c-nom', akk: 'c-akk', dat: 'c-dat' };
+    var GENDER = { m: 'masculine – der', f: 'feminine – die', n: 'neuter – das', pl: 'plural – die' };
+    if (!document.getElementById('practice')) return;
+
+    function cfg(lv) {
+      return lv === 13 ? { n: 20, pass: 16, mix: true, boss: true } : { n: 10, pass: 8, mix: lv === 5, boss: false };
+    }
+
+    var progress = {};
+    try { progress = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { progress = {}; }
+    function save() { try { localStorage.setItem(KEY, JSON.stringify(progress)); } catch (e) {} }
+    function passed(lv) { return (progress[lv] || 0) >= cfg(lv).pass; }
+
+    function shuffle(a) {
+      a = a.slice();
+      for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+      return a;
+    }
+    function toQ(r, lv) { var o = r[1].split('|'); return { s: r[0], opts: o, ans: o[0], why: r[2], en: r[3], c: r[4] || '', lv: lv }; }
+    function pick(lv) {
+      if (cfg(lv).boss) {
+        var out = [];
+        Object.keys(BOSS_PLAN).forEach(function (k) {
+          shuffle(BANK[k]).slice(0, BOSS_PLAN[k]).forEach(function (r) { out.push(toQ(r, +k)); });
+        });
+        return shuffle(out);
+      }
+      return shuffle(BANK[lv]).slice(0, cfg(lv).n).map(function (r) { return toQ(r, lv); });
+    }
+
+    function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+    function fillOf(a) { return a.indexOf('nothing') >= 0 ? '' : a; }
+    // Sentence → HTML: gender tags, grey cues, ✱, and the gap (or the filled-in answer).
+    function sentence(q, fill) {
+      var h = esc(q.s);
+      h = h.replace(/ ✱/g, ' <span class="star" title="Not from the class notes">✱</span>');
+      h = h.replace(/\((m|f|n|pl)\)/g, function (_, g) { return '<span class="g" title="' + GENDER[g] + '">' + g + '</span>'; });
+      h = h.replace(/\(([^)]+)\)/g, '<span class="cue">($1)</span>');
+      var gap = fill == null ? '<span class="gap">?</span>' : fill === '' ? '' : '<b class="fill ' + (CASECLS[q.c] || '') + '">' + esc(fill) + '</b>';
+      return h.replace('___', gap).replace(/ {2,}/g, ' ').replace(/ ([.?])/g, '$1');
+    }
+    // Why-line → HTML: **bold**, and the case names in their colours.
+    function rich(s) {
+      return esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/\b(Nominativ|Akkusativ|Dativ)\b/g, function (m) {
+        return '<b class="' + CASECLS[m.slice(0, 3).toLowerCase()] + '">' + m + '</b>';
+      });
+    }
+
+    var active = null; // the quiz the keyboard shortcuts drive
+
+    function start(sec, list, retry) {
+      var lv = +sec.getAttribute('data-level');
+      var st = { sec: sec, lv: lv, c: cfg(lv), list: shuffle(list), i: 0, score: 0, wrong: [], retry: !!retry };
+      sec._st = st; active = st;
+      var box = sec.querySelector('.quizbox');
+      box.hidden = false;
+      sec.querySelector('.start').textContent = 'Start again';
+      show(st);
+      box.scrollIntoView({ block: 'nearest' });
+    }
+
+    function show(st) {
+      var q = st.list[st.i], total = st.list.length, box = st.sec.querySelector('.quizbox');
+      st.step = st.c.mix && q.c ? 1 : 2;
+      st.caseOk = true; st.caseLine = ''; st.chosenCase = '';
+      box.innerHTML =
+        '<div class="qhead"><span>' + (st.retry ? 'Mistakes · ' : '') + 'Question ' + (st.i + 1) + ' / ' + total + '</span>' +
+        '<span>✓ ' + st.score + '</span><button class="btn hint" type="button" aria-expanded="false">💡 Hint</button></div>' +
+        '<div class="qbar"><i style="width:' + Math.round(st.i / total * 100) + '%"></i></div>' +
+        '<div class="hintbox rule" hidden></div>' +
+        '<p class="qtext">' + sentence(q) + '</p>' +
+        '<div class="qarea"></div>' +
+        '<div class="fb" hidden></div>' +
+        '<div class="next-row"><button class="btn primary go-next" type="button" hidden>' + (st.i + 1 < total ? 'Next →' : 'See my result') + '</button></div>';
+      renderOpts(st);
+      if (box.getBoundingClientRect().top < 0) box.scrollIntoView({ block: 'start' });
+    }
+
+    function renderOpts(st) {
+      var q = st.list[st.i], area = st.sec.querySelector('.qarea');
+      if (st.step === 1) {
+        area.innerHTML = '<p class="qstep">Step 1 of 2 · Which case?</p><div class="opts cases">' +
+          ['nom', 'akk', 'dat'].map(function (k, i) {
+            return '<button class="opt k-' + k + '" type="button" data-case="' + k + '"><kbd>' + (i + 1) + '</kbd><span>' + CASES[k] + '</span></button>';
+          }).join('') + '</div>';
+        return;
+      }
+      st.order = shuffle(q.opts);
+      area.innerHTML = (st.c.mix && q.c ? '<p class="qstep">Step 2 of 2 · Which form?</p>' + st.caseLine : '') +
+        '<div class="opts">' + st.order.map(function (o, i) {
+          return '<button class="opt" type="button" data-i="' + i + '"><kbd>' + (i + 1) + '</kbd><span>' + esc(o) + '</span></button>';
+        }).join('') + '</div>';
+    }
+
+    function answer(st, b) {
+      var q = st.list[st.i];
+      if (st.step === 1) {
+        var k = b.getAttribute('data-case');
+        st.caseOk = k === q.c; st.chosenCase = k;
+        st.caseLine = '<p class="caseline">' + (st.caseOk ? '<span class="ok">✓</span> ' : '<span class="no">✗</span> You chose ' + CASES[k] + '. It\'s ') +
+          '<span class="case ' + q.c + '">' + CASES[q.c] + '</span></p>';
+        st.step = 2;
+        renderOpts(st);
+        return;
+      }
+      var got = st.order[+b.getAttribute('data-i')], ok = got === q.ans, full = ok && st.caseOk;
+      st.sec.querySelectorAll('.qarea .opt').forEach(function (x) {
+        x.disabled = true;
+        var v = st.order[+x.getAttribute('data-i')];
+        if (v === q.ans) x.classList.add('right'); else if (x === b) x.classList.add('wrong');
+      });
+      if (full) st.score++;
+      else st.wrong.push({ q: q, got: got, gotCase: st.caseOk ? '' : st.chosenCase });
+      st.sec.querySelector('.qtext').innerHTML = sentence(q, fillOf(q.ans));
+      var fb = st.sec.querySelector('.fb');
+      fb.innerHTML = '<p class="verdict ' + (full ? 'ok' : 'no') + '">' +
+        (full ? '✓ Richtig!' : ok ? '½ Half right: the form is right, but the case is ' + CASES[q.c] + '.' : '✗ Not quite. The answer is <b>' + esc(q.ans) + '</b>.') + '</p>' +
+        '<p class="why">' + rich(q.why) + '</p><p class="en">' + esc(q.en) + '</p>';
+      fb.hidden = false;
+      st.sec.querySelector('.qhead span:nth-child(2)').textContent = '✓ ' + st.score;
+      var nx = st.sec.querySelector('.go-next');
+      nx.hidden = false;
+      try { nx.focus({ preventScroll: true }); } catch (e) { nx.focus(); }
+    }
+
+    function next(st) {
+      st.i++;
+      if (st.i < st.list.length) show(st); else finish(st);
+    }
+
+    function finish(st) {
+      var total = st.list.length, lv = st.lv, box = st.sec.querySelector('.quizbox');
+      var pass = st.score >= st.c.pass, msg, cls = '';
+      if (st.retry) {
+        msg = 'Mistakes round: ' + st.score + ' of ' + total + ' right now. This doesn\'t change your level score. Start the level again for a new score.';
+      } else {
+        if (st.score > (progress[lv] || 0)) { progress[lv] = st.score; save(); }
+        cls = pass ? 'pass' : 'fail';
+        msg = st.score === total ? 'Perfekt! Every answer right.' :
+          pass ? 'Passed ✓ Level ' + lv + ' is done.' :
+          'You need ' + st.c.pass + ' to pass. Read the mistakes below, then try again. You get a new mix of questions every time.';
+        if (pass && lv === LEVELS) msg += ' You beat the boss level. Super gemacht!';
+      }
+      var html = '<div class="result ' + cls + '"><p class="score">' + st.score + ' / ' + total + '</p><p>' + msg + '</p></div>';
+      if (st.wrong.length) {
+        html += '<h4>Your mistakes</h4><ul class="mist">' + st.wrong.map(function (w) {
+          return '<li><span class="de">' + sentence(w.q, fillOf(w.q.ans)) + '</span>' +
+            '<span class="you">You chose: ' + (w.gotCase ? CASES[w.gotCase] + ' · ' : '') + esc(w.got) + '</span>' +
+            '<span class="why">' + rich(w.q.why) + '</span></li>';
+        }).join('') + '</ul>';
+      }
+      html += '<div class="toolbar">' +
+        (st.wrong.length ? '<button class="btn primary retry" type="button">Retry my mistakes (' + st.wrong.length + ')</button>' : '') +
+        '<button class="btn again" type="button">New ' + st.c.n + ' questions</button>' +
+        (lv < LEVELS && !st.retry && pass ? '<a class="btn primary" href="#level-' + (lv + 1) + '">Level ' + (lv + 1) + ' →</a>' : '') +
+        '</div>';
+      st.mistakes = st.wrong.map(function (w) { return w.q; });
+      box.innerHTML = html;
+      updateStatus();
+      if (box.getBoundingClientRect().top < 0) box.scrollIntoView({ block: 'start' });
+    }
+
+    function toggleHint(st, btn) {
+      var hb = st.sec.querySelector('.hintbox');
+      if (hb.hidden) {
+        var q = st.list[st.i], card = document.querySelector('#level-' + q.lv + ' .rulecard');
+        hb.innerHTML = (st.c.boss ? '<p class="lbl">Rule from level ' + q.lv + '</p>' : '') + (card ? card.innerHTML : '');
+      }
+      hb.hidden = !hb.hidden;
+      btn.setAttribute('aria-expanded', hb.hidden ? 'false' : 'true');
+    }
+
+    function updateStatus() {
+      var nextLv = 0, count = 0, lv;
+      for (lv = 1; lv <= LEVELS; lv++) { if (passed(lv)) count++; else if (!nextLv) nextLv = lv; }
+      for (lv = 1; lv <= LEVELS; lv++) {
+        var done = passed(lv), isNext = lv === nextLv, best = progress[lv];
+        var st = document.querySelector('nav.toc a[href="#level-' + lv + '"] .st');
+        if (st) { st.textContent = done ? '✓' : isNext ? 'Next' : ''; st.className = 'st' + (done ? ' done' : isNext ? ' next' : ''); }
+        var sec = document.getElementById('level-' + lv);
+        if (sec) {
+          var badge = sec.querySelector('.lv-badge');
+          badge.hidden = !(done || isNext);
+          badge.textContent = done ? '✓ Passed' : 'Next';
+          badge.className = 'lv-badge ' + (done ? 'done' : 'next');
+          sec.querySelector('.best').textContent = best != null ? 'Best: ' + best + ' / ' + cfg(lv).n : '';
+        }
+        var chip = document.querySelector('.lvmap a[href="#level-' + lv + '"]');
+        if (chip) {
+          chip.className = done ? 'done' : isNext ? 'next' : '';
+          chip.title = 'Level ' + lv + (done ? ' · passed' : isNext ? ' · next' : '');
+        }
+      }
+      document.getElementById('passCount').textContent = count;
+    }
+
+    document.addEventListener('click', function (e) {
+      var sec = e.target.closest && e.target.closest('section.level');
+      if (!sec) return;
+      if (e.target.closest('.start')) { start(sec, pick(+sec.getAttribute('data-level'))); return; }
+      var st = sec._st, b;
+      if (!st) return;
+      active = st;
+      if ((b = e.target.closest('.qarea .opt'))) { if (!b.disabled) answer(st, b); }
+      else if (e.target.closest('.go-next')) next(st);
+      else if ((b = e.target.closest('.hint'))) toggleHint(st, b);
+      else if (e.target.closest('.retry')) start(sec, st.mistakes, true);
+      else if (e.target.closest('.again')) start(sec, pick(st.lv));
+    });
+
+    // Keys 1–4 answer, Enter goes to the next question (only while that quiz is on screen).
+    document.addEventListener('keydown', function (e) {
+      if (!active || e.ctrlKey || e.metaKey || e.altKey) return;
+      var t = e.target, tag = t && t.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || (t && t.isContentEditable)) return;
+      var box = active.sec.querySelector('.quizbox');
+      if (box.hidden) return;
+      var r = box.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) return;
+      if (/^[1-4]$/.test(e.key)) {
+        var b = box.querySelectorAll('.qarea .opt')[+e.key - 1];
+        if (b && !b.disabled) { e.preventDefault(); b.click(); }
+      } else if (e.key === 'Enter') {
+        if (tag === 'BUTTON' || tag === 'A' || tag === 'SUMMARY') return; // the browser clicks it already
+        var nx = box.querySelector('.go-next:not([hidden])');
+        if (nx) { e.preventDefault(); nx.click(); }
+      }
+    });
+
+    // Reset needs two taps, so one stray tap can't wipe your progress.
+    var reset = document.getElementById('resetProgress'), timer = null;
+    reset.addEventListener('click', function () {
+      if (!reset.classList.contains('armed')) {
+        reset.classList.add('armed'); reset.textContent = 'Tap again to reset';
+        timer = setTimeout(function () { reset.classList.remove('armed'); reset.textContent = 'Reset progress'; }, 4000);
+        return;
+      }
+      clearTimeout(timer);
+      progress = {}; save();
+      reset.classList.remove('armed'); reset.textContent = 'Progress reset';
+      setTimeout(function () { reset.textContent = 'Reset progress'; }, 2500);
+      updateStatus();
+    });
+
+    updateStatus();
   })();
 
   // Dark mode toggle (remembered per browser when storage is available).
