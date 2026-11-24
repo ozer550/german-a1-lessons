@@ -177,6 +177,18 @@
   #kasus.testing .drill .f:not(.shown) * { color: transparent !important; background: transparent !important; }
   nav.toc a.pin { display: block; margin: 0 0 16px; padding: 8px 12px; border: 1px solid var(--accent); border-radius: 10px; color: var(--accent); font-weight: 600; }
   nav.toc a.pin small { display: block; color: var(--muted); font-weight: 400; font-size: .78rem; }
+  nav.toc a.pin + a.pin { margin-top: -8px; }
+  dl.gloss { margin: 6px 0; }
+  dl.gloss > div { padding: 9px 0; border-bottom: 1px dashed var(--line); }
+  dl.gloss > div:last-child { border-bottom: 0; }
+  dl.gloss dt { font-weight: 700; }
+  dl.gloss dt i { font-weight: 400; font-style: normal; color: var(--muted); }
+  dl.gloss dd { margin: 2px 0 0; }
+  dl.gloss .eg { display: block; font-size: .93rem; margin-top: 3px; }
+  a.see { display: inline-block; font-size: .75rem; padding: 0 7px; border-radius: 999px; background: var(--chip); color: var(--accent); text-decoration: none; margin-top: 3px; }
+  a.see:hover { text-decoration: underline; }
+  .chips a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .chips a:hover { text-decoration: underline; }
   .quiz { margin-top: 16px; }
   .quiz h3 { margin: 0 0 8px !important; }
   .quiz details { border: 1px solid var(--line); border-radius: 10px; margin: 8px 0; background: var(--surface); }
@@ -255,6 +267,7 @@
     <p class="brand">German A1</p>
     <p class="brand-sub">Lessons from the class board</p>
     <a class="pin" href="#kasus">Case cheat sheet<small>Nom · Akk · Dat in one chart</small></a>
+    <a class="pin" href="#glossar">Grammar words<small>What is a preposition, a case …?</small></a>
     <details open>
       <summary>Lessons</summary>
       <ol>
@@ -285,6 +298,7 @@
         <li><a href="#modalverben"><span class="n">25</span>Modalverben</a></li>
         <li><a href="#wechsel"><span class="n">26</span>Wechselpräpositionen</a></li>
         <li><a href="#kasus"><span class="n">27</span>Kasus-Spickzettel</a></li>
+        <li><a href="#glossar"><span class="n">28</span>Grammar words</a></li>
       </ol>
     </details>
     <button class="theme-btn" type="button" id="themeBtn">Toggle dark mode</button>
@@ -293,7 +307,7 @@
   <main>
     <header class="page">
       <h1>German A1 Lessons</h1>
-      <p>The teacher's notes from the A1 class, lesson by lesson. Lessons 1–22 follow the class Miro board (left to right); lessons 23–26 are from later classes (16 Nov, 3 Nov, 20 Nov). Lesson 27 is a cheat sheet that puts all the cases in one chart.</p>
+      <p>The teacher's notes from the A1 class, lesson by lesson. Lessons 1–22 follow the class Miro board (left to right); lessons 23–26 are from later classes (16 Nov, 3 Nov, 20 Nov). Lesson 27 is a cheat sheet that puts all the cases in one chart, and lesson 28 explains the grammar words (preposition, case, infinitive …).</p>
       <p class="legend">English in <span class="en add">grey italics</span> and anything inside a <span class="added" style="padding:0 6px;margin:0">dashed box</span> was added for this page; all other content comes from the class notes. Each lesson ends with a recap and a quick check: tap a question to see the answer.</p>
     </header>
 
@@ -2007,7 +2021,7 @@
     <section class="lesson" id="kasus" style="--note:#2b59c3">
       <p class="eyebrow">Lesson 27 · Reference</p>
       <h2>Der Kasus-Spickzettel – the case cheat sheet</h2>
-      <p class="noprint">Spickzettel = cheat sheet. Everything from lessons 11, 15–18 and 23–26 on one page: articles, personal pronouns, possessive pronouns and prepositions in <span class="case nom">Nominativ</span> <span class="case akk">Akkusativ</span> <span class="case dat">Dativ</span>. The colours are the same in every table, so after a while your eye knows "orange = Akkusativ" without reading.</p>
+      <p class="noprint">Spickzettel = cheat sheet. Everything from lessons 11, 15–18 and 23–26 on one page: articles, personal pronouns, possessive pronouns and prepositions in <span class="case nom">Nominativ</span> <span class="case akk">Akkusativ</span> <span class="case dat">Dativ</span>. The colours are the same in every table, so after a while your eye knows "orange = Akkusativ" without reading. Not sure what a case or a preposition is? See <a href="#glossar">Grammar words</a>.</p>
       <p class="colorkey">✱ = a standard A1 form that wasn't in the class notes, added so the chart is complete. <b class="end">Highlighted</b> = the ending to remember.</p>
       <div class="toolbar">
         <button class="btn" type="button" id="drillBtn" aria-pressed="false">Test me</button>
@@ -2191,7 +2205,156 @@
       </div>
     </section>
 
-    <footer>Lessons 1–22: the "A1 German Simona LG" class board, in board order (left to right). Lessons 23–24: the 16 Nov class notes. Lesson 25: the 3 Nov class notes (sollen examples, möchten and the sentence-formation section added). Lesson 26: the 20 Nov class notes. Lesson 27: a reference chart built from the case lessons, with standard A1 forms marked ✱. Student introductions and practice notes are not included.</footer>
+    <!-- 28 -->
+    <section class="lesson" id="glossar" style="--note:#c9a227">
+      <p class="eyebrow">Lesson 28 · Reference</p>
+      <h2>Grammar words – the jargon explained</h2>
+      <p>The notes use words like <i>Präposition</i>, <i>Akkusativ</i> or <i>Infinitiv</i>. Here is each one in plain English, with a tiny example and the lesson where it comes up. <span class="en add">Written for this page, not from the class notes.</span></p>
+      <div class="chips">
+        <span><a href="#g-words">Word types</a></span><span><a href="#g-gender">Gender &amp; number</a></span><span><a href="#g-sentence">Parts of a sentence</a></span><span><a href="#g-cases">Cases</a></span><span><a href="#g-verbs">Verb words</a></span><span><a href="#g-sounds">Sounds</a></span>
+      </div>
+
+      <h3 id="g-words">Word types</h3>
+      <dl class="gloss">
+        <div><dt>Noun <i>· Nomen / Substantiv</i></dt>
+          <dd>A person, animal, thing, place or idea. In German every noun starts with a capital letter.
+          <span class="eg">der <b>Hund</b> (dog) · die <b>Stadt</b> (city) · das <b>Buch</b> (book)</span></dd></div>
+        <div><dt>Verb <i>· Verb</i></dt>
+          <dd>An action or a state: what someone does or is.
+          <span class="eg">Ich <b class="mv">spiele</b> Fußball. · Er <b class="mv">ist</b> müde.</span> <a class="see" href="#verben">lesson 7</a></dd></div>
+        <div><dt>Article <i>· Artikel</i></dt>
+          <dd>The small word in front of a noun. It shows the noun's gender and case. <b>Definite</b> (bestimmter Artikel) = "the": der, die, das. <b>Indefinite</b> (unbestimmter Artikel) = "a / an": ein, eine. <b>kein</b> = "no / not a".
+          <span class="eg"><b class="ar">der</b> Hund · <b class="ar">ein</b> Hund · <b class="ar">kein</b> Hund</span> <a class="see" href="#artikel">lesson 12</a> <a class="see" href="#kein">lesson 16</a></dd></div>
+        <div><dt>Pronoun <i>· Pronomen</i></dt>
+          <dd>A short word that stands in for a noun, so you don't repeat it. The personal pronouns are ich, du, er, sie, es, wir, ihr, sie, Sie.
+          <span class="eg">Der Hund schläft. → <b>Er</b> schläft.</span> <a class="see" href="#kasus">lesson 27</a></dd></div>
+        <div><dt>Possessive pronoun <i>· Possessivpronomen</i></dt>
+          <dd>Says who something belongs to: mein (my), dein (your), sein (his), ihr (her) …
+          <span class="eg"><b>mein</b> Buch · <b>seine</b> Mutter</span> <a class="see" href="#possessiv">lesson 11</a></dd></div>
+        <div><dt>Preposition <i>· Präposition</i></dt>
+          <dd>A small word that goes in front of a noun ("pre-position" = placed before) and shows where, when, how or with whom: in, auf, mit, für, nach … In German each preposition also decides the case of the noun after it.
+          <span class="eg">Ich spiele <b class="pr">mit</b> dem Hund. · Das Buch ist <b class="pr">für</b> meinen Vater.</span> <a class="see" href="#akk-praep">lesson 23</a> <a class="see" href="#dat-praep">24</a> <a class="see" href="#wechsel">26</a></dd></div>
+        <div><dt>Adjective <i>· Adjektiv</i></dt>
+          <dd>Describes a noun: what it is like.
+          <span class="eg">Das Hotel ist <b>berühmt</b>. · Die Zeitung ist <b>interessant</b>.</span> <a class="see" href="#nominativ">lesson 17</a></dd></div>
+        <div><dt>Question word <i>· W-Wort</i></dt>
+          <dd>The words that start a question, almost all with W: wer (who), was (what), wo (where), wohin (where to), wann (when), warum (why), wie (how).
+          <span class="eg"><b>Wann</b> lernen wir Deutsch?</span> <a class="see" href="#w-fragen">lesson 19</a></dd></div>
+      </dl>
+
+      <h3 id="g-gender">Gender &amp; number</h3>
+      <dl class="gloss">
+        <div><dt>Gender <i>· Genus</i></dt>
+          <dd>Every German noun is <b>masculine</b> (M, der), <b>feminine</b> (F, die) or <b>neuter</b> (N, das). It's often not logical (das Mädchen, "the girl", is neuter), so learn every noun together with its article.
+          <span class="eg"><b class="ar">der</b> Tisch · <b class="ar">die</b> Lampe · <b class="ar">das</b> Bild</span> <a class="see" href="#artikel">lesson 12</a></dd></div>
+        <div><dt>Singular / Plural</dt>
+          <dd>One thing / more than one. In the plural the Nominativ article is always <b>die</b>.
+          <span class="eg">der Hund → <b class="ar">die</b> Hunde</span></dd></div>
+      </dl>
+
+      <h3 id="g-sentence">Parts of a sentence</h3>
+      <dl class="gloss">
+        <div><dt>Subject <i>· Subjekt</i></dt>
+          <dd>Who or what does the action. Ask <b>Wer?</b> or <b>Was?</b> The subject is always in Nominativ.
+          <span class="eg"><b class="c-nom">Der Hund</b> schläft.</span> <a class="see" href="#nominativ">lesson 17</a></dd></div>
+        <div><dt>Direct object <i>· Akkusativobjekt</i></dt>
+          <dd>The person or thing the action goes straight to. Ask <b>Wen?</b> or <b>Was?</b>
+          <span class="eg">Ich sehe <b class="c-akk">den Hund</b>.</span> <a class="see" href="#akkusativ">lesson 18</a></dd></div>
+        <div><dt>Indirect object <i>· Dativobjekt</i></dt>
+          <dd>The person who receives something or gets the benefit. Ask <b>Wem?</b>
+          <span class="eg">Ich gebe <b class="c-dat">dem Hund</b> Wasser.</span> <a class="see" href="#dativ">lesson 15</a></dd></div>
+        <div><dt>Word order <i>· Satzbau</i></dt>
+          <dd>The order of words in a sentence. The big rule: the conjugated verb is always in <b>position 2</b>.
+          <span class="eg">Ich <b class="mv">spiele</b> heute Fußball. · Heute <b class="mv">spiele</b> ich Fußball.</span> <a class="see" href="#satz">lesson 13</a></dd></div>
+        <div><dt>Yes/no question <i>· Ja/Nein-Frage, VSO</i></dt>
+          <dd>A question you answer with ja or nein. The verb comes first: <b>V</b>erb – <b>S</b>ubject – <b>O</b>bject.
+          <span class="eg"><b class="mv">Trinkst</b> du gern Kaffee?</span> <a class="see" href="#ja-nein">lesson 14</a></dd></div>
+      </dl>
+
+      <h3 id="g-cases">Cases</h3>
+      <dl class="gloss">
+        <div><dt>Case <i>· Kasus</i></dt>
+          <dd>The form an article, pronoun or noun takes to show its job in the sentence (subject, object, receiver …). Same dog, three jobs: der Hund / den Hund / dem Hund. German has four cases; at A1 you use three.
+          <span class="eg"><span class="case nom">Nominativ</span> <span class="case akk">Akkusativ</span> <span class="case dat">Dativ</span></span> <a class="see" href="#kasus">lesson 27</a></dd></div>
+        <div><dt><span class="case nom">Nominativ</span></dt>
+          <dd>The case of the subject: who or what does it.
+          <span class="eg"><b class="c-nom">Der</b> Hund schläft.</span> <a class="see" href="#nominativ">lesson 17</a></dd></div>
+        <div><dt><span class="case akk">Akkusativ</span></dt>
+          <dd>The case of the direct object (Wen? Was?). Also after für, ohne, durch, gegen, um, bis, entlang, and after a Wechsel preposition when something moves (Wohin?).
+          <span class="eg">Ich sehe <b class="c-akk">den</b> Hund.</span> <a class="see" href="#akkusativ">lesson 18</a> <a class="see" href="#akk-praep">23</a></dd></div>
+        <div><dt><span class="case dat">Dativ</span></dt>
+          <dd>The case of the receiver (Wem?). Also after aus, bei, mit, nach, von, zu, ab, and after a Wechsel preposition when nothing moves (Wo?).
+          <span class="eg">Ich gebe <b class="c-dat">dem</b> Hund Wasser.</span> <a class="see" href="#dativ">lesson 15</a> <a class="see" href="#dat-praep">24</a></dd></div>
+        <div><dt>Dativ verb <i>· Dativ-Verb</i></dt>
+          <dd>A verb whose object is always Dativ, even though it looks like a direct object: helfen, danken, folgen, antworten, glauben, gratulieren, passen.
+          <span class="eg">Ich helfe <b class="c-dat">dir</b>. · Der Hund folgt <b class="c-dat">den</b> Kindern.</span> <a class="see" href="#dativ">lesson 15</a></dd></div>
+        <div><dt>Two-way preposition <i>· Wechselpräposition</i></dt>
+          <dd>One of the nine place prepositions (in, an, auf, über, unter, vor, hinter, neben, zwischen). Dativ for a position (Wo?), Akkusativ for a movement (Wohin?).
+          <span class="eg">Der Kuli liegt auf <b class="c-dat">dem</b> Tisch. ↔ Ich lege den Kuli auf <b class="c-akk">den</b> Tisch.</span> <a class="see" href="#wechsel">lesson 26</a></dd></div>
+        <div><dt>Short form <i>· Kurzform</i></dt>
+          <dd>A preposition and an article melted into one word: in dem = im, zu dem = zum, zu der = zur, von dem = vom.
+          <span class="eg">Sie geht <b class="ct">zum</b> Supermarkt.</span> <a class="see" href="#dat-praep">lesson 24</a></dd></div>
+      </dl>
+
+      <h3 id="g-verbs">Verb words</h3>
+      <dl class="gloss">
+        <div><dt>Infinitive <i>· Infinitiv</i></dt>
+          <dd>The dictionary form of a verb. It ends in -en or -n.
+          <span class="eg">spiel<b>en</b> · mach<b>en</b> · tu<b>n</b></span> <a class="see" href="#verben">lesson 7</a></dd></div>
+        <div><dt>Stem <i>· Stamm</i></dt>
+          <dd>The infinitive without -en. The endings are added to it.
+          <span class="eg">kommen → <b>komm</b>- → ich komm<b>e</b></span> <a class="see" href="#verben">lesson 7</a></dd></div>
+        <div><dt>Conjugate <i>· konjugieren</i></dt>
+          <dd>Change the verb's ending to match the subject.
+          <span class="eg">ich spiel<b>e</b> · du spiel<b>st</b> · er spiel<b>t</b></span> <a class="see" href="#verben">lesson 7</a></dd></div>
+        <div><dt>Irregular verb <i>· unregelmäßiges Verb</i></dt>
+          <dd>A verb whose vowel changes for du and er / sie / es.
+          <span class="eg">essen → du <b>isst</b> · fahren → er <b>fährt</b></span></dd></div>
+        <div><dt>Modal verb <i>· Modalverb</i></dt>
+          <dd>A helper verb that adds can / must / may / want / should: können, müssen, dürfen, wollen, sollen, möchten. It takes position 2 and sends the main verb to the end.
+          <span class="eg">Ich <b class="mv">kann</b> Schach <b class="hv">spielen</b>.</span> <a class="see" href="#modalverben">lesson 25</a></dd></div>
+        <div><dt>Main verb <i>· Hauptverb</i></dt>
+          <dd>The verb that carries the real meaning. Next to a modal verb it goes to the end, in the infinitive.
+          <span class="eg">Ich kann Schach <b class="hv">spielen</b>.</span> <a class="see" href="#modalverben">lesson 25</a></dd></div>
+        <div><dt>Separable verb <i>· trennbares Verb</i></dt>
+          <dd>A verb with a prefix (Präfix) that splits off and goes to the end of the sentence.
+          <span class="eg">anrufen → Ich <b class="mv">rufe</b> meine Mutter <b class="mv">an</b>.</span> <a class="see" href="#trennbare">lesson 21</a></dd></div>
+        <div><dt>Present tense <i>· Präsens</i></dt>
+          <dd>For now and for habits. German has no "-ing" form, so one form covers both.
+          <span class="eg">Ich esse eine Pizza. = I eat / I am eating a pizza.</span> <a class="see" href="#satz">lesson 13</a></dd></div>
+        <div><dt>Simple past <i>· Präteritum</i></dt>
+          <dd>The past form you use at A1 for haben and sein.
+          <span class="eg">Ich <b>hatte</b> keine Zeit. · Ich <b>war</b> müde.</span> <a class="see" href="#praeteritum">lesson 22</a></dd></div>
+      </dl>
+
+      <h3 id="g-sounds">Sounds</h3>
+      <dl class="gloss">
+        <div><dt>Umlaut</dt>
+          <dd>The two dots on ä, ö, ü. They change the sound, and sometimes the meaning.
+          <span class="eg">schon (already) · <b>schö</b>n (beautiful)</span> <a class="see" href="#umlaut">lesson 1</a></dd></div>
+      </dl>
+
+      <aside class="recap">
+        <h3>Chapter recap – if you remember only five words</h3>
+        <ul class="rules">
+          <li><b>Noun</b> = a thing or person (capital letter) · <b>Verb</b> = the action, always in position 2.</li>
+          <li><b>Article</b> = der / die / das, ein / eine: shows gender and case.</li>
+          <li><b>Case</b> = the noun's job: <span class="case nom">Nominativ</span> subject · <span class="case akk">Akkusativ</span> direct object · <span class="case dat">Dativ</span> receiver.</li>
+          <li><b>Preposition</b> = a small word before a noun (mit, für, auf …) that also decides its case.</li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>"Ich spiele mit dem Hund." Which word is the preposition?</summary><p class="ans">mit</p></details>
+        <details><summary>"Meine Frau backt nur am Wochenende." What is the subject?</summary><p class="ans">Meine Frau – it does the action, so it's Nominativ.</p></details>
+        <details><summary>Which case is the receiver, the answer to Wem?</summary><p class="ans">Dativ</p></details>
+        <details><summary>What is the infinitive of "du spielst"?</summary><p class="ans">spielen</p></details>
+        <details><summary>Is "anrufen" a modal verb or a separable verb?</summary><p class="ans">A separable verb: Ich rufe meine Mutter an.</p></details>
+        <details><summary>What decides the case after a Wechselpräposition?</summary><p class="ans">Wo? (position) → Dativ · Wohin? (movement) → Akkusativ</p></details>
+      </div>
+    </section>
+
+    <footer>Lessons 1–22: the "A1 German Simona LG" class board, in board order (left to right). Lessons 23–24: the 16 Nov class notes. Lesson 25: the 3 Nov class notes (sollen examples, möchten and the sentence-formation section added). Lesson 26: the 20 Nov class notes. Lesson 27: a reference chart built from the case lessons, with standard A1 forms marked ✱. Lesson 28: a glossary of grammar words, written for this page. Student introductions and practice notes are not included.</footer>
   </main>
 </div>
 
