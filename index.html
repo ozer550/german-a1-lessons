@@ -21,6 +21,9 @@
     --prep: #c62828;
     --art: #1f5fbf;
     --contr: #a8660b;
+    --nom: #1d7a46; --nom-bg: #e4f3ea;
+    --akk: #b85400; --akk-bg: #fdecd9;
+    --dat: #7440b8; --dat-bg: #efe6fb;
     --shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.04);
   }
   @media (prefers-color-scheme: dark) {
@@ -29,6 +32,7 @@
       --line: #2e2e33; --chip: #26262a; --accent: #8fb0ff; --rule-bg: #1f2533;
       --recap-bg: #26231a; --recap-line: #5a4d22; --ok: #6fd3a0; --shadow: none;
       --prep: #ff8a80; --art: #8fb0ff; --contr: #f6c35b;
+      --nom: #6fd39a; --nom-bg: #17281e; --akk: #ffaa5e; --akk-bg: #302114; --dat: #c7a3ff; --dat-bg: #251c35;
     }
   }
   :root[data-theme="dark"] {
@@ -36,6 +40,7 @@
     --line: #2e2e33; --chip: #26262a; --accent: #8fb0ff; --rule-bg: #1f2533;
     --recap-bg: #26231a; --recap-line: #5a4d22; --ok: #6fd3a0; --shadow: none;
     --prep: #ff8a80; --art: #8fb0ff; --contr: #f6c35b;
+    --nom: #6fd39a; --nom-bg: #17281e; --akk: #ffaa5e; --akk-bg: #302114; --dat: #c7a3ff; --dat-bg: #251c35;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 16px; }
@@ -116,6 +121,62 @@
   .recap ul.rules { margin: 6px 0 10px; padding-left: 20px; }
   .recap ul.rules li { margin: 3px 0; }
   .lbl { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 10px 0 2px; }
+  /* Case colours (lessons 26–27): Nominativ green, Akkusativ orange, Dativ purple */
+  .c-nom { color: var(--nom); } .c-akk { color: var(--akk); } .c-dat { color: var(--dat); }
+  b.c-nom, b.c-akk, b.c-dat { font-weight: 700; }
+  .case { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .02em; padding: 1px 9px; border-radius: 999px; text-transform: none; }
+  .case.nom { background: var(--nom-bg); color: var(--nom); }
+  .case.akk { background: var(--akk-bg); color: var(--akk); }
+  .case.dat { background: var(--dat-bg); color: var(--dat); }
+  .grid2, .grid3 { display: grid; gap: 12px; margin: 12px 0; }
+  .grid2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .card { border-radius: 12px; padding: 12px 14px; border: 1px solid var(--line); border-top: 4px solid var(--line); }
+  .card h4 { margin: 0 0 6px; font-size: 1rem; }
+  .card p { margin: 5px 0; }
+  .card ul { margin: 4px 0; padding-left: 18px; }
+  .card.akk { border-top-color: var(--akk); background: var(--akk-bg); }
+  .card.dat { border-top-color: var(--dat); background: var(--dat-bg); }
+  .card.wechsel {
+    border-top: 1px solid var(--line); padding-top: 15px;
+    background-image: linear-gradient(to right, var(--dat), var(--akk)), linear-gradient(to right, var(--dat-bg), var(--akk-bg));
+    background-size: 100% 4px, 100% 100%; background-repeat: no-repeat;
+  }
+  .mnem { font-weight: 800; font-size: 1rem; }
+  .mnem.sp { letter-spacing: .12em; }
+  .plist { font-weight: 600; line-height: 2; }
+  .rule.hook { border-left-color: var(--contr); }
+  .rule.hook b.k { color: var(--contr); }
+  table.kasus { border-collapse: separate; border-spacing: 4px; margin: 6px 0; width: 100%; table-layout: fixed; }
+  table.kasus th, table.kasus td { border: 0; padding: 6px 6px; text-align: center; vertical-align: middle; }
+  table.kasus td { border-radius: 8px; line-height: 1.4; font-size: 1rem; }
+  table.kasus tbody th { text-align: left; width: 5.4em; text-transform: none; letter-spacing: 0; padding-left: 0; }
+  table.kasus tbody th small { display: block; color: var(--muted); font-weight: 400; font-size: .72rem; margin-top: 2px; }
+  table.kasus .f, table.kasus .nf { display: block; font-weight: 650; }
+  table.kasus .nf { color: var(--muted); font-weight: 400; }
+  table.kasus .gl { display: block; font-size: .72rem; color: var(--muted); font-weight: 400; font-style: italic; }
+  tr.r-nom td, td.k-nom { background: var(--nom-bg); color: var(--nom); }
+  tr.r-akk td, td.k-akk { background: var(--akk-bg); color: var(--akk); }
+  tr.r-dat td, td.k-dat { background: var(--dat-bg); color: var(--dat); }
+  table.kasus td.same { opacity: .5; }
+  table.kasus td.hot { box-shadow: inset 0 0 0 2px var(--akk); }
+  .end { font-weight: 800; background: color-mix(in srgb, currentColor 20%, transparent); border-radius: 2px; }
+  ol.flow { list-style: none; counter-reset: step; padding: 0; margin: 10px 0; }
+  ol.flow li { counter-increment: step; position: relative; padding: 9px 12px 9px 44px; margin: 0 0 6px; border-radius: 10px; background: var(--chip); }
+  ol.flow li::before {
+    content: counter(step); position: absolute; left: 12px; top: 10px; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--accent); color: var(--surface); font-size: .78rem; font-weight: 700; display: grid; place-items: center;
+  }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 6px; }
+  .btn { font: inherit; font-size: .88rem; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--accent); background: none; color: var(--accent); cursor: pointer; }
+  .btn[aria-pressed="true"] { background: var(--accent); color: var(--surface); }
+  .drill-hint { display: none; font-size: .85rem; color: var(--muted); margin: 0 0 8px; }
+  #kasus.testing .drill-hint { display: block; }
+  #kasus.testing .drill .f { cursor: pointer; }
+  #kasus.testing .drill .f:not(.shown) { color: transparent !important; background: var(--chip); border-radius: 6px; }
+  #kasus.testing .drill .f:not(.shown) * { color: transparent !important; background: transparent !important; }
+  nav.toc a.pin { display: block; margin: 0 0 16px; padding: 8px 12px; border: 1px solid var(--accent); border-radius: 10px; color: var(--accent); font-weight: 600; }
+  nav.toc a.pin small { display: block; color: var(--muted); font-weight: 400; font-size: .78rem; }
   .quiz { margin-top: 16px; }
   .quiz h3 { margin: 0 0 8px !important; }
   .quiz details { border: 1px solid var(--line); border-radius: 10px; margin: 8px 0; background: var(--surface); }
@@ -137,6 +198,8 @@
     section.lesson { padding: 20px 16px; }
     header.page h1 { font-size: 1.6rem; }
     .gender { grid-template-columns: 1fr; }
+    .grid2, .grid3 { grid-template-columns: 1fr; }
+    table.kasus td { font-size: .92rem; }
   }
   @media (min-width: 861px) { nav.toc details > summary { display: none; } }
   @media print {
@@ -144,7 +207,46 @@
     .layout { display: block; }
     section.lesson { break-inside: avoid; box-shadow: none; }
     .quiz details { break-inside: avoid; }
+    .toolbar { display: none !important; }
+    body {
+      --bg: #fff; --surface: #fff; --text: #1c1c1e; --muted: #5d6066; --line: #e3dfd5; --chip: #f1eee6;
+      --accent: #2b59c3; --rule-bg: #f3f6fd; --recap-bg: #fbf7e9; --recap-line: #e8d9a4; --ok: #1f7a4d;
+      --prep: #c62828; --art: #1f5fbf; --contr: #a8660b;
+      --nom: #1d7a46; --nom-bg: #e4f3ea; --akk: #b85400; --akk-bg: #fdecd9; --dat: #7440b8; --dat-bg: #efe6fb;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    /* "Print cheat sheet" button: only lesson 27's chart, on one A4 page */
+    .print-sheet header.page, .print-sheet footer,
+    .print-sheet section.lesson:not(#kasus), .print-sheet #kasus .noprint { display: none !important; }
+    .print-sheet main { padding: 0; max-width: none; }
+    .print-sheet #kasus { border: 0; border-radius: 0; padding: 0; margin: 0; font-size: 9.5px; line-height: 1.35; }
+    .print-sheet #kasus h2 { font-size: 15px; margin: 0 0 4px; }
+    .print-sheet #kasus h3 { font-size: 11.5px; margin: 7px 0 3px; }
+    .print-sheet #kasus .eyebrow { display: none; }
+    .print-sheet #kasus .rule, .print-sheet #kasus .card { padding: 4px 8px; margin: 4px 0; }
+    .print-sheet #kasus .rule p { margin: 1px 0; }
+    html.print-sheet { font-size: 9.5px; }
+    .print-sheet .table-wrap { overflow: visible; }
+    .print-sheet #kasus table.kasus { border-spacing: 2px; margin: 2px 0; }
+    .print-sheet #kasus table.kasus .gl { display: inline; margin-left: 4px; }
+    .print-sheet #kasus table.pron .f { display: inline; }
+    .print-sheet #kasus .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .print-sheet #kasus .mnem { margin: 2px 0; }
+    .print-sheet #kasus table.kasus td, .print-sheet #kasus table.kasus th { padding: 2px 4px; font-size: 9.5px; line-height: 1.25; }
+    .print-sheet #kasus ol.flow { margin: 3px 0; }
+    .print-sheet #kasus ol.flow li { padding: 3px 8px 3px 30px; margin: 0 0 3px; }
+    .print-sheet #kasus ol.flow li::before { width: 15px; height: 15px; top: 4px; left: 8px; font-size: 8px; }
+    .print-sheet #kasus .grid2, .print-sheet #kasus .grid3 { gap: 6px; margin: 4px 0; }
+    .print-sheet #kasus .grid3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .print-sheet #kasus .grid2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .print-sheet #kasus .plist { line-height: 1.5; }
+    .print-sheet #kasus .chips { margin: 3px 0; gap: 3px; }
+    .print-sheet #kasus .chips > span { padding: 1px 6px; font-size: 9px; }
+    .print-sheet #kasus ul.ex { margin: 2px 0; }
+    .print-sheet #kasus ul.ex li { padding: 1px 0; border: 0; }
+    .print-sheet #kasus ul.ex .en { display: inline; font-size: 9px; margin-left: 6px; }
   }
+  @page { size: A4; margin: 10mm; }
 </style>
 </head>
 <body>
@@ -152,6 +254,7 @@
   <nav class="toc" aria-label="Lessons">
     <p class="brand">German A1</p>
     <p class="brand-sub">Lessons from the class board</p>
+    <a class="pin" href="#kasus">Case cheat sheet<small>Nom · Akk · Dat in one chart</small></a>
     <details open>
       <summary>Lessons</summary>
       <ol>
@@ -180,6 +283,8 @@
         <li><a href="#akk-praep"><span class="n">23</span>Akkusativ-Präpositionen</a></li>
         <li><a href="#dat-praep"><span class="n">24</span>Dativ-Präpositionen</a></li>
         <li><a href="#modalverben"><span class="n">25</span>Modalverben</a></li>
+        <li><a href="#wechsel"><span class="n">26</span>Wechselpräpositionen</a></li>
+        <li><a href="#kasus"><span class="n">27</span>Kasus-Spickzettel</a></li>
       </ol>
     </details>
     <button class="theme-btn" type="button" id="themeBtn">Toggle dark mode</button>
@@ -188,7 +293,7 @@
   <main>
     <header class="page">
       <h1>German A1 Lessons</h1>
-      <p>The teacher's notes from the A1 class, lesson by lesson. Lessons 1–22 follow the class Miro board (left to right); lessons 23–24 are from the 16 Nov class and lesson 25 from the 3 Nov class.</p>
+      <p>The teacher's notes from the A1 class, lesson by lesson. Lessons 1–22 follow the class Miro board (left to right); lessons 23–26 are from later classes (16 Nov, 3 Nov, 20 Nov). Lesson 27 is a cheat sheet that puts all the cases in one chart.</p>
       <p class="legend">English in <span class="en add">grey italics</span> and anything inside a <span class="added" style="padding:0 6px;margin:0">dashed box</span> was added for this page; all other content comes from the class notes. Each lesson ends with a recap and a quick check: tap a question to see the answer.</p>
     </header>
 
@@ -1807,7 +1912,286 @@
       </div>
     </section>
 
-    <footer>Lessons 1–22: the "A1 German Simona LG" class board, in board order (left to right). Lessons 23–24: the 16 Nov class notes. Lesson 25: the 3 Nov class notes (sollen examples, möchten and the sentence-formation section added). Student introductions and practice notes are not included.</footer>
+    <!-- 26 -->
+    <section class="lesson" id="wechsel" style="--note:#8e6bd8">
+      <p class="eyebrow">Lesson 26 · 20 Nov class</p>
+      <h2>Wechselpräpositionen – Two way prepositions</h2>
+      <div class="chips">
+        <span><b class="pr">in</b> <span class="en">in</span></span>
+        <span><b class="pr">an</b> <span class="en">at</span></span>
+        <span><b class="pr">auf</b> <span class="en">on</span></span>
+        <span><b class="pr">über</b> <span class="en">above</span></span>
+        <span><b class="pr">unter</b> <span class="en">below</span></span>
+        <span><b class="pr">vor</b> <span class="en">front</span></span>
+        <span><b class="pr">hinter</b> <span class="en">behind</span></span>
+        <span><b class="pr">neben</b> <span class="en">beside</span></span>
+        <span><b class="pr">zwischen</b> <span class="en">in between</span></span>
+      </div>
+      <div class="rule">
+        <p>Wechsel Prepositions denote locations (they are prepositions of place).</p>
+        <p>Wechsel Prepositions are nine in number.</p>
+        <p>They are sometimes <b class="c-akk">accusative</b> and sometimes <b class="c-dat">dative</b> depending on <b class="c-akk">movement</b> and <b class="c-dat">position</b>.</p>
+        <p>They answer the question <b>Wo</b> and <b>Wohin</b>.</p>
+      </div>
+      <p class="colorkey"><b class="pr">Preposition</b> · <b class="ar">article</b> · <b class="ct">short form</b> · <span class="case dat">Dativ</span> <span class="case akk">Akkusativ</span></p>
+
+      <div class="grid2">
+        <div class="card dat">
+          <h4>Wo – Where? <span class="case dat">Dativ</span></h4>
+          <ul>
+            <li>Position / Standort</li>
+            <li>The subject is stationary (not moving)</li>
+            <li><b>hängen</b> – hangs</li>
+            <li><b>stehen</b> – kept (vertical objects)</li>
+            <li><b>liegen</b> – kept / lies (horizontal objects)</li>
+          </ul>
+        </div>
+        <div class="card akk">
+          <h4>Wohin – where to? <span class="case akk">Akkusativ</span></h4>
+          <ul>
+            <li>Action / Richtung</li>
+            <li>The subject moves from point A to point B</li>
+            <li><b>hängen</b> – to hang</li>
+            <li><b>stellen</b> – to keep (vertical objects)</li>
+            <li><b>legen</b> – to keep (horizontal objects)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Beispiele mit Wo <span class="case dat">Dativ</span></h3>
+      <ul class="ex">
+        <li><span class="de">1) Das Bild hängt <b class="pr">an</b> <b class="ar">der</b> Wand.</span> <span class="tag">Wand = F → Dativ (F) = der</span><span class="en">Wo hängt das Bild? → an der Wand.</span><span class="en add">The picture hangs on the wall</span></li>
+        <li><span class="de">2) Das Buch steht <b class="pr">in</b> <b class="ar">dem</b> / <b class="ct">im</b> Schrank.</span> <span class="tag">Schrank = M → Dativ (M) = dem</span><span class="en">Wo steht das Buch? → in dem / im Schrank.</span><span class="en add">The book is in the cupboard</span></li>
+        <li><span class="de">3) Die Hündin ist <b class="pr">neben</b> <b class="ar">dem</b> Sofa.</span> <span class="tag">Sofa = N → Dativ (N) = dem</span><span class="en">Wo ist die Hündin? → neben dem Sofa.</span><span class="en add">The (female) dog is next to the sofa</span></li>
+        <li><span class="de">4) Der Kuli liegt <b class="pr">auf</b> <b class="ar">dem</b> Schreibtisch.</span> <span class="tag">Schreibtisch = M → Dativ (M) = dem</span><span class="en">Wo liegt der Kuli? → auf dem Schreibtisch.</span><span class="en add">The pen is lying on the desk</span></li>
+        <li><span class="de">5) Die Uhr ist <b class="pr">über</b> <b class="ar">dem</b> Regal.</span> <span class="tag">Regal = N → Dativ (N) = dem</span><span class="en">Wo ist die Uhr? → über dem Regal.</span><span class="en add">The clock is above the shelf</span></li>
+      </ul>
+
+      <h3>Beispiele mit Wohin <span class="case akk">Akkusativ</span></h3>
+      <ul class="ex">
+        <li><span class="de">1) Ich hänge das Bild <b class="pr">an</b> <b class="ar">die</b> Wand.</span> <span class="tag">Wand = F → Akk (F) = die</span><span class="en">Wohin hängst du das Bild? → an die Wand.</span><span class="en add">I hang the picture on the wall</span></li>
+        <li><span class="de">2) Er stellt das Buch <b class="pr">auf</b> <b class="ar">den</b> Schrank.</span> <span class="tag">Schrank = M → Akk (M) = den</span><span class="en">Wohin stellt er das Buch? → auf den Schrank.</span><span class="en add">He puts the book on the cupboard</span></li>
+        <li><span class="de">3) Die Hündin geht <b class="pr">neben</b> <b class="ar">das</b> Sofa.</span> <span class="tag">Sofa = N → Akk (N) = das</span><span class="en">Wohin geht die Hündin? → neben das Sofa.</span><span class="en add">The (female) dog goes next to the sofa</span></li>
+        <li><span class="de">4) Sie legt den Kuli <b class="pr">auf</b> <b class="ar">den</b> Schreibtisch.</span> <span class="tag">Schreibtisch = M → Akk (M) = den</span><span class="en">Wohin legt sie den Kuli? → auf den Schreibtisch.</span><span class="en add">She puts the pen on the desk</span></li>
+        <li><span class="de">5) Ich hänge die Uhr <b class="pr">über</b> <b class="ar">das</b> Regal.</span> <span class="tag">Regal = N → Akk (N) = das</span><span class="en">Wohin hängst du die Uhr? → über das Regal.</span><span class="en add">I hang the clock above the shelf</span></li>
+      </ul>
+
+      <aside class="recap">
+        <h3>Chapter recap</h3>
+        <ul class="rules">
+          <li>Nine Wechselpräpositionen: <b>in, an, auf, über, unter, vor, hinter, neben, zwischen</b>.</li>
+          <li><b>Wo?</b> → position, nothing moves → <b class="c-dat">Dativ</b> (dem · der · dem · den). <b>Wohin?</b> → movement from A to B → <b class="c-akk">Akkusativ</b> (den · die · das · die).</li>
+          <li>Verb pairs: hängen (hangs) ↔ hängen (to hang) · <b>stehen → stellen</b> · <b>liegen → legen</b>. stehen / liegen go with Wo, stellen / legen go with Wohin.</li>
+          <li>Short forms: in dem = <b class="ct">im</b> · in das = <b class="ct">ins</b> · an dem = <b class="ct">am</b> · an das = <b class="ct">ans</b></li>
+        </ul>
+        <p class="lbl">Key examples – same place, two cases</p>
+        <ul class="ex">
+          <li><span class="de">Das Bild hängt <b class="pr">an</b> <b class="ar">der</b> Wand. ↔ Ich hänge das Bild <b class="pr">an</b> <b class="ar">die</b> Wand.</span><span class="en add">Wo? Dativ ↔ Wohin? Akkusativ</span></li>
+          <li><span class="de">Der Kuli liegt <b class="pr">auf</b> <b class="ar">dem</b> Schreibtisch. ↔ Sie legt den Kuli <b class="pr">auf</b> <b class="ar">den</b> Schreibtisch.</span><span class="en add">liegen + Dativ ↔ legen + Akkusativ</span></li>
+          <li><span class="de">Die Hündin ist <b class="pr">neben</b> <b class="ar">dem</b> Sofa. ↔ Die Hündin geht <b class="pr">neben</b> <b class="ar">das</b> Sofa.</span><span class="en add">is there ↔ goes there</span></li>
+        </ul>
+      </aside>
+      <div class="quiz">
+        <h3>Quick check</h3>
+        <details><summary>Das Buch steht in ___ Schrank. (der Schrank)</summary><p class="ans">in dem / im Schrank – Wo? → Dativ</p></details>
+        <details><summary>Er stellt das Buch auf ___ Schrank.</summary><p class="ans">auf den Schrank – Wohin? → Akkusativ</p></details>
+        <details><summary>Die Uhr ist über ___ Regal. (das Regal)</summary><p class="ans">über dem Regal – Wo? → Dativ</p></details>
+        <details><summary>Wo or Wohin? Ich hänge die Uhr über das Regal.</summary><p class="ans">Wohin – there is movement, so Akkusativ (das).</p></details>
+        <details><summary>Das Buch ___ im Schrank. (stehen or stellen?)</summary><p class="ans">steht – stehen goes with Wo (position).</p></details>
+        <details><summary>Sie ___ den Kuli auf den Schreibtisch. (liegen or legen?)</summary><p class="ans">legt – legen goes with Wohin (movement).</p></details>
+        <details><summary>Name all nine Wechselpräpositionen.</summary><p class="ans">in, an, auf, über, unter, vor, hinter, neben, zwischen</p></details>
+      </div>
+    </section>
+
+    <!-- 27 -->
+    <section class="lesson" id="kasus" style="--note:#2b59c3">
+      <p class="eyebrow">Lesson 27 · Reference</p>
+      <h2>Der Kasus-Spickzettel – the case cheat sheet</h2>
+      <p class="noprint">Spickzettel = cheat sheet. Everything from lessons 11, 15–18 and 23–26 on one page: articles, personal pronouns, possessive pronouns and prepositions in <span class="case nom">Nominativ</span> <span class="case akk">Akkusativ</span> <span class="case dat">Dativ</span>. The colours are the same in every table, so after a while your eye knows "orange = Akkusativ" without reading.</p>
+      <p class="colorkey">✱ = a standard A1 form that wasn't in the class notes, added so the chart is complete. <b class="end">Highlighted</b> = the ending to remember.</p>
+      <div class="toolbar">
+        <button class="btn" type="button" id="drillBtn" aria-pressed="false">Test me</button>
+        <button class="btn" type="button" id="printBtn">Print cheat sheet (1 page)</button>
+      </div>
+      <p class="drill-hint">Test mode: the forms are hidden. Say each one out loud first, then tap it to check. Tap "Test me" again to show everything.</p>
+
+      <div class="rule hook noprint">
+        <p><b>How to learn this page</b></p>
+        <p>1. Learn the article table first. It is the backbone: pronouns and possessives copy its endings, so you are learning one pattern, not four tables.</p>
+        <p>2. Chant the rows until they come in one breath: <b class="c-nom">der-die-das-die</b> · <b class="c-akk">den-die-das-die</b> · <b class="c-dat">dem-der-dem-den</b>.</p>
+        <p>3. Use "Test me" for five minutes a day. Saying a form before you see it is what makes it stick.</p>
+      </div>
+
+      <h3>0 · Which case? Ask three questions</h3>
+      <ol class="flow">
+        <li><b>Is there a preposition in front of the noun?</b> Then the preposition decides (block 4): für <b class="c-akk">den</b> Hund · mit <b class="c-dat">dem</b> Hund · auf <b class="c-dat">dem</b> / <b class="c-akk">das</b> Sofa.</li>
+        <li><b>Is it the subject – who or what does the action?</b> (Wer? Was?) → <span class="case nom">Nominativ</span> <b class="c-nom">Der</b> Hund schläft. After <i>sein</i> it stays Nominativ too: Er ist <b class="c-nom">ein</b> Lehrer.</li>
+        <li><b>Otherwise ask the verb.</b> Wen? Was? → <span class="case akk">Akkusativ</span> (the thing you see, buy, have). Wem? → <span class="case dat">Dativ</span> (the person who gets something, and after Dativ verbs: helfen, antworten, folgen, glauben, gratulieren, passen).</li>
+      </ol>
+      <ul class="ex">
+        <li><span class="de">Ich gebe <b class="c-dat">dem</b> Kind <b class="c-akk">einen</b> Ball.</span><span class="en add">I give the child a ball. Wem? dem Kind → Dativ · Was? einen Ball → Akkusativ</span></li>
+      </ul>
+
+      <h3>1 · Articles + kein – the backbone</h3>
+      <div class="table-wrap drill"><table class="kasus">
+        <thead><tr><th></th><th>M</th><th>F</th><th>N</th><th>Pl</th></tr></thead>
+        <tbody>
+          <tr class="r-nom"><th><span class="case nom">Nom</span><small>Wer? Was?</small></th>
+            <td><span class="f">der</span><span class="f">ein</span><span class="f">kein</span></td>
+            <td><span class="f">die</span><span class="f">eine</span><span class="f">keine</span></td>
+            <td><span class="f">das</span><span class="f">ein</span><span class="f">kein</span></td>
+            <td><span class="f">die</span><span class="nf">–</span><span class="f">keine</span></td></tr>
+          <tr class="r-akk"><th><span class="case akk">Akk</span><small>Wen? Was?</small></th>
+            <td class="hot"><span class="f">de<b class="end">n</b></span><span class="f">ein<b class="end">en</b></span><span class="f">kein<b class="end">en</b></span></td>
+            <td class="same"><span class="f">die</span><span class="f">eine</span><span class="f">keine</span></td>
+            <td class="same"><span class="f">das</span><span class="f">ein</span><span class="f">kein</span></td>
+            <td class="same"><span class="f">die</span><span class="nf">–</span><span class="f">keine</span></td></tr>
+          <tr class="r-dat"><th><span class="case dat">Dat</span><small>Wem?</small></th>
+            <td><span class="f">de<b class="end">m</b></span><span class="f">eine<b class="end">m</b></span><span class="f">keine<b class="end">m</b></span></td>
+            <td><span class="f">de<b class="end">r</b></span><span class="f">eine<b class="end">r</b></span><span class="f">keine<b class="end">r</b></span></td>
+            <td><span class="f">de<b class="end">m</b></span><span class="f">eine<b class="end">m</b></span><span class="f">keine<b class="end">m</b></span></td>
+            <td><span class="f">de<b class="end">n</b>&nbsp;<small>+n</small></span><span class="nf">–</span><span class="f">keine<b class="end">n</b>&nbsp;<small>+n</small></span></td></tr>
+        </tbody>
+      </table></div>
+      <div class="rule hook">
+        <p><b class="k">Akkusativ = Nominativ, except masculine.</b> Only the outlined box changes: der → de<b class="end">n</b>, ein → ein<b class="end">en</b>, kein → kein<b class="end">en</b>. Everything faded is the same as in Nominativ.</p>
+        <p><b class="k">Dativ ends in -m · -r · -m · -n:</b> dem · der · dem · den. In the plural the noun gets an extra -n too: den Kinder<b class="end">n</b>.</p>
+        <p><b class="k">Plural has no ein</b> ("a dogs" doesn't exist). For "no …" use keine.</p>
+      </div>
+      <ul class="ex">
+        <li><span class="de"><b class="c-nom">Der</b> Hund schläft. · <b class="c-nom">Die</b> Katze spielt. · <b class="c-nom">Das</b> Kind lacht. · <b class="c-nom">Die</b> Kinder essen.</span><span class="en add">The dog sleeps · the cat plays · the child laughs · the children eat</span></li>
+        <li><span class="de">Ich sehe <b class="c-akk">den</b> Hund · <b class="c-akk">die</b> Katze · <b class="c-akk">das</b> Kind · <b class="c-akk">die</b> Kinder.</span><span class="en add">I see the dog · the cat · the child · the children</span></li>
+        <li><span class="de">Ich gebe <b class="c-dat">dem</b> Hund · <b class="c-dat">der</b> Katze · <b class="c-dat">dem</b> Kind · <b class="c-dat">den</b> Kinder<b class="end">n</b> Wasser.</span><span class="en add">I give the dog · the cat · the child · the children water</span></li>
+        <li class="noprint"><span class="de">Ich backe <b class="c-akk">einen</b> Kuchen. · Der Hund folgt <b class="c-dat">den</b> Kindern.</span> <span class="tag">lessons 18 and 15</span><span class="en">I bake a cake · The dog follows the children</span></li>
+      </ul>
+
+      <div class="pair">
+      <div class="blk">
+      <h3>2 · Personal pronouns</h3>
+      <div class="table-wrap drill"><table class="kasus pron">
+        <thead><tr><th><span class="case nom">Nom</span></th><th><span class="case akk">Akk</span> ✱</th><th><span class="case dat">Dat</span> ✱</th></tr></thead>
+        <tbody>
+          <tr><td class="k-nom">ich<span class="gl">I</span></td><td class="k-akk"><span class="f">mi<b class="end">ch</b></span><span class="gl">me</span></td><td class="k-dat"><span class="f">mi<b class="end">r</b></span><span class="gl">(to) me</span></td></tr>
+          <tr><td class="k-nom">du<span class="gl">you</span></td><td class="k-akk"><span class="f">di<b class="end">ch</b></span><span class="gl">you</span></td><td class="k-dat"><span class="f">di<b class="end">r</b></span><span class="gl">(to) you</span></td></tr>
+          <tr><td class="k-nom">er<span class="gl">he</span></td><td class="k-akk"><span class="f">ih<b class="end">n</b></span><span class="gl">him</span></td><td class="k-dat"><span class="f">ih<b class="end">m</b></span><span class="gl">(to) him</span></td></tr>
+          <tr><td class="k-nom">es<span class="gl">it</span></td><td class="k-akk same"><span class="f">es</span><span class="gl">it</span></td><td class="k-dat"><span class="f">ih<b class="end">m</b></span><span class="gl">(to) it</span></td></tr>
+          <tr><td class="k-nom">sie<span class="gl">she</span></td><td class="k-akk same"><span class="f">sie</span><span class="gl">her</span></td><td class="k-dat"><span class="f">ih<b class="end">r</b></span><span class="gl">(to) her</span></td></tr>
+          <tr><td class="k-nom">wir<span class="gl">we</span></td><td class="k-akk"><span class="f">uns</span><span class="gl">us</span></td><td class="k-dat"><span class="f">uns</span><span class="gl">(to) us</span></td></tr>
+          <tr><td class="k-nom">ihr<span class="gl">you all</span></td><td class="k-akk"><span class="f">euch</span><span class="gl">you all</span></td><td class="k-dat"><span class="f">euch</span><span class="gl">(to) you all</span></td></tr>
+          <tr><td class="k-nom">sie<span class="gl">they</span></td><td class="k-akk same"><span class="f">sie</span><span class="gl">them</span></td><td class="k-dat"><span class="f">ihne<b class="end">n</b></span><span class="gl">(to) them</span></td></tr>
+          <tr><td class="k-nom">Sie<span class="gl">you (formal)</span></td><td class="k-akk same"><span class="f">Sie</span><span class="gl">you</span></td><td class="k-dat"><span class="f">Ihne<b class="end">n</b></span><span class="gl">(to) you</span></td></tr>
+        </tbody>
+      </table></div>
+      <div class="rule hook">
+        <p><b class="k">The pronoun copies the article's last letter:</b> de<b class="end">n</b> → ih<b class="end">n</b> · de<b class="end">m</b> → ih<b class="end">m</b> · de<b class="end">r</b> → ih<b class="end">r</b> · de<b class="end">n</b> (plural) → ihne<b class="end">n</b>.</p>
+        <p><b class="k">ich and du:</b> -ch for Akkusativ (mi<b class="end">ch</b>, di<b class="end">ch</b>), -r for Dativ (mi<b class="end">r</b>, di<b class="end">r</b>).</p>
+        <p><b class="k">wir and ihr are the lazy pair:</b> Akkusativ = Dativ (uns, euch). <b class="k">es, sie, Sie</b> don't change in Akkusativ, just like das and die.</p>
+      </div>
+      <ul class="ex">
+        <li><span class="de">Ich sehe <b class="c-akk">den</b> Hund. → Ich sehe <b class="c-akk">ihn</b>.</span><span class="en add">I see the dog → I see him</span></li>
+        <li><span class="de">Ich gebe <b class="c-dat">dem</b> Hund Wasser. → Ich gebe <b class="c-dat">ihm</b> Wasser.</span><span class="en add">I give the dog water → I give him water</span></li>
+        <li><span class="de">Ich gebe <b class="c-dat">der</b> Katze Milch. → Ich gebe <b class="c-dat">ihr</b> Milch.</span><span class="en add">I give the cat milk → I give her milk</span></li>
+        <li><span class="de">Ich gebe <b class="c-dat">den</b> Kindern Kekse. → Ich gebe <b class="c-dat">ihnen</b> Kekse.</span><span class="en add">I give the children cookies → I give them cookies</span></li>
+        <li class="noprint"><span class="de">Ich liebe <b class="c-akk">dich</b>. · Wie geht es <b class="c-dat">dir</b>? · Kannst du <b class="c-dat">mir</b> helfen?</span><span class="en add">I love you · How are you? (lesson 9) · Can you help me? (helfen takes Dativ)</span></li>
+      </ul>
+
+      </div>
+      <div class="blk">
+      <h3>3 · Possessive pronouns</h3>
+      <p><b>Two questions:</b> whose is it? → choose the word (mein, dein, sein …). Which noun, which case? → choose the ending, exactly like ein / kein.</p>
+      <div class="chips drill">
+        <span>ich → <b class="f">mein</b></span><span>du → <b class="f">dein</b></span><span>er → <b class="f">sein</b></span><span>es → <b class="f">sein</b> ✱</span><span>sie → <b class="f">ihr</b></span>
+        <span>wir → <b class="f">unser</b></span><span>ihr → <b class="f">euer</b></span><span>sie → <b class="f">ihr</b></span><span>Sie → <b class="f">Ihr</b></span>
+      </div>
+      <div class="table-wrap drill"><table class="kasus">
+        <thead><tr><th></th><th>M</th><th>F</th><th>N</th><th>Pl</th></tr></thead>
+        <tbody>
+          <tr class="r-nom"><th><span class="case nom">Nom</span></th>
+            <td><span class="f">mein</span></td><td><span class="f">mein<b class="end">e</b></span></td><td><span class="f">mein</span></td><td><span class="f">mein<b class="end">e</b></span></td></tr>
+          <tr class="r-akk"><th><span class="case akk">Akk</span></th>
+            <td class="hot"><span class="f">mein<b class="end">en</b></span></td><td class="same"><span class="f">meine</span></td><td class="same"><span class="f">mein</span></td><td class="same"><span class="f">meine</span></td></tr>
+          <tr class="r-dat"><th><span class="case dat">Dat</span></th>
+            <td><span class="f">mein<b class="end">em</b></span></td><td><span class="f">mein<b class="end">er</b></span></td><td><span class="f">mein<b class="end">em</b></span></td><td><span class="f">mein<b class="end">en</b>&nbsp;<small>+n</small></span></td></tr>
+        </tbody>
+      </table></div>
+      <div class="rule hook">
+        <p><b class="k">mein = m + ein.</b> Take any ein / kein form and put the owner in front: ein<b class="end">en</b> → mein<b class="end">en</b>, sein<b class="end">en</b> · eine<b class="end">m</b> → meine<b class="end">m</b>, unsere<b class="end">m</b> · eine<b class="end">r</b> → meine<b class="end">r</b>, ihre<b class="end">r</b>. The plural uses kein's endings: meine, meinen.</p>
+        <p><b class="k">euer drops its e</b> when an ending comes: eure, euren, eurem ✱. <b class="k">sein</b> = his / its · <b class="k">ihr</b> = her / their · <b class="k">Ihr</b> = your (formal).</p>
+      </div>
+      <ul class="ex">
+        <li><span class="de"><b class="c-nom">Mein</b> Hund schläft. → Ich suche <b class="c-akk">meinen</b> Hund. → Ich gebe <b class="c-dat">meinem</b> Hund Wasser.</span><span class="en add">My dog sleeps → I'm looking for my dog → I give my dog water</span></li>
+        <li><span class="de"><b class="c-nom">Meine</b> Katze spielt. → Ich suche <b class="c-akk">meine</b> Katze. → Ich spiele mit <b class="c-dat">meiner</b> Katze.</span><span class="en add">My cat plays → I'm looking for my cat → I play with my cat</span></li>
+        <li class="noprint"><span class="de">Prathamesh verkauft <b class="c-akk">seinen</b> Laptop. · Ich gratuliere <b class="c-dat">meinem</b> Bruder. · Sie glaubt <b class="c-dat">ihrer</b> Mutter.</span> <span class="tag">lessons 18 and 15</span><span class="en">Prathamesh sells his laptop · I congratulate my brother · She believes her mother</span></li>
+      </ul>
+
+      </div>
+      </div>
+
+      <h3>4 · Prepositions – they decide the case for you</h3>
+      <div class="grid3">
+        <div class="card akk">
+          <h4><span class="case akk">Akkusativ</span> always</h4>
+          <p class="mnem sp">D·O·G·F·U·B·E</p>
+          <p class="plist drill"><span class="f">durch</span> · <span class="f">ohne</span> · <span class="f">gegen</span> · <span class="f">für</span> · <span class="f">um</span> · <span class="f">bis</span> · <span class="f">entlang</span></p>
+          <p>Ich gehe ohne <b class="c-akk">den</b> Hund.</p>
+          <p class="noprint en">Ich kaufe das Buch für <b class="c-akk">meinen</b> Vater. <span class="tag">lesson 23</span></p>
+        </div>
+        <div class="card dat">
+          <h4><span class="case dat">Dativ</span> always</h4>
+          <p class="mnem">♪ Blue Danube: 7 + 2</p>
+          <p class="plist drill"><span class="f">aus</span> · <span class="f">bei</span> · <span class="f">mit</span> · <span class="f">nach</span> · <span class="f">seit</span>&nbsp;✱ · <span class="f">von</span> · <span class="f">zu</span> + <span class="f">ab</span> · <span class="f">gegenüber</span>&nbsp;✱</p>
+          <p>Ich spiele mit <b class="c-dat">dem</b> Hund.</p>
+          <p class="noprint en">Sing "aus-bei-mit-nach-seit-von-zu" to the Blue Danube waltz, then add ab and gegenüber. Das Kind schreibt mit <b class="c-dat">dem</b> Kuli. <span class="tag">lesson 24</span></p>
+        </div>
+        <div class="card wechsel">
+          <h4><span class="case dat">Wo?</span> <span class="case akk">Wohin?</span> Wechsel</h4>
+          <p class="mnem">9 places around a box</p>
+          <p class="plist drill"><span class="f">in</span> · <span class="f">an</span> · <span class="f">auf</span> · <span class="f">über</span> · <span class="f">unter</span> · <span class="f">vor</span> · <span class="f">hinter</span> · <span class="f">neben</span> · <span class="f">zwischen</span></p>
+          <p>Wo = still → <b class="c-dat">Dativ</b>: Der Hund liegt auf <b class="c-dat">dem</b> Sofa.<br>Wohin = moving (hin = going there) → <b class="c-akk">Akk</b>: Der Hund springt auf <b class="c-akk">das</b> Sofa.</p>
+          <p class="noprint en">Das Bild hängt an <b class="c-dat">der</b> Wand ↔ Ich hänge das Bild an <b class="c-akk">die</b> Wand. <span class="tag">lesson 26</span></p>
+        </div>
+      </div>
+      <p class="colorkey">Short forms: an dem = am · an das = ans · in dem = im · in das = ins · von dem = vom · zu dem = zum · zu der = zur · bei dem = beim ✱</p>
+
+      <aside class="recap noprint">
+        <h3>Chapter recap – the five golden rules</h3>
+        <ul class="rules">
+          <li><b>Case first, then gender.</b> Ask: preposition? → subject? → Wen/Was (Akk) or Wem (Dat)?</li>
+          <li><b>Akkusativ = Nominativ, except masculine:</b> den, einen, keinen, meinen, ihn.</li>
+          <li><b>Dativ = -m · -r · -m · -n:</b> dem / der / dem / den (+n) · ihm / ihr / ihm / ihnen.</li>
+          <li><b>Possessive = owner + ein-ending:</b> mein, meinen, meinem, meiner …</li>
+          <li><b>Prepositions decide alone:</b> DOGFUBE → Akk · aus-bei-mit-nach-seit-von-zu → Dat · Wechsel: Wo → Dat, Wohin → Akk.</li>
+        </ul>
+        <p class="lbl">Key examples</p>
+        <ul class="ex">
+          <li><span class="de">Ich gebe <b class="c-dat">dem</b> Kind <b class="c-akk">einen</b> Ball.</span><span class="en add">I give the child a ball</span></li>
+          <li><span class="de">Ich sehe <b class="c-akk">ihn</b>. · Ich helfe <b class="c-dat">ihm</b>.</span><span class="en add">I see him · I help him</span></li>
+          <li><span class="de">Ich suche <b class="c-akk">meinen</b> Hund.</span><span class="en add">I'm looking for my dog</span></li>
+          <li><span class="de">Der Hund liegt auf <b class="c-dat">dem</b> Sofa. ↔ Der Hund springt auf <b class="c-akk">das</b> Sofa.</span><span class="en add">Wo? Dativ ↔ Wohin? Akkusativ</span></li>
+        </ul>
+      </aside>
+      <div class="quiz noprint">
+        <h3>Quick check</h3>
+        <details><summary>Which case is "der Hund" in: Der Hund schläft.</summary><p class="ans">Nominativ – it's the subject.</p></details>
+        <details><summary>Ich sehe ___ Hund.</summary><p class="ans">den – Akkusativ, and masculine is the one that changes.</p></details>
+        <details><summary>Ich sehe ___ Katze.</summary><p class="ans">die – feminine Akkusativ = Nominativ.</p></details>
+        <details><summary>Ich gebe ___ Kind Wasser.</summary><p class="ans">dem – Wem? → Dativ (N = dem).</p></details>
+        <details><summary>Ich gebe den Kinder__ Kekse.</summary><p class="ans">Kindern – Dativ plural adds -n to the noun.</p></details>
+        <details><summary>Swap in a pronoun: Ich sehe den Mann.</summary><p class="ans">Ich sehe ihn. (den → ihn)</p></details>
+        <details><summary>Swap in a pronoun: Ich helfe der Frau.</summary><p class="ans">Ich helfe ihr. (der → ihr)</p></details>
+        <details><summary>Swap in a pronoun: Ich gebe den Kindern Kekse.</summary><p class="ans">Ich gebe ihnen Kekse. (den → ihnen)</p></details>
+        <details><summary>"me" in Akkusativ and in Dativ?</summary><p class="ans">mich (Akk) · mir (Dat)</p></details>
+        <details><summary>Ich suche ___ Hund. (mein)</summary><p class="ans">meinen</p></details>
+        <details><summary>Ich spiele mit ___ Katze. (mein)</summary><p class="ans">meiner – mit → Dativ, feminine → -er.</p></details>
+        <details><summary>Ich gehe ohne ___ Hund.</summary><p class="ans">den – ohne is always Akkusativ (DOGFUBE).</p></details>
+        <details><summary>Der Hund liegt auf ___ Sofa.</summary><p class="ans">dem – Wo? (no movement) → Dativ.</p></details>
+        <details><summary>Der Hund springt auf ___ Sofa.</summary><p class="ans">das – Wohin? (movement) → Akkusativ.</p></details>
+        <details><summary>What does DOGFUBE stand for?</summary><p class="ans">durch, ohne, gegen, für, um, bis, entlang – always Akkusativ.</p></details>
+        <details><summary>Sing the Dativ prepositions.</summary><p class="ans">aus, bei, mit, nach, seit, von, zu (+ ab, gegenüber)</p></details>
+      </div>
+    </section>
+
+    <footer>Lessons 1–22: the "A1 German Simona LG" class board, in board order (left to right). Lessons 23–24: the 16 Nov class notes. Lesson 25: the 3 Nov class notes (sollen examples, möchten and the sentence-formation section added). Lesson 26: the 20 Nov class notes. Lesson 27: a reference chart built from the case lessons, with standard A1 forms marked ✱. Student introductions and practice notes are not included.</footer>
   </main>
 </div>
 
@@ -1828,6 +2212,31 @@
       });
     }, { rootMargin: '-20% 0px -70% 0px' });
     document.querySelectorAll('section.lesson').forEach(function (s) { obs.observe(s); });
+  })();
+
+  // Case cheat sheet: "Test me" hides the forms (tap to reveal); "Print" prints only the chart.
+  (function () {
+    var sec = document.getElementById('kasus');
+    if (!sec) return;
+    var drillBtn = document.getElementById('drillBtn'), printBtn = document.getElementById('printBtn');
+    function setTesting(on) {
+      sec.classList.toggle('testing', on);
+      sec.querySelectorAll('.f.shown').forEach(function (e) { e.classList.remove('shown'); });
+      drillBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      drillBtn.textContent = on ? 'Show all' : 'Test me';
+    }
+    drillBtn.addEventListener('click', function () { setTesting(!sec.classList.contains('testing')); });
+    sec.addEventListener('click', function (e) {
+      if (!sec.classList.contains('testing')) return;
+      var f = e.target.closest('.drill .f');
+      if (f) f.classList.toggle('shown');
+    });
+    printBtn.addEventListener('click', function () {
+      setTesting(false);
+      document.documentElement.classList.add('print-sheet');
+      window.print();
+    });
+    window.addEventListener('afterprint', function () { document.documentElement.classList.remove('print-sheet'); });
   })();
 
   // Dark mode toggle (remembered per browser when storage is available).
